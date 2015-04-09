@@ -9,8 +9,7 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
     {
         return array(
             'last_modified' => $this->getData()->getLastModified(),
-            'api_url'       => $this->getData()->getApiUrl(),
-            'remote_id'     => $this->getData()->getRemoteId(),
+            'uri'           => $this->getData()->getUri(),
             'o:item'        => $this->getReference(
                 null,
                 $this->getData()->getItem(),
@@ -27,11 +26,6 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
     public function lastModified()
     {
         return $this->getData()->getlastModified();
-    }
-    
-    public function apiUrl()
-    {
-        return $this->getData()->getApiUrl();
     }
     
     public function uri()

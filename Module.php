@@ -1,5 +1,5 @@
 <?php
-namespace DspaceConnector;
+namespace FedoraConnector;
 
 use Omeka\Module\AbstractModule;
 use Omeka\Model\Entity\Job;

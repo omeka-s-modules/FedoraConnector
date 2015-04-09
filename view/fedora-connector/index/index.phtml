@@ -1,0 +1,10 @@
+<?php 
+$form->prepare(); 
+
+?>
+
+<h1><?php echo $escapeHtml($this->translate('DSpace Connector')); ?></h1>
+
+<?php echo $this->form()->openTag($form); ?>
+<?php echo $this->form()->formElements(); ?>
+<?php echo $this->form()->closeTag($form); ?>

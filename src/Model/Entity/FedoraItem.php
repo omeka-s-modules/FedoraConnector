@@ -1,5 +1,5 @@
 <?php
-namespace DspaceConnector\Model\Entity;
+namespace FedoraConnector\Model\Entity;
 
 use DateTime;
 use Omeka\Model\Entity\AbstractEntity;
@@ -9,7 +9,7 @@ use Omeka\Model\Entity\Item;
 /**
  * @Entity
  */
-class DspaceItem extends AbstractEntity
+class FedoraItem extends AbstractEntity
 {
     
     /**
@@ -72,16 +72,6 @@ class DspaceItem extends AbstractEntity
     public function getJob()
     {
         return $this->job;
-    }
-    
-    public function setApiUrl($apiUrl)
-    {
-        $this->apiUrl = $apiUrl;
-    }
-    
-    public function getApiUrl()
-    {
-        return $this->apiUrl;
     }
     
     public function setUri($uri)

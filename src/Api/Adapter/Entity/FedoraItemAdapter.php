@@ -33,13 +33,6 @@ class FedoraItemAdapter extends AbstractEntityAdapter
             );
         }
         
-        if (isset($query['api_url'])) {
-            $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.apiUrl',
-                $this->createNamedParameter($qb, $query['api_url']))
-            );
-        }
-        
     }
     
     public function hydrate(Request $request, EntityInterface $entity,
@@ -49,9 +42,6 @@ class FedoraItemAdapter extends AbstractEntityAdapter
         if (isset($data['o:job']['o:id'])) {
             $job = $this->getAdapter('jobs')->findEntity($data['o:job']['o:id']);
             $entity->setJob($job);
-        }
-        if (isset($data['api_url'])) {
-            $entity->setApiUrl($data['api_url']);
         }
         if (isset($data['o:item']['o:id'])) {
             $item = $this->getAdapter('items')->findEntity($data['o:item']['o:id']);
