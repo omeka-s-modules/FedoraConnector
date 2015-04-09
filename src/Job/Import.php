@@ -69,7 +69,7 @@ class Import extends AbstractJob
             $literals = $resource->allLiterals($easyRdfProperty);
             foreach ($literals as $literal) {
                 $json[$property][] = array(
-                        '@value'      => $literal->getValue(),
+                        '@value'      => (string) $literal,
                         '@lang'       => $literal->getLang(),
                         'property_id' => $propertyId
                         );
