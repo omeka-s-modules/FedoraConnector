@@ -48,7 +48,7 @@ class FedoraItemAdapter extends AbstractEntityAdapter
             $entity->setItem($item);
         }
         if (isset($data['uri'])) {
-            $entity->setRemoteId($data['uri']);
+            $entity->setUri($data['uri']);
         }
 
         if (isset($data['last_modified'])) {

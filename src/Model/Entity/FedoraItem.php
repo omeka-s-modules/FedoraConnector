@@ -36,12 +36,6 @@ class FedoraItem extends AbstractEntity
      * @Column(type="string")
      * @var string
      */
-    protected $apiUrl;
-
-    /**
-     * @Column(type="string")
-     * @var string
-     */
     protected $uri;
     
     /**
