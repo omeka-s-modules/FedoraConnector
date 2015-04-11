@@ -54,6 +54,13 @@ class Import extends AbstractJob
             print_r( $response->getErrors() );
             throw new Exception\RuntimeException('There was an error during item creation.');
         }
+
+        foreach ($containers as $container) {
+            $containerUri = $container->getUri();
+            if ($containerUri != $uri) {
+                $this->importContainer($containerUri);
+            }
+        }
     }
 
     public function resourceToJson(EasyRdf_Resource $resource)
