@@ -81,24 +81,45 @@ class Import extends AbstractJob
                         'property_id' => $propertyId
                         );
             }
-            $resources = $resource->allResources($easyRdfProperty);
-            foreach ($resources as $resource) {
+            $objects = $resource->allResources($easyRdfProperty);
+            foreach ($objects as $object) {
                 $json[$property][] = array(
-                        '@id'      => $resource->getUri(),
+                        '@id'      => $object->getUri(),
                         'property_id' => $propertyId
                         );
             }
         }
+        
+        //tack on dcterms:identifier and bibo:uri
+        $dctermsId = $this->getPropertyId('http://purl.org/dc/terms/identifier');
+        $json['http://purl.org/dc/terms/identifier'][] = array(
+                '@value'      => $resource->getUri(),
+                'property_id' => $dctermsId
+                );
+        $biboUri = $this->getPropertyId('http://purl.org/ontology/bibo/uri');
+        $json['http://purl.org/ontology/bibo/uri'][] = array(
+                '@id'         => $resource->getUri(),
+                'property_id' => $biboUri
+                );
         return $json;
     }
 
+    /**
+     * Get the property id for an rdf property, if known in Omeka
+     * 
+     * @param string or EasyRdf_Resource $property
+     */
     protected function getPropertyId($property) 
     {
+        if (is_string($property)) {
+            $property = new EasyRdf_Resource($property);
+        }
         $propertyUri = $property->getUri();
-        $localName = $property->localName();
         //work around fedora's use of dc11
         $propertyUri = str_replace('http://purl.org/dc/elements/1.1/', 'http://purl.org/dc/terms/', $propertyUri );
+        $localName = $property->localName();
         $vocabUri = str_replace($localName, '', $propertyUri);
+        
         if (isset($this->propertyUriIdMap[$propertyUri])) {
             return $this->propertyUriIdMap[$propertyUri];
         }
