@@ -32,9 +32,8 @@ class FedoraItemAdapter extends AbstractEntityAdapter
                 $this->createNamedParameter($qb, $query['uri']))
             );
         }
-        
     }
-    
+
     public function hydrate(Request $request, EntityInterface $entity,
         ErrorStore $errorStore
     ) {

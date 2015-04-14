@@ -21,7 +21,7 @@ class FedoraItem extends AbstractEntity
     
     /**
      * @OneToOne(targetEntity="Omeka\Model\Entity\Item")
-     * @JoinColumn(nullable=false)
+     * @JoinColumn(nullable=false, onDelete="CASCADE")
      * @var int
      */
     protected $item;
@@ -70,7 +70,7 @@ class FedoraItem extends AbstractEntity
     
     public function setUri($uri)
     {
-        $this->remoteId = $uri;
+        $this->uri = $uri;
     }
     
     public function getUri()

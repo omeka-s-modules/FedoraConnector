@@ -51,28 +51,28 @@ class Import extends AbstractJob
         
         $response = $this->api->create('items', $json);
         if ($response->isError()) {
-            echo 'error';
-            print_r( $response->getErrors() );
             throw new Exception\RuntimeException('There was an error during item creation.');
         }
         
         $itemId = $response->getContent()->id();
-        echo $itemId;
         
         $lastModifiedProperty = new EasyRdf_Resource('http://fedora.info/definitions/v4/repository#lastModified');
+        $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
+        if ($lastModifiedLiteral) {
+            $lastModifiedValue = $lastModifiedLiteral->getValue();
+        } else {
+            $lastModifiedValue = null;
+        }
         $fedoraItemJson = array(
-                            'o:job'     => array('o:id' => $this->job->getId()),
-                            'o:item'    => array('o:id' => $itemId),
-                            'uri'       => $uri,
-                            'last_modified' => $containerToImport->getLiteral($lastModifiedProperty)->getValue()
-                        );
-        
-        echo 'trying create';
-        print_r($fedoraItemJson);
+                            'o:job'         => array('o:id' => $this->job->getId()),
+                            'o:item'        => array('o:id' => $itemId),
+                            'uri'           => $uri,
+                            'last_modified' => $lastModifiedValue
+                          );
+
+        echo get_class($this->api);
         $response = $this->api->create('fedora_items', $fedoraItemJson);
         if ($response->isError()) {
-            echo 'is error';
-            print_r($response->getErrors());
             throw new Exception\RuntimeException('There was an error during fedora item creation.');
         }
         
