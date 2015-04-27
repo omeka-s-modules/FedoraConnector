@@ -4,6 +4,9 @@ namespace FedoraConnector;
 use Omeka\Module\AbstractModule;
 use Omeka\Model\Entity\Job;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\View\Renderer\PhpRenderer;
+use Zend\Mvc\Controller\AbstractController;
+use FedoraConnector\Form\ConfigForm;
 
 class Module extends AbstractModule
 {
@@ -26,5 +29,40 @@ class Module extends AbstractModule
         $connection->exec("ALTER TABLE fedora_item DROP FOREIGN KEY FK_D02FFFF9126F525E;");
         $connection->exec("ALTER TABLE fedora_item DROP FOREIGN KEY FK_D02FFFF9BE04EA9;");
         $connection->exec('DROP TABLE fedora_item');
+    }
+
+    /**
+     * Get this module's configuration form.
+     *
+     * @param ViewModel $view
+     * @return string
+     */
+    public function getConfigForm(PhpRenderer $renderer)
+    {
+        $form = new ConfigForm($this->getServiceLocator());
+        $html = $renderer->formElements($form);
+        return $html;
+    }
+
+    /**
+     * Handle this module's configuration form.
+     *
+     * @param AbstractController $controller
+     * @return bool False if there was an error during handling
+     */
+    public function handleConfigForm(AbstractController $controller)
+    {
+        if ($controller->getRequest()->isPost()) {
+            $data = $controller->params()->fromPost();
+            if ($data['import_fedora'] == 1 ) {
+                
+            }
+
+            if ($data['import_ldp'] == 1) {
+                
+            }
+        }
+        return false;
+        
     }
 }
