@@ -11,14 +11,11 @@ return array(
         ),
     ),
     'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
         'template_path_stack'      => array(
             OMEKA_PATH . '/module/FedoraConnector/view',
         ),
     ),
     'entity_manager' => array(
-        'is_dev_mode' => true,
         'mapping_classes_paths' => array(
             OMEKA_PATH . '/module/FedoraConnector/src/Model/Entity',
         ),
