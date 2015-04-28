@@ -52,17 +52,42 @@ class Module extends AbstractModule
      */
     public function handleConfigForm(AbstractController $controller)
     {
-        if ($controller->getRequest()->isPost()) {
-            $data = $controller->params()->fromPost();
-            if ($data['import_fedora'] == 1 ) {
-                
-            }
-
-            if ($data['import_ldp'] == 1) {
-                
+        $importer = $this->getServiceLocator()->get('Omeka\RdfImporter');
+        $data = $controller->params()->fromPost();
+        $success = true;
+        if ($data['import_fedora'] == 1 ) {
+            $fedoraImportData = array(
+                    'o:prefix'        => 'fedora',
+                    'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
+                    'o:label'         => 'Fedora Vocabulary',
+                    'o:comment'       => 'Vocabulary for a Fedora Repository',
+                    'file'            => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf'
+                    );
+            
+            $response = $importer->import(
+                'file', $fedoraImportData, array('file' => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf')
+            );
+            if ($response->isError()) {
+                $success = false;
             }
         }
-        return false;
+
+        if ($data['import_ldp'] == 1) {
+            $ldpImportData = array(
+                    'o:prefix'        => 'ldp',
+                    'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
+                    'o:label'         => 'Linked Data Platform Vocabulary',
+                    'o:comment'       => 'Vocabulary for a Linked Data Platform. Used by Fedora',
+                    'file'            => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf'
+                    );
+            $response = $importer->import(
+                'file', $ldpImportData, array('file' => OMEKA_PATH . '/module/FedoraConnector/data/ldp.rdf')
+            );
+            if ($response->isError()) {
+                $success = false;
+            }
+        }
+        return $success;
         
     }
 }
