@@ -2,7 +2,7 @@
 namespace FedoraConnector;
 
 use Omeka\Module\AbstractModule;
-use Omeka\Model\Entity\Job;
+use Omeka\Entity\Job;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\Mvc\Controller\AbstractController;

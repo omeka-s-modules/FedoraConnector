@@ -4,14 +4,14 @@ namespace FedoraConnector\Api\Adapter\Entity;
 use Doctrine\ORM\QueryBuilder;
 use Omeka\Api\Adapter\Entity\AbstractEntityAdapter;
 use Omeka\Api\Request;
-use Omeka\Model\Entity\EntityInterface;
+use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
 
 class FedoraItemAdapter extends AbstractEntityAdapter
 {
     public function getEntityClass()
     {
-        return 'FedoraConnector\Model\Entity\FedoraItem';
+        return 'FedoraConnector\Entity\FedoraItem';
     }
     
     public function getResourceName()
@@ -30,6 +30,13 @@ class FedoraItemAdapter extends AbstractEntityAdapter
             $qb->andWhere($qb->expr()->eq(
                 $this->getEntityClass() . '.uri',
                 $this->createNamedParameter($qb, $query['uri']))
+            );
+        }
+
+        if (isset($query['job_id'])) {
+            $qb->andWhere($qb->expr()->eq(
+                $this->getEntityClass() . '.jobId',
+                $this->createNamedParameter($qb, $query['job_id']))
             );
         }
     }
