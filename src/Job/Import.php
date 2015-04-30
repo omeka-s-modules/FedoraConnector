@@ -48,14 +48,14 @@ class Import extends AbstractJob
             $mediaJson['ingest_url'] = $binary->getUri();
             $json['o:media'][] = $mediaJson;
         }
-        
+
         $response = $this->api->create('items', $json);
         if ($response->isError()) {
             throw new Exception\RuntimeException('There was an error during item creation.');
         }
-        
+
         $itemId = $response->getContent()->id();
-        
+
         $lastModifiedProperty = new EasyRdf_Resource('http://fedora.info/definitions/v4/repository#lastModified');
         $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
         if ($lastModifiedLiteral) {
@@ -70,12 +70,11 @@ class Import extends AbstractJob
                             'last_modified' => $lastModifiedValue
                           );
 
-        echo get_class($this->api);
         $response = $this->api->create('fedora_items', $fedoraItemJson);
         if ($response->isError()) {
             throw new Exception\RuntimeException('There was an error during fedora item creation.');
         }
-        
+
         foreach ($containers as $container) {
             $containerUri = $container->getUri();
             if ($containerUri != $uri) {

@@ -18,7 +18,6 @@ class IndexController extends AbstractActionController
                 $dispatcher = $this->getServiceLocator()->get('Omeka\JobDispatcher');
                 $job = $dispatcher->dispatch('FedoraConnector\Job\Import', $data);
                 $view->setVariable('job', $job);
-                $view->setVariable('collectionName', $data['collection_name']);
             } else {
                 $this->messenger()->addError('There was an error during validation');
             }
@@ -27,7 +26,7 @@ class IndexController extends AbstractActionController
         $view->setVariable('form', $form);
         return $view;
     }
-    
+
     public function pastImportsAction()
     {
         if ($this->getRequest()->isPost()) {
@@ -44,8 +43,9 @@ class IndexController extends AbstractActionController
         $view->setVariable('jobs', $response->getContent());
         return $view;
     }
-    
+
     protected function undoJob($jobId) {
-        
+        $dispatcher = $this->getServiceLocator()->get('Omeka\JobDispatcher');
+        $job = $dispatcher->dispatch('FedoraConnector\Job\Undo', array('jobId' => $jobId));
     }
 }
