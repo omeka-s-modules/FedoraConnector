@@ -12,12 +12,12 @@ return array(
     ),
     'view_manager' => array(
         'template_path_stack'      => array(
-            OMEKA_PATH . '/module/FedoraConnector/view',
+            OMEKA_PATH . '/modules/FedoraConnector/view',
         ),
     ),
     'entity_manager' => array(
         'mapping_classes_paths' => array(
-            OMEKA_PATH . '/module/FedoraConnector/src/Entity',
+            OMEKA_PATH . '/modules/FedoraConnector/src/Entity',
         ),
     ),
 
