@@ -2,7 +2,7 @@
 namespace FedoraConnector\Api\Adapter\Entity;
 
 use Doctrine\ORM\QueryBuilder;
-use Omeka\Api\Adapter\Entity\AbstractEntityAdapter;
+use Omeka\Api\Adapter\AbstractEntityAdapter;
 use Omeka\Api\Request;
 use Omeka\Entity\EntityInterface;
 use Omeka\Stdlib\ErrorStore;
@@ -21,7 +21,7 @@ class FedoraItemAdapter extends AbstractEntityAdapter
     
     public function getRepresentationClass()
     {
-        return 'FedoraConnector\Api\Representation\Entity\FedoraItemRepresentation';
+        return 'FedoraConnector\Api\Representation\FedoraItemRepresentation';
     }
     
     public function buildQuery(QueryBuilder $qb, array $query)
