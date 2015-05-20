@@ -6,6 +6,7 @@ use Omeka\Entity\Job;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\Mvc\Controller\AbstractController;
+use Zend\EventManager\SharedEventManagerInterface;
 use FedoraConnector\Form\ConfigForm;
 
 class Module extends AbstractModule
@@ -31,6 +32,16 @@ class Module extends AbstractModule
         $connection->exec('DROP TABLE fedora_item');
     }
 
+    public function attachListeners(
+        SharedEventManagerInterface $sharedEventManager,
+        SharedEventManagerInterface $filterManager
+    ) {
+        $sharedEventManager->attach(
+                'Omeka\Controller\Admin\Item',
+                'view.show.after',
+                array($this, 'showSource')
+                );
+    }
     /**
      * Get this module's configuration form.
      *
@@ -89,5 +100,24 @@ class Module extends AbstractModule
         }
         return $success;
         
+    }
+    
+    public function showSource($event) 
+    {
+        $view = $event->getTarget();
+        $item = $view->item;
+        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
+        $response = $api->search('fedora_items', array('item' => $item->id()));
+        if ($response->isError()) {
+            echo 'shit';
+            var_dump($response->getErrors());
+        }
+        $fedoraItems = $response->getContent();
+        if ($fedoraItems) {
+            $fedoraItem = $fedoraItems[0];
+            echo '<h3>' . $view->translate('Source')  . '</h3>';
+            echo '<p>' . $view->translate('Last Modified') . '</p>';
+            echo '<p><a href="' . $fedoraItem->uri() . '">' . $view->translate('Link') . '</a></p>';
+        }
     }
 }

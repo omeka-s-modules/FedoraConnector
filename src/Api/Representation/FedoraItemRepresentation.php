@@ -1,7 +1,7 @@
 <?php 
-namespace FedoraConnector\Api\Representation\Entity;
+namespace FedoraConnector\Api\Representation;
 
-use Omeka\Api\Representation\Entity\AbstractEntityRepresentation;
+use Omeka\Api\Representation\AbstractEntityRepresentation;
 
 class FedoraItemRepresentation extends AbstractEntityRepresentation
 {

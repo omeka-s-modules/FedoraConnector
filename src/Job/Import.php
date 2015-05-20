@@ -3,7 +3,7 @@ namespace FedoraConnector\Job;
 
 use Omeka\Job\AbstractJob;
 use Omeka\Job\Exception;
-use FedoraConnector\Model\Entity\FedoraItem;
+use FedoraConnector\Entity\FedoraItem;
 use Zend\Http\Client;
 use EasyRdf_Graph;
 use EasyRdf_Resource;
@@ -23,7 +23,6 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
         $uri = $this->getArg('container_uri');
-        //$uri = 'http://localhost:8080/rest/ff/f0/c5/ab/fff0c5ab-72a0-4f49-88af-eb29778ea8d1';
         $this->importContainer($uri);
     }
 

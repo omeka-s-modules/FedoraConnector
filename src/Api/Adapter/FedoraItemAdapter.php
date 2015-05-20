@@ -1,5 +1,5 @@
 <?php 
-namespace FedoraConnector\Api\Adapter\Entity;
+namespace FedoraConnector\Api\Adapter;
 
 use Doctrine\ORM\QueryBuilder;
 use Omeka\Api\Adapter\AbstractEntityAdapter;
@@ -37,6 +37,12 @@ class FedoraItemAdapter extends AbstractEntityAdapter
             $qb->andWhere($qb->expr()->eq(
                 $this->getEntityClass() . '.jobId',
                 $this->createNamedParameter($qb, $query['job_id']))
+            );
+        }
+        if (isset($query['item_id'])) {
+            $qb->andWhere($qb->expr()->eq(
+                $this->getEntityClass() . '.itemId',
+                $this->createNamedParameter($qb, $query['item_id']))
             );
         }
     }
