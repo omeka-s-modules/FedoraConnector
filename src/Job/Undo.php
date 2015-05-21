@@ -13,11 +13,11 @@ class Undo extends AbstractJob
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             foreach ($fedoraItems as $fedoraItem) {
-                $fedoraResponse = $api->delete('fedora_items', array('id' => $fedoraItem->id()));
+                $fedoraResponse = $api->delete('fedora_items', $fedoraItem->id());
                 if ($fedoraResponse->isError()) {
                 }
 
-                $itemResponse = $api->delete('items', array('id' => $fedoraItem->item()->id()));
+                $itemResponse = $api->delete('items', $fedoraItem->item()->id());
                 if ($itemResponse->isError()) {
                 }
             }

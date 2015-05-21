@@ -35,13 +35,13 @@ class FedoraItemAdapter extends AbstractEntityAdapter
 
         if (isset($query['job_id'])) {
             $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.jobId',
+                $this->getEntityClass() . '.job',
                 $this->createNamedParameter($qb, $query['job_id']))
             );
         }
         if (isset($query['item_id'])) {
             $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.itemId',
+                $this->getEntityClass() . '.item',
                 $this->createNamedParameter($qb, $query['item_id']))
             );
         }
