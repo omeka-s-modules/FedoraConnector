@@ -115,8 +115,8 @@ class Module extends AbstractModule
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             $fedoraItem = $fedoraItems[0];
-            echo '<h3>' . $view->translate('Source')  . '</h3>';
-            echo '<p>' . $view->translate('Last Modified') . '</p>';
+            echo '<h3>' . $view->translate('Original')  . '</h3>';
+            echo '<p>' . $view->translate('Last Modified') . ' ' . $view->i18n()->dateFormat($fedoraItem->lastModified()) . '</p>';
             echo '<p><a href="' . $fedoraItem->uri() . '">' . $view->translate('Link') . '</a></p>';
         }
     }
