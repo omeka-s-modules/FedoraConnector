@@ -109,8 +109,7 @@ class Module extends AbstractModule
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');
         $response = $api->search('fedora_items', array('item' => $item->id()));
         if ($response->isError()) {
-            echo 'shit';
-            var_dump($response->getErrors());
+
         }
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
