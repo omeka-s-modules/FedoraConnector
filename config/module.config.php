@@ -2,7 +2,8 @@
 return array(
     'api_adapters' => array(
         'invokables' => array(
-            'fedora_items' => 'FedoraConnector\Api\Adapter\FedoraItemAdapter',
+            'fedora_items'   => 'FedoraConnector\Api\Adapter\FedoraItemAdapter',
+            'fedora_imports' => 'FedoraConnector\Api\Adapter\FedoraImportAdapter'
         ),
     ),
     'controllers' => array(

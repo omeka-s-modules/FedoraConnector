@@ -4,6 +4,7 @@ namespace FedoraConnector\Job;
 use Omeka\Job\AbstractJob;
 use Omeka\Job\Exception;
 use FedoraConnector\Entity\FedoraItem;
+use FedoraConnector\Entity\FedoraImport;
 use Zend\Http\Client;
 use EasyRdf_Graph;
 use EasyRdf_Resource;
@@ -16,14 +17,24 @@ class Import extends AbstractJob
 
     protected $api;
 
+    protected $resourceCount;
+    
     public function perform()
     {
+        $this->resourceCount = 0;
         $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
         $this->propertyUriIdMap = array();
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
         $uri = $this->getArg('container_uri');
         $this->importContainer($uri);
+        $fedoraImportJson = array(
+                            'o:job'          => array('o:id' => $this->job->getId()),
+                            'o:item'         => array('o:id' => $itemId),
+                            'comment'        => $comment,
+                            'resource_count' => $this->resourceCount,
+                          );
+        $this->api->create($fedoraImportJson);
     }
 
     public function importContainer($uri)
@@ -73,7 +84,7 @@ class Import extends AbstractJob
         if ($response->isError()) {
             throw new Exception\RuntimeException('There was an error during fedora item creation.');
         }
-
+        $this->resourceCount++;
         foreach ($containers as $container) {
             $containerUri = $container->getUri();
             if ($containerUri != $uri) {
