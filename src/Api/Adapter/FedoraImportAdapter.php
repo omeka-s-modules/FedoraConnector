@@ -38,11 +38,11 @@ class FedoraImportAdapter extends AbstractEntityAdapter
         }
         
         if (isset($data['resource_count'])) {
-            $entity->setResourceCount($data['o:resource_count']);
+            $entity->setResourceCount($data['resource_count']);
         }
         
         if (isset($data['comment'])) {
-            $entity->setComment($data['o:comment']);
+            $entity->setComment($data['comment']);
         }
     }
 }

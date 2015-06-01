@@ -28,13 +28,16 @@ class Import extends AbstractJob
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
         $uri = $this->getArg('container_uri');
         $this->importContainer($uri);
+        $comment = $this->getArg('comment');
         $fedoraImportJson = array(
                             'o:job'          => array('o:id' => $this->job->getId()),
-                            'o:item'         => array('o:id' => $itemId),
                             'comment'        => $comment,
                             'resource_count' => $this->resourceCount,
                           );
-        $this->api->create($fedoraImportJson);
+        $response = $this->api->create('fedora_imports', $fedoraImportJson);
+        if ($response->isError()) {
+            echo 'fail creating fedora import';
+        }
     }
 
     public function importContainer($uri)
@@ -82,6 +85,7 @@ class Import extends AbstractJob
 
         $response = $this->api->create('fedora_items', $fedoraItemJson);
         if ($response->isError()) {
+            print_r($fedoraItemJson);
             throw new Exception\RuntimeException('There was an error during fedora item creation.');
         }
         $this->resourceCount++;

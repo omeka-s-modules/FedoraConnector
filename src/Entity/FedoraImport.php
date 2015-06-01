@@ -4,7 +4,10 @@ namespace FedoraConnector\Entity;
 use Omeka\Entity\AbstractEntity;
 use Omeka\Entity\Job;
 
-class FedoraImport extends AbstractEntity{
+/**
+ * @Entity
+ */
+class FedoraImport extends AbstractEntity {
     
     /**
      * @Id
@@ -31,8 +34,7 @@ class FedoraImport extends AbstractEntity{
     protected $undoJob;
     
     /**
-     * @Column(type="string")
-     * @var unknown_type
+     * @Column(type="string", nullable=true)
      */
     protected $comment;
     
@@ -61,7 +63,7 @@ class FedoraImport extends AbstractEntity{
         return $this->undoJob;
     }
     
-    public function setResourceCount(int $count)
+    public function setResourceCount($count)
     {
         $this->resourceCount = $count;
     }
@@ -69,5 +71,15 @@ class FedoraImport extends AbstractEntity{
     public function getResourceCount()
     {
         return $this->resourceCount;
+    }
+    
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
+    
+    public function getComment()
+    {
+        return $this->comment;
     }
 }
