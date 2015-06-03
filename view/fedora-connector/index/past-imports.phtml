@@ -22,7 +22,8 @@ $escape = $this->plugin('escapeHtml');
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($jobs as $job): ?>
+        <?php foreach ($imports as $import): ?>
+        <?php $job = $import->job(); ?>
         <tr>
             <td><input type='checkbox' name='jobs[]' value='<?php echo $job->id(); ?>' />
             <td><?php echo $job->id(); ?></td>

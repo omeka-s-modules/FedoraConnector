@@ -34,7 +34,7 @@ class FedoraImportAdapter extends AbstractEntityAdapter
         }
         if (isset($data['o:undo_job']['o:id'])) {
             $job = $this->getAdapter('jobs')->findEntity($data['o:undo_job']['o:id']);
-            $entity->setJob($job);
+            $entity->setUndoJob($job);
         }
         
         if (isset($data['resource_count'])) {
@@ -43,6 +43,16 @@ class FedoraImportAdapter extends AbstractEntityAdapter
         
         if (isset($data['comment'])) {
             $entity->setComment($data['comment']);
+        }
+    }
+    
+    public function buildQuery(QueryBuilder $qb, array $query)
+    {
+        if (isset($query['job_id'])) {
+            $qb->andWhere($qb->expr()->eq(
+                $this->getEntityClass() . '.job',
+                $this->createNamedParameter($qb, $query['job_id']))
+            );
         }
     }
 }
