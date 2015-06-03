@@ -16,6 +16,7 @@ $escape = $this->plugin('escapeHtml');
                 <th><?php echo $escape($this->translate('Undo?'));?></th>
                 <th><?php echo $escape($this->translate('Job ID'));?></th>
                 <th><?php echo $escape($this->translate('Container'));?></th>
+                <th><?php echo $escape($this->translate('Comment'));?></th>
                 <th><?php echo $escape($this->translate('Date'));?></th>
                 <th><?php echo $escape($this->translate('Status'));?></th>
                 <th><?php echo $escape($this->translate('Owner'));?></th>
@@ -32,6 +33,9 @@ $escape = $this->plugin('escapeHtml');
                 <?php $args = $job->args();
                 echo $args['container_uri'];
                 ?>
+            </td>
+            <td>
+                <?php echo $import->comment(); ?>
             </td>
             <td><?php echo $escape($this->i18n()->dateFormat($job->started())); ?></td>
             <td><?php echo $undone ? $this->translate('Undone') : $job->status(); ?></td>
