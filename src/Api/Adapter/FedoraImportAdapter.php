@@ -36,11 +36,15 @@ class FedoraImportAdapter extends AbstractEntityAdapter
             $job = $this->getAdapter('jobs')->findEntity($data['o:undo_job']['o:id']);
             $entity->setUndoJob($job);
         }
-        
-        if (isset($data['resource_count'])) {
-            $entity->setResourceCount($data['resource_count']);
+
+        if (isset($data['added_count'])) {
+            $entity->setAddedCount($data['added_count']);
         }
-        
+
+        if (isset($data['updated_count'])) {
+            $entity->setUpdatedCount($data['updated_count']);
+        }
+
         if (isset($data['comment'])) {
             $entity->setComment($data['comment']);
         }

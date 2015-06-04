@@ -17,22 +17,27 @@ class Import extends AbstractJob
 
     protected $api;
 
-    protected $resourceCount;
+    protected $addedCount;
+    
+    protected $updatedCount;
     
     public function perform()
     {
-        $this->resourceCount = 0;
+        $this->addedCount = 0;
+        $this->updatedCount = 0;
         $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
         $this->propertyUriIdMap = array();
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
         $uri = $this->getArg('container_uri');
+        //importContainer calls itself on all child containers
         $this->importContainer($uri);
         $comment = $this->getArg('comment');
         $fedoraImportJson = array(
-                            'o:job'          => array('o:id' => $this->job->getId()),
-                            'comment'        => $comment,
-                            'resource_count' => $this->resourceCount,
+                            'o:job'         => array('o:id' => $this->job->getId()),
+                            'comment'       => $comment,
+                            'added_count'   => $this->addedCount,
+                            'updated_count' => $this->updatedCount
                           );
         $response = $this->api->create('fedora_imports', $fedoraImportJson);
         if ($response->isError()) {
@@ -42,6 +47,18 @@ class Import extends AbstractJob
 
     public function importContainer($uri)
     {
+        //see if the item has already been imported
+        $response = $this->api->search('fedora_items', array('uri' => $uri));
+        $content = $response->getContent();
+        if (empty ($content)) {
+            $fedoraItem = false;
+            $omekaItem = false;
+        } else {
+            $fedoraItem = $content[0];
+            $omekaItem = $fedoraItem->item();
+        }
+        
+        
         $this->client->setUri($uri);
         $response = $this->client->send();
         $rdf = $response->getBody();
@@ -62,12 +79,17 @@ class Import extends AbstractJob
             $json['o:media'][] = $mediaJson;
         }
 
-        $response = $this->api->create('items', $json);
-        if ($response->isError()) {
-            throw new Exception\RuntimeException('There was an error during item creation.');
+        if ($omekaItem) {
+            $response = $this->api->update('items', $omekaItem->id(), $json);
+            $itemId = $omekaItem->id();
+        } else {
+            $response = $this->api->create('items', $json);
+            $itemId = $response->getContent()->id();
         }
-
-        $itemId = $response->getContent()->id();
+        
+        if ($response->isError()) {
+            throw new Exception\RuntimeException('There was an error during item creation or update.');
+        }
 
         $lastModifiedProperty = new EasyRdf_Resource('http://fedora.info/definitions/v4/repository#lastModified');
         $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
@@ -76,6 +98,8 @@ class Import extends AbstractJob
         } else {
             $lastModifiedValue = null;
         }
+        
+        
         $fedoraItemJson = array(
                             'o:job'         => array('o:id' => $this->job->getId()),
                             'o:item'        => array('o:id' => $itemId),
@@ -83,12 +107,18 @@ class Import extends AbstractJob
                             'last_modified' => $lastModifiedValue
                           );
 
-        $response = $this->api->create('fedora_items', $fedoraItemJson);
+        if ($fedoraItem) {
+            $response = $this->api->update('fedora_items', $fedoraItem->id(), $fedoraItemJson);
+            $this->updatedCount++;
+        } else {
+            $this->addedCount++;
+            $response = $this->api->create('fedora_items', $fedoraItemJson);
+        }
+        
         if ($response->isError()) {
-            print_r($fedoraItemJson);
             throw new Exception\RuntimeException('There was an error during fedora item creation.');
         }
-        $this->resourceCount++;
+        
         foreach ($containers as $container) {
             $containerUri = $container->getUri();
             if ($containerUri != $uri) {

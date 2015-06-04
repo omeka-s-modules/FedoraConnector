@@ -8,7 +8,8 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
     public function getJsonLd()
     {
         return array(
-            'resource_count' => $this->getData()->getResourceCount,
+            'added_count' => $this->getData()->getAddedCount(),
+            'updated_count' => $this->getData()->getUpdatedCount(),
             'comment'        => $this->getData()->getComment(),
             'o:job'          => $this->getReference(
                 null,
@@ -40,8 +41,13 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
         return $this->getData()->getComment();
     }
     
-    public function resourceCount()
+    public function addedCount()
     {
-        return $this->getData()->getResourceCount();
+        return $this->getData()->getAddedCount();
+    }
+    
+    public function updatedCount()
+    {
+        return $this->getData()->getUpdatedCount();
     }
 }

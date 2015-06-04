@@ -25,8 +25,12 @@ class FedoraImport extends AbstractEntity {
     /**
      * @Column(type="integer")
      */
-    protected $resourceCount;
+    protected $addedCount;
     
+    /**
+     * @Column(type="integer")
+     */
+    protected $updatedCount;
     /**
      * @OneToOne(targetEntity="Omeka\Entity\Job")
      * @JoinColumn(nullable=true)
@@ -63,14 +67,24 @@ class FedoraImport extends AbstractEntity {
         return $this->undoJob;
     }
     
-    public function setResourceCount($count)
+    public function setAddedCount($count)
     {
-        $this->resourceCount = $count;
+        $this->addedCount = $count;
     }
     
-    public function getResourceCount()
+    public function getAddedCount()
     {
-        return $this->resourceCount;
+        return $this->addedCount;
+    }
+
+    public function setUpdatedCount($count)
+    {
+        $this->updatedCount = $count;
+    }
+    
+    public function getUpdatedCount()
+    {
+        return $this->updatedCount;
     }
     
     public function setComment($comment)

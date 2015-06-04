@@ -22,5 +22,17 @@ class ImportForm extends AbstractForm
                 'id' => 'container_uri'
             )
         ));
+        
+        $this->add(array(
+            'name' => 'comment',
+            'type' => 'textarea',
+            'options' => array(
+                'label' => $translator->translate('Comment'),
+                'info'  => $translator->translate('A note about the purpose or source of this import.')
+            ),
+            'attributes' => array(
+                'id' => 'comment'
+            )
+        ));
     }
 }
