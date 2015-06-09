@@ -32,7 +32,12 @@ $escape = $this->plugin('escapeHtml');
             <td><?php echo $job->id(); ?></td>
             <td>
                 <?php $args = $job->args();
-                echo $args['container_uri'];
+                $containerUri = $args['container_uri'];
+                echo $containerUri;
+                $response = $this->api()->search('fedora_items', array('uri' => $containerUri));
+                $containerFedoraItem = $response->getContent()[0];
+                $containerItem = $containerFedoraItem->item();
+                echo ' -- ' . $containerItem->displayTitle();
                 ?>
             </td>
             <td>
