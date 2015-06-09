@@ -16,6 +16,8 @@ class Import extends AbstractJob
     protected $propertyUriIdMap;
 
     protected $api;
+    
+    protected $itemSetId;
 
     protected $addedCount;
     
@@ -30,6 +32,7 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
         $uri = $this->getArg('container_uri');
+        $this->itemSetId = $this->getArg('itemSet', false);
         //importContainer calls itself on all child containers
         $this->importContainer($uri);
         $comment = $this->getArg('comment');
@@ -130,6 +133,10 @@ class Import extends AbstractJob
     public function resourceToJson(EasyRdf_Resource $resource)
     {
         $json = array();
+        if ($this->itemSetId) {
+            $json['o:item_set'] = array(array('o:id' => $this->itemSetId));
+        }
+
         foreach ($resource->propertyUris() as $property) {
             $easyRdfProperty = new EasyRdf_Resource($property);
             $propertyId = $this->getPropertyId($easyRdfProperty);

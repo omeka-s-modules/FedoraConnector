@@ -34,5 +34,22 @@ class ImportForm extends AbstractForm
                 'id' => 'comment'
             )
         ));
+        
+        $serviceLocator = $this->getServiceLocator();
+        $auth = $serviceLocator->get('Omeka\AuthenticationService');
+        $itemSetSelect = new ResourceSelect($serviceLocator);
+        $itemSetSelect->setName('itemSet')
+            ->setAttribute('required', false)
+            ->setLabel('Import into')
+            ->setOption('info', $translator->translate('Optional. Import items into this item set.'))
+            ->setEmptyOption('Select Item Set...')
+            ->setResourceValueOptions(
+                'item_sets',
+                array('owner_id' => $auth->getIdentity()),
+                function ($itemSet, $serviceLocator) {
+                    return $itemSet->displayTitle('[no title]');
+                }
+            );
+        $this->add($itemSetSelect);
     }
 }
