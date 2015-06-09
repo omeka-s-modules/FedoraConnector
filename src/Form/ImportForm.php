@@ -4,6 +4,7 @@ namespace FedoraConnector\Form;
 use Omeka\Form\AbstractForm;
 use Omeka\Form\Element\ResourceSelect;
 use Zend\Validator\Callback;
+use Zend\Form\Element\Select;
 
 class ImportForm extends AbstractForm
 {
@@ -35,11 +36,13 @@ class ImportForm extends AbstractForm
             )
         ));
         
+        
+        
         $serviceLocator = $this->getServiceLocator();
         $auth = $serviceLocator->get('Omeka\AuthenticationService');
+        
         $itemSetSelect = new ResourceSelect($serviceLocator);
         $itemSetSelect->setName('itemSet')
-            ->setAttribute('required', false)
             ->setLabel('Import into')
             ->setOption('info', $translator->translate('Optional. Import items into this item set.'))
             ->setEmptyOption('Select Item Set...')
@@ -51,5 +54,11 @@ class ImportForm extends AbstractForm
                 }
             );
         $this->add($itemSetSelect);
+        
+        $inputFilter = $this->getInputFilter();
+        $inputFilter->add(array(
+            'name' => 'itemSet',
+            'required' => false,
+        ));
     }
 }
