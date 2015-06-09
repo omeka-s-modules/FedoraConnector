@@ -39,8 +39,12 @@ class IndexController extends AbstractActionController
         }
         $view = new ViewModel;
         $page = $this->params()->fromQuery('page', 1);
-        $query = $this->params()->fromQuery() + array('page' => $page);
-        $response = $this->api()->search('fedora_imports');
+        $query = $this->params()->fromQuery() + array(
+            'page'       => $page,
+            'sort_by'    => $this->params()->fromQuery('sort_by', 'id'),
+            'sort_order' => $this->params()->fromQuery('sort_order', 'desc')
+        );
+        $response = $this->api()->search('fedora_imports', $query);
         $this->paginator($response->getTotalResults(), $page);
         $view->setVariable('imports', $response->getContent());
         return $view;
