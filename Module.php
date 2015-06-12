@@ -33,7 +33,8 @@ class Module extends AbstractModule
         $connection->exec('DROP TABLE fedora_item');
     }
 
-    public function attachListeners(SharedEventManagerInterface $sharedEventManager) {
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager) 
+    {
         $sharedEventManager->attach(
                 'Omeka\Controller\Admin\Item',
                 'view.show.after',
