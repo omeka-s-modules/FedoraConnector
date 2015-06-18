@@ -65,8 +65,6 @@ class IndexController extends AbstractActionController
                     )
                 );
         if ($response->isError()) {
-            echo 'fail';
-            die();
         }
     }
 }

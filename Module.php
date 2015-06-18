@@ -71,11 +71,10 @@ class Module extends AbstractModule
                     'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
                     'o:label'         => 'Fedora Vocabulary',
                     'o:comment'       => 'Vocabulary for a Fedora Repository',
-                    'file'            => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf'
+                    'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
                     );
-            
             $response = $importer->import(
-                'file', $fedoraImportData, array('file' => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf')
+                'file', $fedoraImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf')
             );
             if ($response->isError()) {
                 $success = false;
@@ -88,10 +87,10 @@ class Module extends AbstractModule
                     'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
                     'o:label'         => 'Linked Data Platform Vocabulary',
                     'o:comment'       => 'Vocabulary for a Linked Data Platform. Used by Fedora',
-                    'file'            => OMEKA_PATH . '/module/FedoraConnector/data/repository.rdf'
+                    'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
                     );
             $response = $importer->import(
-                'file', $ldpImportData, array('file' => OMEKA_PATH . '/module/FedoraConnector/data/ldp.rdf')
+                'file', $ldpImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/ldp.rdf')
             );
             if ($response->isError()) {
                 $success = false;
