@@ -12,9 +12,9 @@ class ConfigForm extends AbstractForm
         
         $hasFedoraVocab = $api->read('vocabularies', array('namespace_uri' => 'http://fedora.info/definitions/v4/repository#' ));
         if ($hasFedoraVocab) {
-            $info = $translator->translate('The Fedora Vocabulary is installed in Omeka');
+            $info = $translator->translate('The Fedora Vocabulary is already installed.');
         } else {
-            $info = $translator->translate('Import the Fedora Vocabulary into Omeka.');
+            $info = $translator->translate('Import the Fedora Vocabulary.');
         }
         
         $this->add(array (
@@ -32,9 +32,9 @@ class ConfigForm extends AbstractForm
 
         $hasLdpVocab = $api->read('vocabularies', array('namespace_uri' => 'http://www.w3.org/ns/ldp#' ));
         if ($hasLdpVocab) {
-            $info = $translator->translate('The Linked Data Platform Vocabulary is installed in Omeka');
+            $info = $translator->translate('The Linked Data Platform Vocabulary is already installed.');
         } else {
-            $info = $translator->translate('Import the Linked Data Platform Vocabulary into Omeka.');
+            $info = $translator->translate('Import the Linked Data Platform Vocabulary.');
         }
                 
         $this->add(array (
