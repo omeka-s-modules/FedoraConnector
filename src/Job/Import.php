@@ -74,12 +74,14 @@ class Import extends AbstractJob
 
         $json = $this->resourceToJson($containerToImport);
 
-        foreach ($binaries as $binary) {
-            $mediaJson = $this->resourceToJson($binary);
-            $mediaJson['o:type'] = 'url';
-            $mediaJson['o:source'] = $binary->getUri();
-            $mediaJson['ingest_url'] = $binary->getUri();
-            $json['o:media'][] = $mediaJson;
+        if ($this->getArg('ingest_files')) {
+            foreach ($binaries as $binary) {
+                $mediaJson = $this->resourceToJson($binary);
+                $mediaJson['o:type'] = 'url';
+                $mediaJson['o:source'] = $binary->getUri();
+                $mediaJson['ingest_url'] = $binary->getUri();
+                $json['o:media'][] = $mediaJson;
+            }
         }
 
         if ($omekaItem) {
@@ -89,7 +91,7 @@ class Import extends AbstractJob
             $response = $this->api->create('items', $json);
             $itemId = $response->getContent()->id();
         }
-        
+
         if ($response->isError()) {
             throw new Exception\RuntimeException('There was an error during item creation or update.');
         }
@@ -101,8 +103,7 @@ class Import extends AbstractJob
         } else {
             $lastModifiedValue = null;
         }
-        
-        
+
         $fedoraItemJson = array(
                             'o:job'         => array('o:id' => $this->job->getId()),
                             'o:item'        => array('o:id' => $itemId),

@@ -11,7 +11,7 @@ class ImportForm extends AbstractForm
     public function buildForm()
     {
         $translator = $this->getTranslator();
-        
+
         $this->add(array(
             'name' => 'container_uri',
             'type' => 'text',
@@ -23,7 +23,16 @@ class ImportForm extends AbstractForm
                 'id' => 'container_uri'
             )
         ));
-        
+
+        $this->add(array(
+            'name' => 'ingest_files',
+            'type' => 'checkbox',
+            'options' => array(
+                'label' => $translator->translate('Import files into Omeka'),
+                'info'  => $translator->translate('If checked, original files will be imported into Omeka. Otherwise, derivates will be displayed when possible, with links back to the original file in the repository.')
+            )
+        ));
+
         $this->add(array(
             'name' => 'comment',
             'type' => 'textarea',
@@ -35,12 +44,10 @@ class ImportForm extends AbstractForm
                 'id' => 'comment'
             )
         ));
-        
-        
-        
+
         $serviceLocator = $this->getServiceLocator();
         $auth = $serviceLocator->get('Omeka\AuthenticationService');
-        
+
         $itemSetSelect = new ResourceSelect($serviceLocator);
         $itemSetSelect->setName('itemSet')
             ->setLabel('Import into')
@@ -54,7 +61,6 @@ class ImportForm extends AbstractForm
                 }
             );
         $this->add($itemSetSelect);
-        
         $inputFilter = $this->getInputFilter();
         $inputFilter->add(array(
             'name' => 'itemSet',
