@@ -35,9 +35,15 @@ $escape = $this->plugin('escapeHtml');
                 $containerUri = $args['container_uri'];
                 echo $containerUri;
                 $response = $this->api()->search('fedora_items', array('uri' => $containerUri));
-                $containerFedoraItem = $response->getContent()[0];
-                $containerItem = $containerFedoraItem->item();
-                echo ' -- ' . $containerItem->displayTitle();
+                $content = $response->getContent();
+                if (count($content) == 0) {
+                    echo ' -- ' . $this->translate("Container's item does not exist.");
+                } else {
+                    $containerFedoraItem = $content[0];
+                    $containerItem = $containerFedoraItem->item();
+                    echo ' -- ' . $containerItem->displayTitle();                    
+                }
+
                 ?>
             </td>
             <td>
