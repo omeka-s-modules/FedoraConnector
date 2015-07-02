@@ -31,6 +31,7 @@ class Module extends AbstractModule
         $connection->exec("ALTER TABLE fedora_item DROP FOREIGN KEY FK_D02FFFF9126F525E;");
         $connection->exec("ALTER TABLE fedora_item DROP FOREIGN KEY FK_D02FFFF9BE04EA9;");
         $connection->exec('DROP TABLE fedora_item');
+        $connection->exec('DROP TABLE fedora_import');
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager) 
