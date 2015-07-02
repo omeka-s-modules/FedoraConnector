@@ -24,25 +24,30 @@ return array(
 
     'router' => array(
         'routes' => array(
-            'fedora-connector' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/admin/fedora-connector',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'FedoraConnector\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
+            'admin' => array(
                 'child_routes' => array(
-                    'default' => array(
-                        'type' => 'Segment',
+                    'fedora-connector' => array(
+                        'type'    => 'Literal',
                         'options' => array(
-                            'route' => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            'route'    => '/fedora-connector',
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'FedoraConnector\Controller',
+                                'controller'    => 'Index',
+                                'action'        => 'index',
+                            ),
+                        ),
+                        'may_terminate' => true,
+                        'child_routes' => array(
+                            'past-imports' => array(
+                                'type'    => 'Literal',
+                                'options' => array(
+                                    'route' => '/past-imports',
+                                    'defaults' => array(
+                                        '__NAMESPACE__' => 'FedoraConnector\Controller',
+                                        'controller'    => 'Index',
+                                        'action'        => 'past-imports',
+                                    ),
+                                )
                             ),
                         ),
                     ),
@@ -54,17 +59,17 @@ return array(
         'admin' => array(
             array(
                 'label'      => 'Fedora Connector',
-                'route'      => 'fedora-connector',
+                'route'      => 'admin/fedora-connector',
                 'resource'   => 'FedoraConnector\Controller\Index',
                 'pages'      => array(
                     array(
                         'label'      => 'Import',
-                        'route'      => 'fedora-connector/default',
+                        'route'      => 'admin/fedora-connector',
                         'resource'   => 'FedoraConnector\Controller\Index',
                     ),
                     array(
                         'label'      => 'Past Imports',
-                        'route'      => 'fedora-connector/default',
+                        'route'      => 'admin/fedora-connector/past-imports',
                         'controller' => 'Index',
                         'action'     => 'past-imports',
                         'resource'   => 'FedoraConnector\Controller\Index',
