@@ -25,9 +25,19 @@ class Import extends AbstractJob
     
     public function perform()
     {
+        $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
+        $fedoraImportJson = array(
+                            'o:job'         => array('o:id' => $this->job->getId()),
+                            'comment'       => 'Job started',
+                            'added_count'   => 0,
+                            'updated_count' => 0
+                          );
+        $response = $this->api->create('fedora_imports', $fedoraImportJson);
+        $importRecordId = $response->getContent()->id();
+
         $this->addedCount = 0;
         $this->updatedCount = 0;
-        $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
+
         $this->propertyUriIdMap = array();
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(array('Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"'));
@@ -42,7 +52,7 @@ class Import extends AbstractJob
                             'added_count'   => $this->addedCount,
                             'updated_count' => $this->updatedCount
                           );
-        $response = $this->api->create('fedora_imports', $fedoraImportJson);
+        $response = $this->api->update('fedora_imports', $importRecordId, $fedoraImportJson);
         if ($response->isError()) {
             echo 'fail creating fedora import';
         }

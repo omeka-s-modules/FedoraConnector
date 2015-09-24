@@ -2,6 +2,7 @@
 namespace FedoraConnector\Form;
 
 use Omeka\Form\AbstractForm;
+use Omeka\Api\Exception\NotFoundException;
 
 class ConfigForm extends AbstractForm
 {
@@ -10,7 +11,12 @@ class ConfigForm extends AbstractForm
         $translator = $this->getTranslator();
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');
         
-        $hasFedoraVocab = $api->read('vocabularies', array('namespace_uri' => 'http://fedora.info/definitions/v4/repository#' ));
+        try {
+            $hasFedoraVocab = $api->read('vocabularies', array('namespaceUri' => 'http://fedora.info/definitions/v4/repository#' ));
+        } catch (NotFoundException $e) {
+            $hasFedoraVocab = false;
+        }
+        
         if ($hasFedoraVocab) {
             $info = $translator->translate('The Fedora Vocabulary is already installed.');
         } else {
@@ -30,7 +36,12 @@ class ConfigForm extends AbstractForm
                                 )
                     ));
 
-        $hasLdpVocab = $api->read('vocabularies', array('namespace_uri' => 'http://www.w3.org/ns/ldp#' ));
+        try {
+            $hasLdpVocab = $api->read('vocabularies', array('namespaceUri' => 'http://www.w3.org/ns/ldp#' ));
+        } catch (NotFoundException $e) {
+            $hasLdpVocab = false;
+        }
+        
         if ($hasLdpVocab) {
             $info = $translator->translate('The Linked Data Platform Vocabulary is already installed.');
         } else {
