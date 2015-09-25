@@ -87,7 +87,7 @@ class Import extends AbstractJob
         if ($this->getArg('ingest_files')) {
             foreach ($binaries as $binary) {
                 $mediaJson = $this->resourceToJson($binary);
-                $mediaJson['o:type'] = 'url';
+                $mediaJson['o:ingester'] = 'url';
                 $mediaJson['o:source'] = $binary->getUri();
                 $mediaJson['ingest_url'] = $binary->getUri();
                 $json['o:media'][] = $mediaJson;
