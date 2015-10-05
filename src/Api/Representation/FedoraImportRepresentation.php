@@ -24,6 +24,11 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
         );
     }
     
+    public function getJsonLdType()
+    {
+        return 'o:FedoraImport';
+    }
+    
     public function job()
     {
         return $this->getAdapter('jobs')

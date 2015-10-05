@@ -22,6 +22,11 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
             ),
         );
     }
+    
+    public function getJsonLdType()
+    {
+        return 'o:FedoraItem';
+    }
 
     public function lastModified()
     {
