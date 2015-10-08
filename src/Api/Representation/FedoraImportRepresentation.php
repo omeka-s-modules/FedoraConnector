@@ -8,17 +8,17 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
     public function getJsonLd()
     {
         return array(
-            'added_count' => $this->getData()->getAddedCount(),
-            'updated_count' => $this->getData()->getUpdatedCount(),
-            'comment'        => $this->getData()->getComment(),
+            'added_count' => $this->resource->getAddedCount(),
+            'updated_count' => $this->resource->getUpdatedCount(),
+            'comment'        => $this->resource->getComment(),
             'o:job'          => $this->getReference(
                 null,
-                $this->getData()->getJob(),
+                $this->resource->getJob(),
                 $this->getAdapter('jobs')
             ),
             'o:undo_job'     => $this->getReference(
                 null,
-                $this->getData()->getUndoJob(),
+                $this->resource->getUndoJob(),
                 $this->getAdapter('jobs')
             ),
         );
@@ -32,27 +32,27 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
     public function job()
     {
         return $this->getAdapter('jobs')
-            ->getRepresentation(null, $this->getData()->getJob());
+            ->getRepresentation($this->resource->getJob());
     }
     
     public function undoJob()
     {
         return $this->getAdapter('jobs')
-            ->getRepresentation(null, $this->getData()->getUndoJob());
+            ->getRepresentation($this->resource->getUndoJob());
     }
     
     public function comment()
     {
-        return $this->getData()->getComment();
+        return $this->resource->getComment();
     }
     
     public function addedCount()
     {
-        return $this->getData()->getAddedCount();
+        return $this->resource->getAddedCount();
     }
     
     public function updatedCount()
     {
-        return $this->getData()->getUpdatedCount();
+        return $this->resource->getUpdatedCount();
     }
 }

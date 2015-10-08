@@ -8,16 +8,16 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
     public function getJsonLd()
     {
         return array(
-            'last_modified' => $this->getData()->getLastModified(),
-            'uri'           => $this->getData()->getUri(),
+            'last_modified' => $this->resource->getLastModified(),
+            'uri'           => $this->resource->getUri(),
             'o:item'        => $this->getReference(
                 null,
-                $this->getData()->getItem(),
+                $this->resource->getItem(),
                 $this->getAdapter('items')
             ),
             'o:job'         => $this->getReference(
                 null,
-                $this->getData()->getJob(),
+                $this->resource->getJob(),
                 $this->getAdapter('jobs')
             ),
         );
@@ -30,23 +30,23 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
 
     public function lastModified()
     {
-        return $this->getData()->getlastModified();
+        return $this->resource->getlastModified();
     }
     
     public function uri()
     {
-        return $this->getData()->getUri();
+        return $this->resource->getUri();
     }
 
     public function item()
     {
         return $this->getAdapter('items')
-            ->getRepresentation(null, $this->getData()->getItem());
+            ->getRepresentation($this->resource->getItem());
     }
     
     public function job()
     {
         return $this->getAdapter('jobs')
-            ->getRepresentation(null, $this->getData()->getJob());
+            ->getRepresentation($this->resource->getJob());
     }
 }
