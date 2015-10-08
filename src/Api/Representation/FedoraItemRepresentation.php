@@ -10,16 +10,8 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
         return array(
             'last_modified' => $this->resource->getLastModified(),
             'uri'           => $this->resource->getUri(),
-            'o:item'        => $this->getReference(
-                null,
-                $this->resource->getItem(),
-                $this->getAdapter('items')
-            ),
-            'o:job'         => $this->getReference(
-                null,
-                $this->resource->getJob(),
-                $this->getAdapter('jobs')
-            ),
+            'o:item'        => $this->getReference(),
+            'o:job'         => $this->getReference()
         );
     }
     
