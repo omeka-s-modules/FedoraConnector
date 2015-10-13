@@ -18,17 +18,18 @@ Optionally import the Fedora Vocabulary and Linked Data Platform Vocabulary. If 
 
 ### Importing
 
-From the main navigation on the left of the admin screen, click `Fedora Connector`. 
+From the main navigation on the left of the admin screen, click Fedora Connector. 
 
-Enter the URI of a Fedora 4 container you want to import.
+1. Enter the URI of a Fedora 4 container you want to import.
+*This module only works with Fedora 4 or higher*
 
-Choose whether to import files.
+1. Choose whether to import files.
 
-Leave a comment about the import. This will appear on the `Past Imports` page, so you have a record of why you did the import (or any other information). Optional.
+1. Leave a comment about the import. This will appear on the `Past Imports` page, so you have a record of why you did the import (or any other information). Optional.
 
-Choose an Item Set for the imported items. Item Sets must be created first. Optional.
+1. Choose an Item Set to assign imported items to. Item Sets must be created first. Optional.
 
-Hit Submit.
+1. Hit Submit.
 
 ### Undoing imports
 
