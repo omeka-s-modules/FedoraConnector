@@ -19,6 +19,7 @@ class IndexController extends AbstractActionController
                 $job = $dispatcher->dispatch('FedoraConnector\Job\Import', $data);
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
+                $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId());
                 $view->setVariable('job', $job);
             } else {
                 $this->messenger()->addError('There was an error during validation');
