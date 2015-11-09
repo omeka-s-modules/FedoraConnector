@@ -14,13 +14,14 @@ class ImportForm extends AbstractForm
 
         $this->add(array(
             'name' => 'container_uri',
-            'type' => 'text',
+            'type' => 'url',
             'options' => array(
                 'label' => $translator->translate('Fedora Container URI'),
                 'info'  => $translator->translate('The URI of the Fedora Container')
             ),
             'attributes' => array(
-                'id' => 'container_uri'
+                'id' => 'container_uri',
+                'required' => true
             )
         ));
 
