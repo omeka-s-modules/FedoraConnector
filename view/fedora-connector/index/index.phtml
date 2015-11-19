@@ -7,5 +7,5 @@ $escapeHtml = $this->plugin('escapeHtml');
 <div id="page-actions">
     <button><?php echo $this->escapeHtml($this->translate('Submit')); ?></button>
 </div>
-<?php echo $this->formElements($form); ?>
+<?php echo $this->formCollection($form, false); ?>
 <?php echo $this->form()->closeTag($form); ?>
