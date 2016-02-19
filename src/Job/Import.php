@@ -160,14 +160,16 @@ class Import extends AbstractJob
                 $json[$property][] = array(
                         '@value'      => (string) $literal,
                         '@lang'       => $literal->getLang(),
-                        'property_id' => $propertyId
+                        'property_id' => $propertyId,
+                        'type'        => 'literal',
                         );
             }
             $objects = $resource->allResources($easyRdfProperty);
             foreach ($objects as $object) {
                 $json[$property][] = array(
                         '@id'      => $object->getUri(),
-                        'property_id' => $propertyId
+                        'property_id' => $propertyId,
+                        'type'        => 'uri',
                         );
             }
         }
@@ -176,12 +178,14 @@ class Import extends AbstractJob
         $dctermsId = $this->getPropertyId('http://purl.org/dc/terms/identifier');
         $json['http://purl.org/dc/terms/identifier'][] = array(
                 '@value'      => $resource->getUri(),
-                'property_id' => $dctermsId
+                'property_id' => $dctermsId,
+                'type'        => 'literal',
                 );
         $biboUri = $this->getPropertyId('http://purl.org/ontology/bibo/uri');
         $json['http://purl.org/ontology/bibo/uri'][] = array(
                 '@id'         => $resource->getUri(),
-                'property_id' => $biboUri
+                'property_id' => $biboUri,
+                'type'        => 'uri',
                 );
         return $json;
     }
