@@ -51,7 +51,7 @@ class Module extends AbstractModule
     public function getConfigForm(PhpRenderer $renderer)
     {
         $form = new ConfigForm($this->getServiceLocator());
-        $html = $renderer->formElements($form);
+        $html = $renderer->formCollection($form);
         return $html;
     }
 
