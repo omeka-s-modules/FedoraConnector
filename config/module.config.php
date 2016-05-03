@@ -56,7 +56,7 @@ return array(
         ),
     ),
     'navigation' => array(
-        'admin' => array(
+        'AdminGlobal' => array(
             array(
                 'label'      => 'Fedora Connector',
                 'route'      => 'admin/fedora-connector',
