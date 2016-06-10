@@ -10,7 +10,7 @@ class IndexController extends AbstractActionController
     public function indexAction()
     {
         $view = new ViewModel;
-        $form = new ImportForm($this->getServiceLocator());
+        $form = $this->getForm(ImportForm::class);
         if ($this->getRequest()->isPost()) {
             $data = $this->params()->fromPost();
             $form->setData($data);

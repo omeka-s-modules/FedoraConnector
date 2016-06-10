@@ -1,12 +1,12 @@
 <?php
 namespace FedoraConnector\Form;
 
-use Omeka\Form\AbstractForm;
 use Omeka\Api\Exception\NotFoundException;
+use Zend\Form\Form;
 
-class ConfigForm extends AbstractForm
+class ConfigForm extends Form
 {
-    public function buildForm()
+    public function init()
     {
         $translator = $this->getTranslator();
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');

@@ -21,7 +21,12 @@ return array(
             OMEKA_PATH . '/modules/FedoraConnector/src/Entity',
         ),
     ),
-
+    'form_elements' => [
+        'factories' => [
+            'FedoraConnector\Form\ImportForm' => 'FedoraConnector\Service\Form\ImportFormFactory',
+            'FedoraConnector\Form\ConfigForm' => 'FedoraConnector\Service\Form\ConfigFormFactory',
+        ],
+    ],
     'router' => array(
         'routes' => array(
             'admin' => array(
