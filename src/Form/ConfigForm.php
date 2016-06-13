@@ -6,11 +6,12 @@ use Zend\Form\Form;
 
 class ConfigForm extends Form
 {
+    
+    protected $api;
+    
     public function init()
     {
-        $translator = $this->getTranslator();
-        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
-        
+        $api = $this->getApi();
         try {
             $hasFedoraVocab = $api->read('vocabularies', array('namespaceUri' => 'http://fedora.info/definitions/v4/repository#' ));
         } catch (NotFoundException $e) {
@@ -18,16 +19,16 @@ class ConfigForm extends Form
         }
         
         if ($hasFedoraVocab) {
-            $info = $translator->translate('The Fedora Vocabulary is already installed.');
+            $info = 'The Fedora Vocabulary is already installed.'; // @translate
         } else {
-            $info = $translator->translate('Import the Fedora Vocabulary.');
+            $info = 'Import the Fedora Vocabulary.'; // @translate
         }
         
         $this->add(array (
                         'type' => 'checkbox',
                         'name' => 'import_fedora',
                         'options' => array (
-                                    'label' => $translator->translate('Import Fedora Vocabulary'),
+                                    'label' => 'Import Fedora Vocabulary', // @translate
                                     'info'  => $info
                                 ),
                         'attributes' => array (
@@ -43,16 +44,16 @@ class ConfigForm extends Form
         }
         
         if ($hasLdpVocab) {
-            $info = $translator->translate('The Linked Data Platform Vocabulary is already installed.');
+            $info = 'The Linked Data Platform Vocabulary is already installed.'; // @translate
         } else {
-            $info = $translator->translate('Import the Linked Data Platform Vocabulary.');
+            $info = 'Import the Linked Data Platform Vocabulary.'; // @translate
         }
                 
         $this->add(array (
                         'type' => 'checkbox',
                         'name' => 'import_ldp',
                         'options' => array (
-                                    'label' => $translator->translate('Import Linked Data Platform Vocabulary'),
+                                    'label' => 'Import Linked Data Platform Vocabulary', // @translate
                                     'info'  => $info
                                 ),
                         'attributes' => array (
@@ -60,5 +61,15 @@ class ConfigForm extends Form
                                     'disabled' => $hasLdpVocab ? 'disabled' : ''
                                 )
                     ));
+    }
+    
+    public function setApi($api)
+    {
+        $this->api = $api;
+    }
+    
+    public function getApi()
+    {
+        return $this->api;
     }
 }

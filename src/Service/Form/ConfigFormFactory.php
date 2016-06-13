@@ -9,7 +9,9 @@ class ConfigFormFactory implements FactoryInterface
 {
     public function createService(ServiceLocatorInterface $elements)
     {
-        $form = new ConfigForm(null, $this->options);
+        $form = new ConfigForm;
+        $api = $elements->getServiceLocator()->get('Omeka\ApiManager');
+        $form->setApi($api);
         return $form;
     }
 }
