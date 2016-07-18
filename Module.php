@@ -52,7 +52,6 @@ class Module extends AbstractModule
     {
         $formElementManager = $this->getServiceLocator()->get('FormElementManager');
         $form = $formElementManager->get(ConfigForm::class);
-        //$form = $this->getForm(ConfigForm::class);
         $html = $renderer->formCollection($form);
         return $html;
     }
