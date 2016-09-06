@@ -52,11 +52,7 @@ class IndexController extends AbstractActionController
 
     protected function undoJob($jobId) {
         $response = $this->api()->search('fedora_imports', array('job_id' => $jobId));
-        if ($response->isError()) {
-
-        }
         $fedoraImport = $response->getContent()[0];
-        $dispatcher = $this->getServiceLocator()->get('Omeka\JobDispatcher');
         $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Undo', array('jobId' => $jobId));
         $response = $this->api()->update('fedora_imports', 
                     $fedoraImport->id(), 
