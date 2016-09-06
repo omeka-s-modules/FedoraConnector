@@ -15,8 +15,7 @@ class IndexController extends AbstractActionController
             $data = $this->params()->fromPost();
             $form->setData($data);
             if ($form->isValid()) {
-                $dispatcher = $this->getServiceLocator()->get('Omeka\JobDispatcher');
-                $job = $dispatcher->dispatch('FedoraConnector\Job\Import', $data);
+                $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $data);
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
                 $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId());
@@ -58,7 +57,7 @@ class IndexController extends AbstractActionController
         }
         $fedoraImport = $response->getContent()[0];
         $dispatcher = $this->getServiceLocator()->get('Omeka\JobDispatcher');
-        $job = $dispatcher->dispatch('FedoraConnector\Job\Undo', array('jobId' => $jobId));
+        $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Undo', array('jobId' => $jobId));
         $response = $this->api()->update('fedora_imports', 
                     $fedoraImport->id(), 
                     array(
