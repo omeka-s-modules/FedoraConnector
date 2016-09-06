@@ -2,15 +2,15 @@
 namespace FedoraConnector\Service\Form;
 
 use FedoraConnector\Form\ConfigForm;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
+use Interop\Container\ContainerInterface;
 
 class ConfigFormFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $elements)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $form = new ConfigForm;
-        $api = $elements->getServiceLocator()->get('Omeka\ApiManager');
+        $api = $container->get('Omeka\ApiManager');
         $form->setApi($api);
         return $form;
     }
