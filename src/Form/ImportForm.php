@@ -48,11 +48,12 @@ class ImportForm extends Form
         //$serviceLocator = $this->getServiceLocator();
         //$auth = $serviceLocator->get('Omeka\AuthenticationService');
 
-        
+
         $this->add([
                 'name'    => 'itemSet',
                 'type'    => ItemSetSelect::class,
                 'options' => [
+                    'label' => 'Item Set', // @translate
                     'info' => 'Optional. Import items into this item set.', // @translate
                     'empty_option' => 'Select Item Set', // @translate
                     /*
