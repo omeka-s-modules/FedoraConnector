@@ -53,9 +53,6 @@ class Import extends AbstractJob
                             'updated_count' => $this->updatedCount
                           );
         $response = $this->api->update('fedora_imports', $importRecordId, $fedoraImportJson);
-        if ($response->isError()) {
-            echo 'fail creating fedora import';
-        }
     }
 
     public function importContainer($uri)
@@ -102,10 +99,6 @@ class Import extends AbstractJob
             $itemId = $response->getContent()->id();
         }
 
-        if ($response->isError()) {
-            throw new Exception\RuntimeException('There was an error during item creation or update.');
-        }
-
         $lastModifiedProperty = new EasyRdf_Resource('http://fedora.info/definitions/v4/repository#lastModified');
         $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
         if ($lastModifiedLiteral) {
@@ -128,11 +121,6 @@ class Import extends AbstractJob
             $this->addedCount++;
             $response = $this->api->create('fedora_items', $fedoraItemJson);
         }
-        
-        if ($response->isError()) {
-            throw new Exception\RuntimeException('There was an error during fedora item creation.');
-        }
-        
         foreach ($containers as $container) {
             $containerUri = $container->getUri();
             if ($containerUri != $uri) {
@@ -163,6 +151,16 @@ class Import extends AbstractJob
                         'property_id' => $propertyId,
                         'type'        => 'literal',
                         );
+                // for files, add dcterms:title for the ebucore:filename
+                if ($property == 'http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#filename') {
+                    $dctermsTitleId = $this->getPropertyId('http://purl.org/dc/terms/title');
+                    $json[$property][] = array(
+                        '@value'      => (string) $literal,
+                        '@lang'       => $literal->getLang(),
+                        'property_id' => $dctermsTitleId,
+                        'type'        => 'literal',
+                    );
+                }
             }
             $objects = $resource->allResources($easyRdfProperty);
             foreach ($objects as $object) {

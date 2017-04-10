@@ -14,12 +14,7 @@ class Undo extends AbstractJob
         if ($fedoraItems) {
             foreach ($fedoraItems as $fedoraItem) {
                 $fedoraResponse = $api->delete('fedora_items', $fedoraItem->id());
-                if ($fedoraResponse->isError()) {
-                }
-
                 $itemResponse = $api->delete('items', $fedoraItem->item()->id());
-                if ($itemResponse->isError()) {
-                }
             }
         }
     }

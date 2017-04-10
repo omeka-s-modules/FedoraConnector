@@ -66,7 +66,6 @@ class Module extends AbstractModule
     {
         $importer = $this->getServiceLocator()->get('Omeka\RdfImporter');
         $data = $controller->params()->fromPost();
-        $success = true;
         if ($data['import_fedora'] == 1 ) {
             $fedoraImportData = array(
                     'o:prefix'        => 'fedora',
@@ -78,9 +77,6 @@ class Module extends AbstractModule
             $response = $importer->import(
                 'file', $fedoraImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf')
             );
-            if ($response->isError()) {
-                $success = false;
-            }
         }
 
         if ($data['import_ldp'] == 1) {
@@ -94,23 +90,16 @@ class Module extends AbstractModule
             $response = $importer->import(
                 'file', $ldpImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/ldp.rdf')
             );
-            if ($response->isError()) {
-                $success = false;
-            }
         }
-        return $success;
-        
+        //assuming that exceptions get thrown before here, just return true
+        return true;
     }
-    
     public function showSource($event) 
     {
         $view = $event->getTarget();
         $item = $view->item;
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');
         $response = $api->search('fedora_items', array('item_id' => $item->id()));
-        if ($response->isError()) {
-
-        }
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             $fedoraItem = $fedoraItems[0];
