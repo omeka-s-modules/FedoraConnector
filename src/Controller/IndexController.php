@@ -20,6 +20,7 @@ class IndexController extends AbstractActionController
                 //happen until the job is done
                 $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId());
                 $view->setVariable('job', $job);
+                return $this->redirect()->toRoute('admin/fedora-connector/past-imports');
             } else {
                 $this->messenger()->addError('There was an error during validation');
             }
