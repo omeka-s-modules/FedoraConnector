@@ -8,6 +8,7 @@ use FedoraConnector\Entity\FedoraImport;
 use Zend\Http\Client;
 use EasyRdf_Graph;
 use EasyRdf_Resource;
+use EasyRdf_Namespace;
 
 class Import extends AbstractJob
 {
@@ -67,12 +68,14 @@ class Import extends AbstractJob
             $fedoraItem = $content[0];
             $omekaItem = $fedoraItem->item();
         }
-        
-        
+
         $this->client->setUri($uri);
         $response = $this->client->send();
         $rdf = $response->getBody();
+        EasyRdf_Namespace::set('fedora', 'http://fedora.info/definitions/v4/repository#');
+        EasyRdf_Namespace::set('ldp', 'http://www.w3.org/ns/ldp#');
         $graph = new EasyRdf_Graph();
+
         $graph->parse($rdf);
 
         $containerToImport = $graph->resource($uri);
@@ -171,7 +174,20 @@ class Import extends AbstractJob
                         );
             }
         }
-        
+
+        $types = $resource->typesAsResources();
+        foreach ($types as $index => $type) {
+            $prefix = $type->prefix();
+            if ($prefix == 'fedora' || $prefix == 'ldp' || empty($type)) {
+                continue;
+            }
+            $classId = $this->getClassId($type);
+            if ($classId) {
+                $json['o:resource_class']['o:id'] = $classId;
+                break;
+            }
+        }
+
         //tack on dcterms:identifier and bibo:uri
         $dctermsId = $this->getPropertyId('http://purl.org/dc/terms/identifier');
         $json['http://purl.org/dc/terms/identifier'][] = array(
@@ -215,6 +231,25 @@ class Import extends AbstractJob
             $propertyObject = $propertyObjects[0];
             $this->propertyUriIdMap[$propertyUri] = $propertyObject->id();
             return $this->propertyUriIdMap[$propertyUri];
+        }
+        return false;
+    }
+    
+    protected function getClassId($class)
+    {
+        if (is_string($class)) {
+            $class = new EasyRdf_Resource($class);
+        }
+        $classUri = $class->getUri();
+        $localName = $class->localName();
+        $vocabUri = str_replace($localName, '', $classUri);
+        $response = $this->api->search('resource_classes', array('vocabulary_namespace_uri' => $vocabUri,
+                                                                 'local_name' => $localName
+                                                           ));
+        $classObjects = $response->getContent();
+        if (count($classObjects) == 1) {
+            $classObject = $classObjects[0];
+            return $classObject->id();
         }
         return false;
     }
