@@ -56,31 +56,9 @@ class ImportForm extends Form
                     'label' => 'Item Set', // @translate
                     'info' => 'Optional. Import items into this item set.', // @translate
                     'empty_option' => 'Select Item Set', // @translate
-                    /*
-                    'resource_value_options' => [
-                        'resource' => 'item_sets',
-                        'query' => [],
-                        'option_text_callback' => function ($itemSet) {
-                            return $itemSet->displayTitle();
-                        },
-                    ], */
                 ],
         ]);
-/*
-        $itemSetSelect = new ResourceSelect($serviceLocator);
-        $itemSetSelect->setName('itemSet')
-            ->setLabel('Import into') // @translate
-            ->setOption('info', 'Optional. Import items into this item set.')
-            ->setEmptyOption('Select Item Set...')
-            ->setResourceValueOptions(
-                'item_sets',
-                array('owner_id' => $auth->getIdentity()),
-                function ($itemSet, $serviceLocator) {
-                    return $itemSet->displayTitle('[no title]');
-                }
-            );
-        $this->add($itemSetSelect);
-*/
+
         $inputFilter = $this->getInputFilter();
         $inputFilter->add(array(
             'name' => 'itemSet',
