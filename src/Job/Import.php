@@ -27,9 +27,10 @@ class Import extends AbstractJob
     public function perform()
     {
         $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
+        $comment = $this->getArg('comment');
         $fedoraImportJson = array(
                             'o:job'         => array('o:id' => $this->job->getId()),
-                            'comment'       => 'Job started',
+                            'comment'       => $comment,
                             'added_count'   => 0,
                             'updated_count' => 0
                           );
@@ -46,7 +47,7 @@ class Import extends AbstractJob
         $this->itemSetId = $this->getArg('itemSet', false);
         //importContainer calls itself on all child containers
         $this->importContainer($uri);
-        $comment = $this->getArg('comment');
+
         $fedoraImportJson = array(
                             'o:job'         => array('o:id' => $this->job->getId()),
                             'comment'       => $comment,
