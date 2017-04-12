@@ -11,10 +11,18 @@ class IndexController extends AbstractActionController
     {
         $view = new ViewModel;
         $form = $this->getForm(ImportForm::class);
+        $view->setVariable('form', $form);
         if ($this->getRequest()->isPost()) {
             $data = $this->params()->fromPost();
             $form->setData($data);
             if ($form->isValid()) {
+                $uri = $data['container_uri'];
+                // do a quick check that the endpoint is available
+                if (! file_get_contents($uri)) {
+                    $this->messenger()->addError('There was a problem connecting to the Fedora Container URI');
+                    return $view;
+                }
+
                 $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $data);
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
@@ -26,7 +34,7 @@ class IndexController extends AbstractActionController
             }
         }
 
-        $view->setVariable('form', $form);
+        
         return $view;
     }
 
