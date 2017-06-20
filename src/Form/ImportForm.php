@@ -1,10 +1,8 @@
 <?php
 namespace FedoraConnector\Form;
 
-use Omeka\Form\Element\ResourceSelect;
 use Omeka\Form\Element\ItemSetSelect;
 use Zend\Form\Form;
-use Zend\Validator\Callback;
 use Zend\Form\Element\Select;
 
 class ImportForm extends Form
@@ -15,8 +13,8 @@ class ImportForm extends Form
             'name' => 'container_uri',
             'type' => 'url',
             'options' => array(
-                'label' => 'Fedora Container URI', // @translate
-                'info'  => 'The URI of the Fedora Container' // @translate
+                'label' => 'Fedora container URI', // @translate
+                'info'  => 'The URI of the Fedora container' // @translate
             ),
             'attributes' => array(
                 'id' => 'container_uri',
@@ -28,8 +26,8 @@ class ImportForm extends Form
             'name' => 'ingest_files',
             'type' => 'checkbox',
             'options' => array(
-                'label' => 'Import files into Omeka', // @translate
-                'info'  => 'If checked, original files will be imported into Omeka. Otherwise, derivates will be displayed when possible, with links back to the original file in the repository.' // @translate
+                'label' => 'Import files into Omeka S', // @translate
+                'info'  => 'If checked, original files will be imported into Omeka S. Otherwise, derivates will be displayed when possible, with links back to the original file in the Fedora repository.' // @translate
             )
         ));
 
@@ -38,24 +36,20 @@ class ImportForm extends Form
             'type' => 'textarea',
             'options' => array(
                 'label' => 'Comment', // @translate
-                'info'  => 'A note about the purpose or source of this import.' // @translate
+                'info'  => 'A note about the purpose or source of this import' // @translate
             ),
             'attributes' => array(
                 'id' => 'comment'
             )
         ));
 
-        //$serviceLocator = $this->getServiceLocator();
-        //$auth = $serviceLocator->get('Omeka\AuthenticationService');
-
-
         $this->add([
                 'name'    => 'itemSet',
                 'type'    => ItemSetSelect::class,
                 'options' => [
-                    'label' => 'Item Set', // @translate
+                    'label' => 'Item set', // @translate
                     'info' => 'Optional. Import items into this item set.', // @translate
-                    'empty_option' => 'Select Item Set', // @translate
+                    'empty_option' => 'Select item set', // @translate
                 ],
         ]);
 
