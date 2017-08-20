@@ -1,86 +1,96 @@
 <?php
-return array(
-    'api_adapters' => array(
-        'invokables' => array(
+return [
+    'translator' => [
+        'translation_file_patterns' => [
+            [
+                'type' => 'gettext',
+                'base_dir' => OMEKA_PATH . '/modules/Omeka2Importer/language',
+                'pattern' => '%s.mo',
+                'text_domain' => null,
+            ],
+        ],
+    ],
+    'api_adapters' => [
+        'invokables' => [
             'fedora_items'   => 'FedoraConnector\Api\Adapter\FedoraItemAdapter',
             'fedora_imports' => 'FedoraConnector\Api\Adapter\FedoraImportAdapter'
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
+        ],
+    ],
+    'controllers' => [
+        'invokables' => [
             'FedoraConnector\Controller\Index' => 'FedoraConnector\Controller\IndexController',
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack'      => array(
+        ],
+    ],
+    'view_manager' => [
+        'template_path_stack' => [
             OMEKA_PATH . '/modules/FedoraConnector/view',
-        ),
-    ),
-    'entity_manager' => array(
-        'mapping_classes_paths' => array(
+        ],
+    ],
+    'entity_manager' => [
+        'mapping_classes_paths' => [
             OMEKA_PATH . '/modules/FedoraConnector/src/Entity',
-        ),
-    ),
+        ],
+    ],
     'form_elements' => [
         'factories' => [
             'FedoraConnector\Form\ImportForm' => 'FedoraConnector\Service\Form\ImportFormFactory',
             'FedoraConnector\Form\ConfigForm' => 'FedoraConnector\Service\Form\ConfigFormFactory',
         ],
     ],
-    'router' => array(
-        'routes' => array(
-            'admin' => array(
-                'child_routes' => array(
-                    'fedora-connector' => array(
+    'router' => [
+        'routes' => [
+            'admin' => [
+                'child_routes' => [
+                    'fedora-connector' => [
                         'type'    => 'Literal',
-                        'options' => array(
+                        'options' => [
                             'route'    => '/fedora-connector',
-                            'defaults' => array(
+                            'defaults' => [
                                 '__NAMESPACE__' => 'FedoraConnector\Controller',
                                 'controller'    => 'Index',
                                 'action'        => 'index',
-                            ),
-                        ),
+                            ],
+                        ],
                         'may_terminate' => true,
-                        'child_routes' => array(
-                            'past-imports' => array(
+                        'child_routes' => [
+                            'past-imports' => [
                                 'type'    => 'Literal',
-                                'options' => array(
+                                'options' => [
                                     'route' => '/past-imports',
-                                    'defaults' => array(
+                                    'defaults' => [
                                         '__NAMESPACE__' => 'FedoraConnector\Controller',
                                         'controller'    => 'Index',
                                         'action'        => 'past-imports',
-                                    ),
-                                )
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'navigation' => array(
-        'AdminModule' => array(
-            array(
+                                    ],
+                                ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'navigation' => [
+        'AdminModule' => [
+            [
                 'label'      => 'Fedora Connector',
                 'route'      => 'admin/fedora-connector',
                 'resource'   => 'FedoraConnector\Controller\Index',
-                'pages'      => array(
-                    array(
+                'pages'      => [
+                    [
                         'label'      => 'Import',
                         'route'      => 'admin/fedora-connector',
                         'resource'   => 'FedoraConnector\Controller\Index',
-                    ),
-                    array(
+                    ],
+                    [
                         'label'      => 'Past Imports',
                         'route'      => 'admin/fedora-connector/past-imports',
                         'controller' => 'Index',
                         'action'     => 'past-imports',
                         'resource'   => 'FedoraConnector\Controller\Index',
-                    ),
-                ),
-            ),
-        ),
-    )
-);
+                    ],
+                ],
+            ],
+        ],
+    ],
+];
