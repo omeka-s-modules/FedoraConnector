@@ -4,7 +4,7 @@ return [
         'translation_file_patterns' => [
             [
                 'type' => 'gettext',
-                'base_dir' => OMEKA_PATH . '/modules/Omeka2Importer/language',
+                'base_dir' => OMEKA_PATH . '/modules/FedoraConnector/language',
                 'pattern' => '%s.mo',
                 'text_domain' => null,
             ],
