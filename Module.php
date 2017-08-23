@@ -70,8 +70,8 @@ class Module extends AbstractModule
             $fedoraImportData = array(
                     'o:prefix'        => 'fedora',
                     'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
-                    'o:label'         => 'Fedora Vocabulary',
-                    'o:comment'       => 'Vocabulary for a Fedora Repository',
+                    'o:label'         => 'Fedora Vocabulary', // @translate
+                    'o:comment'       => 'Vocabulary for a Fedora Repository', // @translate
                     'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
                     );
             $response = $importer->import(
@@ -83,8 +83,8 @@ class Module extends AbstractModule
             $ldpImportData = array(
                     'o:prefix'        => 'ldp',
                     'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
-                    'o:label'         => 'Linked Data Platform Vocabulary',
-                    'o:comment'       => 'Vocabulary for a Linked Data Platform. Used by Fedora',
+                    'o:label'         => 'Linked Data Platform Vocabulary', // @translate
+                    'o:comment'       => 'Vocabulary for a Linked Data Platform. Used by Fedora', // @translate
                     'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
                     );
             $response = $importer->import(

@@ -73,17 +73,17 @@ return [
     'navigation' => [
         'AdminModule' => [
             [
-                'label'      => 'Fedora Connector',
+                'label'      => 'Fedora Connector', // @translate
                 'route'      => 'admin/fedora-connector',
                 'resource'   => 'FedoraConnector\Controller\Index',
                 'pages'      => [
                     [
-                        'label'      => 'Import',
+                        'label'      => 'Import', // @translate
                         'route'      => 'admin/fedora-connector',
                         'resource'   => 'FedoraConnector\Controller\Index',
                     ],
                     [
-                        'label'      => 'Past Imports',
+                        'label'      => 'Past Imports', // @translate
                         'route'      => 'admin/fedora-connector/past-imports',
                         'controller' => 'Index',
                         'action'     => 'past-imports',
