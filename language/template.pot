@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-23 16:06-0400\n"
+"POT-Creation-Date: 2017-09-05 17:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,16 @@ msgid "Link"
 msgstr ""
 
 #: view/fedora-connector/index/index.phtml:5
-msgid "Fedora Connector"
+#: view/fedora-connector/index/past-imports.phtml:6
+msgid "Fedora Import"
+msgstr ""
+
+#: view/fedora-connector/index/index.phtml:5
+msgid "Import Settings"
 msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:6
-msgid "Past Fedora Imports"
+msgid "Past Imports"
 msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:19
@@ -112,8 +117,8 @@ msgstr ""
 msgid "Import Linked Data Platform Vocabulary"
 msgstr ""
 
-#: config/module.config.php:86
-msgid "Past Imports"
+#: config/module.config.php:76
+msgid "Fedora Connector"
 msgstr ""
 
 #: Module.php:73
