@@ -7,14 +7,14 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
 {
     public function getJsonLd()
     {
-        return array(
+        return [
             'last_modified' => $this->resource->getLastModified(),
-            'uri'           => $this->resource->getUri(),
-            'o:item'        => $this->getReference(),
-            'o:job'         => $this->getReference()
-        );
+            'uri' => $this->resource->getUri(),
+            'o:item' => $this->getReference(),
+            'o:job' => $this->getReference(),
+        ];
     }
-    
+
     public function getJsonLdType()
     {
         return 'o:FedoraItem';
@@ -24,7 +24,7 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
     {
         return $this->resource->getlastModified();
     }
-    
+
     public function uri()
     {
         return $this->resource->getUri();
@@ -35,7 +35,7 @@ class FedoraItemRepresentation extends AbstractEntityRepresentation
         return $this->getAdapter('items')
             ->getRepresentation($this->resource->getItem());
     }
-    
+
     public function job()
     {
         return $this->getAdapter('jobs')

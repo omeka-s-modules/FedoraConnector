@@ -13,17 +13,17 @@ class FedoraItemAdapter extends AbstractEntityAdapter
     {
         return 'FedoraConnector\Entity\FedoraItem';
     }
-    
+
     public function getResourceName()
     {
         return 'fedora_items';
     }
-    
+
     public function getRepresentationClass()
     {
         return 'FedoraConnector\Api\Representation\FedoraItemRepresentation';
     }
-    
+
     public function buildQuery(QueryBuilder $qb, array $query)
     {
         if (isset($query['uri'])) {

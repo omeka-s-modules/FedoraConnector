@@ -34,12 +34,12 @@ class Module extends AbstractModule
         $connection->exec('DROP TABLE fedora_import');
     }
 
-    public function attachListeners(SharedEventManagerInterface $sharedEventManager) 
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
         $sharedEventManager->attach(
                 'Omeka\Controller\Admin\Item',
                 'view.show.after',
-                array($this, 'showSource')
+                [$this, 'showSource']
                 );
     }
     /**
@@ -66,40 +66,40 @@ class Module extends AbstractModule
     {
         $importer = $this->getServiceLocator()->get('Omeka\RdfImporter');
         $data = $controller->params()->fromPost();
-        if ($data['import_fedora'] == 1 ) {
-            $fedoraImportData = array(
-                    'o:prefix'        => 'fedora',
+        if ($data['import_fedora'] == 1) {
+            $fedoraImportData = [
+                    'o:prefix' => 'fedora',
                     'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
-                    'o:label'         => 'Fedora Vocabulary', // @translate
-                    'o:comment'       => 'Vocabulary for a Fedora Repository', // @translate
-                    'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
-                    );
+                    'o:label' => 'Fedora Vocabulary', // @translate
+                    'o:comment' => 'Vocabulary for a Fedora Repository', // @translate
+                    'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
+                    ];
             $response = $importer->import(
-                'file', $fedoraImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf')
+                'file', $fedoraImportData, ['file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf']
             );
         }
 
         if ($data['import_ldp'] == 1) {
-            $ldpImportData = array(
-                    'o:prefix'        => 'ldp',
+            $ldpImportData = [
+                    'o:prefix' => 'ldp',
                     'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
-                    'o:label'         => 'Linked Data Platform Vocabulary', // @translate
-                    'o:comment'       => 'Vocabulary for a Linked Data Platform. Used by Fedora', // @translate
-                    'file'            => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf'
-                    );
+                    'o:label' => 'Linked Data Platform Vocabulary', // @translate
+                    'o:comment' => 'Vocabulary for a Linked Data Platform. Used by Fedora', // @translate
+                    'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
+                    ];
             $response = $importer->import(
-                'file', $ldpImportData, array('file' => OMEKA_PATH . '/modules/FedoraConnector/data/ldp.rdf')
+                'file', $ldpImportData, ['file' => OMEKA_PATH . '/modules/FedoraConnector/data/ldp.rdf']
             );
         }
         //assuming that exceptions get thrown before here, just return true
         return true;
     }
-    public function showSource($event) 
+    public function showSource($event)
     {
         $view = $event->getTarget();
         $item = $view->item;
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');
-        $response = $api->search('fedora_items', array('item_id' => $item->id()));
+        $response = $api->search('fedora_items', ['item_id' => $item->id()]);
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             $fedoraItem = $fedoraItems[0];

@@ -13,17 +13,17 @@ class FedoraImportAdapter extends AbstractEntityAdapter
     {
         return 'FedoraConnector\Entity\FedoraImport';
     }
-    
+
     public function getResourceName()
     {
         return 'fedora_imports';
     }
-    
+
     public function getRepresentationClass()
     {
         return 'FedoraConnector\Api\Representation\FedoraImportRepresentation';
     }
-    
+
     public function hydrate(Request $request, EntityInterface $entity,
         ErrorStore $errorStore
     ) {
@@ -49,7 +49,7 @@ class FedoraImportAdapter extends AbstractEntityAdapter
             $entity->setComment($data['comment']);
         }
     }
-    
+
     public function buildQuery(QueryBuilder $qb, array $query)
     {
         if (isset($query['job_id'])) {

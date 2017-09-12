@@ -9,7 +9,7 @@ class Undo extends AbstractJob
     {
         $jobId = $this->getArg('jobId');
         $api = $this->getServiceLocator()->get('Omeka\ApiManager');
-        $response = $api->search('fedora_items', array('job_id' => $jobId));
+        $response = $api->search('fedora_items', ['job_id' => $jobId]);
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             foreach ($fedoraItems as $fedoraItem) {

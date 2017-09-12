@@ -11,14 +11,13 @@ use Omeka\Entity\Item;
  */
 class FedoraItem extends AbstractEntity
 {
-    
     /**
      * @Id
      * @Column(type="integer")
      * @GeneratedValue
      */
     protected $id;
-    
+
     /**
      * @OneToOne(targetEntity="Omeka\Entity\Item")
      * @JoinColumn(nullable=false, onDelete="CASCADE")
@@ -37,22 +36,22 @@ class FedoraItem extends AbstractEntity
      * @var string
      */
     protected $uri;
-    
+
     /**
      * @Column(type="datetime")
      */
     protected $lastModified;
-    
+
     public function getId()
     {
         return $this->id;
     }
-    
+
     public function getItem()
     {
         return $this->item;
     }
-    
+
     public function setItem(Item $item)
     {
         $this->item = $item;
@@ -67,25 +66,24 @@ class FedoraItem extends AbstractEntity
     {
         return $this->job;
     }
-    
+
     public function setUri($uri)
     {
         $this->uri = $uri;
     }
-    
+
     public function getUri()
     {
         return $this->uri;
     }
-    
-    public function setLastModified(DateTime $lastModified) 
+
+    public function setLastModified(DateTime $lastModified)
     {
         $this->lastModified = $lastModified;
     }
-    
+
     public function getLastModified()
     {
         return $this->lastModified;
     }
 }
-    

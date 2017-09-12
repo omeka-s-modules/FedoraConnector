@@ -9,43 +9,43 @@ class ImportForm extends Form
 {
     public function init()
     {
-        $this->add(array(
+        $this->add([
             'name' => 'container_uri',
             'type' => 'url',
-            'options' => array(
+            'options' => [
                 'label' => 'Fedora container URI', // @translate
-                'info'  => 'The URI of the Fedora container' // @translate
-            ),
-            'attributes' => array(
+                'info' => 'The URI of the Fedora container', // @translate
+            ],
+            'attributes' => [
                 'id' => 'container_uri',
-                'required' => true
-            )
-        ));
-
-        $this->add(array(
-            'name' => 'ingest_files',
-            'type' => 'checkbox',
-            'options' => array(
-                'label' => 'Import files into Omeka S', // @translate
-                'info'  => 'If checked, original files will be imported into Omeka S. Otherwise, derivates will be displayed when possible, with links back to the original file in the Fedora repository.' // @translate
-            )
-        ));
-
-        $this->add(array(
-            'name' => 'comment',
-            'type' => 'textarea',
-            'options' => array(
-                'label' => 'Comment', // @translate
-                'info'  => 'A note about the purpose or source of this import' // @translate
-            ),
-            'attributes' => array(
-                'id' => 'comment'
-            )
-        ));
+                'required' => true,
+            ],
+        ]);
 
         $this->add([
-                'name'    => 'itemSet',
-                'type'    => ItemSetSelect::class,
+            'name' => 'ingest_files',
+            'type' => 'checkbox',
+            'options' => [
+                'label' => 'Import files into Omeka S', // @translate
+                'info' => 'If checked, original files will be imported into Omeka S. Otherwise, derivates will be displayed when possible, with links back to the original file in the Fedora repository.', // @translate
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'comment',
+            'type' => 'textarea',
+            'options' => [
+                'label' => 'Comment', // @translate
+                'info' => 'A note about the purpose or source of this import', // @translate
+            ],
+            'attributes' => [
+                'id' => 'comment',
+            ],
+        ]);
+
+        $this->add([
+                'name' => 'itemSet',
+                'type' => ItemSetSelect::class,
                 'options' => [
                     'label' => 'Item set', // @translate
                     'info' => 'Optional. Import items into this item set.', // @translate
@@ -54,9 +54,9 @@ class ImportForm extends Form
         ]);
 
         $inputFilter = $this->getInputFilter();
-        $inputFilter->add(array(
+        $inputFilter->add([
             'name' => 'itemSet',
             'required' => false,
-        ));
+        ]);
     }
 }

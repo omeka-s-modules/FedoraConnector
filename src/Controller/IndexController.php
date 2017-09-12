@@ -34,7 +34,6 @@ class IndexController extends AbstractActionController
             }
         }
 
-        
         return $view;
     }
 
@@ -51,26 +50,27 @@ class IndexController extends AbstractActionController
         }
         $view = new ViewModel;
         $page = $this->params()->fromQuery('page', 1);
-        $query = $this->params()->fromQuery() + array(
-            'page'       => $page,
-            'sort_by'    => $this->params()->fromQuery('sort_by', 'id'),
-            'sort_order' => $this->params()->fromQuery('sort_order', 'desc')
-        );
+        $query = $this->params()->fromQuery() + [
+            'page' => $page,
+            'sort_by' => $this->params()->fromQuery('sort_by', 'id'),
+            'sort_order' => $this->params()->fromQuery('sort_order', 'desc'),
+        ];
         $response = $this->api()->search('fedora_imports', $query);
         $this->paginator($response->getTotalResults(), $page);
         $view->setVariable('imports', $response->getContent());
         return $view;
     }
 
-    protected function undoJob($jobId) {
-        $response = $this->api()->search('fedora_imports', array('job_id' => $jobId));
+    protected function undoJob($jobId)
+    {
+        $response = $this->api()->search('fedora_imports', ['job_id' => $jobId]);
         $fedoraImport = $response->getContent()[0];
-        $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Undo', array('jobId' => $jobId));
-        $response = $this->api()->update('fedora_imports', 
-                    $fedoraImport->id(), 
-                    array(
-                        'o:undo_job' => array('o:id' => $job->getId() )
-                    )
+        $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Undo', ['jobId' => $jobId]);
+        $response = $this->api()->update('fedora_imports',
+                    $fedoraImport->id(),
+                    [
+                        'o:undo_job' => ['o:id' => $job->getId() ],
+                    ]
                 );
         return $job;
     }

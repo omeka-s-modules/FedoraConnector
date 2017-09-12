@@ -1,13 +1,12 @@
 <?php
 /**
  * Extract labels and comments from bundled vocabularies and output POT message IDs.
- * 
+ *
  * Run the gulp task for the template.pot file first, then this.
  * vocab.pot will be in the language directory.
  * Then, msgcat --use-first vocab.pot template.pot -o template.pot
  * to remove duplicate entries
  */
-
 require dirname(dirname(dirname(__DIR__))) . '/bootstrap.php';
 $config = require OMEKA_PATH . '/application/config/application.config.php';
 $application = Zend\Mvc\Application::init($config);
@@ -39,7 +38,6 @@ $vocabs = [
         'format' => 'rdfxml',
     ],
 ];
-
 
 // Build the msgids and their comments.
 $msgids = [];
@@ -90,4 +88,3 @@ foreach ($msgids as $msgid => $comments) {
 }
 
 file_put_contents(OMEKA_PATH . '/modules/FedoraConnector/language/vocab.pot', $output);
-
