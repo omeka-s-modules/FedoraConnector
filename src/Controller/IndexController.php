@@ -19,7 +19,7 @@ class IndexController extends AbstractActionController
                 $uri = $data['container_uri'];
                 // do a quick check that the endpoint is available
                 if (! file_get_contents($uri)) {
-                    $this->messenger()->addError('There was a problem connecting to the Fedora Container URI');
+                    $this->messenger()->addError('There was a problem connecting to the Fedora Container URI'); // @translate
                     return $view;
                 }
 
@@ -30,7 +30,7 @@ class IndexController extends AbstractActionController
                 $view->setVariable('job', $job);
                 return $this->redirect()->toRoute('admin/fedora-connector/past-imports');
             } else {
-                $this->messenger()->addError('There was an error during validation');
+                $this->messenger()->addError('There was an error during validation'); // @translate
             }
         }
 

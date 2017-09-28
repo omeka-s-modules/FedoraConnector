@@ -1,11 +1,3 @@
-#. Vocabulary label for Linked Data Platform Vocabulary
-msgid "Linked Data Platform Vocabulary"
-msgstr ""
-
-#. Vocabulary comment for Linked Data Platform Vocabulary
-msgid "Vocabulary for a Linked data Platform. Used by Fedora."
-msgstr ""
-
 #. Class label for Linked Data Platform Vocabulary:Resource
 msgid "Resource"
 msgstr ""
@@ -218,14 +210,6 @@ msgid ""
 "to communicate the sorting criteria used to allocate LDPC members to pages."
 msgstr ""
 
-#. Vocabulary label for Fedora Commons Repository Ontology
-msgid "Fedora Commons Repository Ontology"
-msgstr ""
-
-#. Vocabulary comment for Fedora Commons Repository Ontology
-msgid "Ontology for the Fedora data model."
-msgstr ""
-
 #. Class label for Fedora Commons Repository Ontology:AnnotatedResource
 msgid "annotated resource"
 msgstr ""
@@ -371,7 +355,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-11 16:31-0400\n"
+"POT-Creation-Date: 2017-09-28 11:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -859,6 +843,14 @@ msgstr ""
 msgid "Undone: "
 msgstr ""
 
+#: src/Controller/IndexController.php:22
+msgid "There was a problem connecting to the Fedora Container URI"
+msgstr ""
+
+#: src/Controller/IndexController.php:33
+msgid "There was an error during validation"
+msgstr ""
+
 #: src/Form/ImportForm.php:16
 msgid "Fedora container URI"
 msgstr ""
@@ -886,27 +878,27 @@ msgstr ""
 msgid "Optional. Import items into this item set."
 msgstr ""
 
-#: src/Form/ConfigForm.php:22
+#: src/Form/ConfigForm.php:21
 msgid "The Fedora Vocabulary is already installed."
 msgstr ""
 
-#: src/Form/ConfigForm.php:24
+#: src/Form/ConfigForm.php:23
 msgid "Import the Fedora Vocabulary."
 msgstr ""
 
-#: src/Form/ConfigForm.php:31
+#: src/Form/ConfigForm.php:30
 msgid "Import Fedora Vocabulary"
 msgstr ""
 
-#: src/Form/ConfigForm.php:47
+#: src/Form/ConfigForm.php:46
 msgid "The Linked Data Platform Vocabulary is already installed."
 msgstr ""
 
-#: src/Form/ConfigForm.php:49
+#: src/Form/ConfigForm.php:48
 msgid "Import the Linked Data Platform Vocabulary."
 msgstr ""
 
-#: src/Form/ConfigForm.php:56
+#: src/Form/ConfigForm.php:55
 msgid "Import Linked Data Platform Vocabulary"
 msgstr ""
 
@@ -920,6 +912,10 @@ msgstr ""
 
 #: Module.php:74
 msgid "Vocabulary for a Fedora Repository"
+msgstr ""
+
+#: Module.php:86
+msgid "Linked Data Platform Vocabulary"
 msgstr ""
 
 #: Module.php:87
