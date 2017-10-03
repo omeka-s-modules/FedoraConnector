@@ -26,7 +26,7 @@ class IndexController extends AbstractActionController
                 $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $data);
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
-                $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId());
+                $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId()); // @translate
                 $view->setVariable('job', $job);
                 return $this->redirect()->toRoute('admin/fedora-connector/past-imports');
             } else {
@@ -46,7 +46,7 @@ class IndexController extends AbstractActionController
                 $undoJob = $this->undoJob($jobId);
                 $undoJobIds[] = $undoJob->getId();
             }
-            $this->messenger()->addSuccess('Undo in progress in the following jobs: ' . implode(', ', $undoJobIds));
+            $this->messenger()->addSuccess('Undo in progress in the following jobs: ' . implode(', ', $undoJobIds)); // @translate
         }
         $view = new ViewModel;
         $page = $this->params()->fromQuery('page', 1);
