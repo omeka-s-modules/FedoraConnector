@@ -7,6 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\EventManager\SharedEventManagerInterface;
+use Zend\Mvc\MvcEvent;
 use FedoraConnector\Form\ConfigForm;
 
 class Module extends AbstractModule
@@ -14,6 +15,17 @@ class Module extends AbstractModule
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        parent::onBootstrap($event);
+        $acl = $this->getServiceLocator()->get('Omeka\Acl');
+        $acl->allow(
+            null,
+            ['FedoraConnector\Api\Adapter\FedoraItemAdapter'],
+            ['search', 'read']
+            );
     }
 
     public function install(ServiceLocatorInterface $serviceLocator)
