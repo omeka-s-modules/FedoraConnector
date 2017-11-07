@@ -4,6 +4,7 @@ namespace FedoraConnector\Controller;
 use FedoraConnector\Form\ImportForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Omeka\Stdlib\Message;
 
 class IndexController extends AbstractActionController
 {
@@ -26,7 +27,9 @@ class IndexController extends AbstractActionController
                 $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $data);
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
-                $this->messenger()->addSuccess('Importing in Job ID ' . $job->getId()); // @translate
+                $message = new Message('Importing in Job ID %s', // @translate
+                                        $job->getId);
+                $this->messenger()->addSuccess($message);
                 $view->setVariable('job', $job);
                 return $this->redirect()->toRoute('admin/fedora-connector/past-imports');
             } else {
@@ -46,7 +49,9 @@ class IndexController extends AbstractActionController
                 $undoJob = $this->undoJob($jobId);
                 $undoJobIds[] = $undoJob->getId();
             }
-            $this->messenger()->addSuccess('Undo in progress in the following jobs: ' . implode(', ', $undoJobIds)); // @translate
+            $message = new Message('Undo in progress in the following jobs: %s'  // @translate
+                , implode(', ', $undoJobIds));
+            $this->messenger()->addSuccess($message);
         }
         $view = new ViewModel;
         $page = $this->params()->fromQuery('page', 1);
