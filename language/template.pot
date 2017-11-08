@@ -355,7 +355,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-28 11:17-0400\n"
+"POT-Creation-Date: 2017-11-08 11:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -798,11 +798,11 @@ msgstr ""
 msgid "writable"
 msgstr ""
 
-#: Module.php:107
+#: Module.php:119
 msgid "Last Modified"
 msgstr ""
 
-#: Module.php:108
+#: Module.php:120
 msgid "Link"
 msgstr ""
 
@@ -843,12 +843,22 @@ msgstr ""
 msgid "Undone: "
 msgstr ""
 
-#: src/Controller/IndexController.php:22
+#: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
 msgstr ""
 
-#: src/Controller/IndexController.php:33
+#: src/Controller/IndexController.php:30
+#, php-format
+msgid "Importing in Job ID %s"
+msgstr ""
+
+#: src/Controller/IndexController.php:36
 msgid "There was an error during validation"
+msgstr ""
+
+#: src/Controller/IndexController.php:52
+#, php-format
+msgid "Undo in progress in the following jobs: %s"
 msgstr ""
 
 #: src/Form/ImportForm.php:16
@@ -906,18 +916,18 @@ msgstr ""
 msgid "Fedora Connector"
 msgstr ""
 
-#: Module.php:73
+#: Module.php:85
 msgid "Fedora Vocabulary"
 msgstr ""
 
-#: Module.php:74
+#: Module.php:86
 msgid "Vocabulary for a Fedora Repository"
 msgstr ""
 
-#: Module.php:86
+#: Module.php:98
 msgid "Linked Data Platform Vocabulary"
 msgstr ""
 
-#: Module.php:87
+#: Module.php:99
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
 msgstr ""
