@@ -29,6 +29,9 @@ class ImportForm extends Form
                 'label' => 'Import files into Omeka S', // @translate
                 'info' => 'If checked, original files will be imported into Omeka S. Otherwise, derivates will be displayed when possible, with links back to the original file in the Fedora repository.', // @translate
             ],
+            'attributes' => [
+                'id' => 'ingest-files',
+            ],
         ]);
 
         $this->add([
@@ -50,6 +53,9 @@ class ImportForm extends Form
                     'label' => 'Item set', // @translate
                     'info' => 'Optional. Import items into this item set.', // @translate
                     'empty_option' => 'Select item set', // @translate
+                ],
+                'attributes' => [
+                    'id' => 'item-set',
                 ],
         ]);
 

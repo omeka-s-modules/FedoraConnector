@@ -33,6 +33,7 @@ class ConfigForm extends Form
                         'attributes' => [
                                     'checked' => $hasFedoraVocab ? 'checked' : '',
                                     'disabled' => $hasFedoraVocab ? 'disabled' : '',
+                                    'id' => 'import-fedora',
                                 ],
                     ]);
 
@@ -58,6 +59,7 @@ class ConfigForm extends Form
                         'attributes' => [
                                     'checked' => $hasLdpVocab ? 'checked' : '',
                                     'disabled' => $hasLdpVocab ? 'disabled' : '',
+                                    'id' => 'import-ldp',
                                 ],
                     ]);
     }
