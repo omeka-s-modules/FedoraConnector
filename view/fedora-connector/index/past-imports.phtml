@@ -31,7 +31,7 @@ $escape = $this->plugin('escapeHtml');
         <?php $job = $import->job(); ?>
         <?php $undoJob = $import->undoJob(); ?>
         <tr class="<?php echo isset($undone) ? 'undone' : ''; ?>" >
-            <td><input type='checkbox' name='jobs[]' value='<?php echo $job->id(); ?>' />
+            <td><input type='checkbox' name='jobs[]' value='<?php echo $job->id(); ?>' aria-label="<?php echo $this->translate('Undo job'); ?>" />
             <td><?php echo $job->link($job->id()); ?></td>
             <td>
                 <?php $args = $job->args();
