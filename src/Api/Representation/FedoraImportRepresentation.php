@@ -11,7 +11,7 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
             'added_count' => $this->resource->getAddedCount(),
             'updated_count' => $this->resource->getUpdatedCount(),
             'comment' => $this->resource->getComment(),
-            'o:job' => $this->getReference(),
+            'o:job' => $this->getReference(), //two calls to getRefercence for different data looks odd. @todo
             'o:undo_job' => $this->getReference(),
         ];
     }
