@@ -28,20 +28,20 @@ class FedoraItemAdapter extends AbstractEntityAdapter
     {
         if (isset($query['uri'])) {
             $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.uri',
+                'omeka_root.uri',
                 $this->createNamedParameter($qb, $query['uri']))
             );
         }
 
         if (isset($query['job_id'])) {
             $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.job',
+                'omeka_root.job',
                 $this->createNamedParameter($qb, $query['job_id']))
             );
         }
         if (isset($query['item_id'])) {
             $qb->andWhere($qb->expr()->eq(
-                $this->getEntityClass() . '.item',
+                'omeka_root.item',
                 $this->createNamedParameter($qb, $query['item_id']))
             );
         }
