@@ -1,0 +1,1046 @@
+# Translators:
+# Darío Hereñú, 2019
+# Carlos Rivera <Robertohernande9z9@hotmail.com>, 2019
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-08 11:33-0500\n"
+"PO-Revision-Date: 2017-09-14 20:15+0000\n"
+"Last-Translator: Carlos Rivera <Robertohernande9z9@hotmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/omeka/teams/14184/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Class label for Linked Data Platform Vocabulary:Resource
+msgid "Resource"
+msgstr "Recurso"
+
+#. Class comment for Linked Data Platform Vocabulary:Resource
+msgid ""
+"A HTTP-addressable resource whose lifecycle is managed by a LDP server."
+msgstr ""
+"Un recurso HTTP-addressable cuyo ciclo de vida es gestionado por un servidor"
+" LDP."
+
+#. Class label for Linked Data Platform Vocabulary:RDFSource
+msgid "RDFSource"
+msgstr "RDFSource"
+
+#. Class comment for Linked Data Platform Vocabulary:RDFSource
+msgid ""
+"A Linked Data Platform Resource (LDPR) whose state is represented as RDF."
+msgstr ""
+"Plataforma de recursos con datos vinculados (LDPR) cuyo estado es "
+"representado como RDF."
+
+#. Class label for Linked Data Platform Vocabulary:NonRDFSource
+msgid "NonRDFSource"
+msgstr "NonRDFSource"
+
+#. Class comment for Linked Data Platform Vocabulary:NonRDFSource
+msgid ""
+"A Linked Data Platform Resource (LDPR) whose state is NOT represented as "
+"RDF."
+msgstr ""
+"Plataforma de recursos con datos vinculados (LDPR) cuyo estado is no "
+"representado como RDF."
+
+#. Class label for Linked Data Platform Vocabulary:Container
+msgid "Container"
+msgstr "Contenedor"
+
+#. Class comment for Linked Data Platform Vocabulary:Container
+msgid ""
+"A Linked Data Platform RDF Source (LDP-RS) that also conforms to additional "
+"patterns and conventions for managing membership. Readers should refer to "
+"the specification defining this ontology for the list of behaviors "
+"associated with it."
+msgstr ""
+"Plataforma de recursos RDF de datos vinculados (LDP-RS) que también se "
+"ajustan a patrones y convenciones adicionales para la administración. Los "
+"lectores deben consultar la especificación que define esta ontología para la"
+" lista de comportamientos asociados a este."
+
+#. Class label for Linked Data Platform Vocabulary:BasicContainer
+msgid "BasicContainer"
+msgstr "BasicContainer"
+
+#. Class comment for Linked Data Platform Vocabulary:BasicContainer
+msgid ""
+"An LDPC that uses a predefined predicate to simply link to its contained "
+"resources."
+msgstr ""
+"LDPC que usa normas predefinidas para vincular a sus recursos contenidos."
+
+#. Class label for Linked Data Platform Vocabulary:DirectContainer
+msgid "DirectContainer"
+msgstr "DirectContainer"
+
+#. Class comment for Linked Data Platform Vocabulary:DirectContainer
+msgid ""
+"An LDPC that is similar to a LDP-DC but it allows an indirection with the "
+"ability to list as member a resource, such as a URI representing a real-"
+"world object, that is different from the resource that is created."
+msgstr ""
+"LDPC es similar a un LDP-DC,  pero este permite un direccionamiento "
+"indirecto con la capacidad de listar como miembro un recurso,  tal como un "
+"URI que representa un objeto del mundo real  real-world object, esto es "
+"diferente para el recurso que se crea."
+
+#. Class label for Linked Data Platform Vocabulary:IndirectContainer
+msgid "IndirectContainer"
+msgstr "IndirectContainer"
+
+#. Class comment for Linked Data Platform Vocabulary:IndirectContainer
+msgid ""
+"An LDPC that has the flexibility of choosing what form the membership "
+"triples take."
+msgstr ""
+
+#. Class label for Linked Data Platform Vocabulary:PageSortCriterion
+msgid "PageSortCriterion"
+msgstr "PageSortCriterion"
+
+#. Class comment for Linked Data Platform Vocabulary:PageSortCriterion
+msgid ""
+"Element in the list of sorting criteria used by the server to assign "
+"container members to pages."
+msgstr ""
+"Elemento de la lista de criterios de clasificación utilizado por el servidor"
+" para asignar miembros al contenedor de las páginas."
+
+#. Class label for Linked Data Platform Vocabulary:Page
+#. Property label for Linked Data Platform Vocabulary:pageSequence
+msgid "Page"
+msgstr "Página"
+
+#. Class comment for Linked Data Platform Vocabulary:Page
+msgid ""
+"URI signifying that the resource is an in-sequence page resource, as defined"
+" by LDP Paging.  Typically used on Link rel='type' response headers."
+msgstr ""
+"URI significa que el recurso es un recurso de página en secuencia, según lo "
+"define la paginación LDP. Normalmente se utiliza en los encabezados de "
+"respuesta Link rel = 'type'."
+
+#. Property label for Linked Data Platform Vocabulary:hasMemberRelation
+msgid "hasMemberRelation"
+msgstr "hasMemberRelation"
+
+#. Property comment for Linked Data Platform Vocabulary:hasMemberRelation
+msgid ""
+"Indicates which predicate is used in membership triples, and that the "
+"membership triple pattern is < membership-constant-URI , object-of-"
+"hasMemberRelation, member-URI >."
+msgstr ""
+
+#. Property label for Linked Data Platform Vocabulary:isMemberOfRelation
+msgid "isMemmberOfRelation"
+msgstr "isMemmberOfRelation"
+
+#. Property comment for Linked Data Platform Vocabulary:isMemberOfRelation
+msgid ""
+"Indicates which predicate is used in membership triples, and that the "
+"membership triple pattern is < member-URI , object-of-isMemberOfRelation, "
+"membership-constant-URI >."
+msgstr ""
+
+#. Property label for Linked Data Platform Vocabulary:membershipResource
+msgid "membershipResource"
+msgstr "membershipResource"
+
+#. Property comment for Linked Data Platform Vocabulary:membershipResource
+msgid ""
+"Indicates the membership-constant-URI in a membership triple.  Depending "
+"upon the membership triple pattern a container uses, as indicated by the "
+"presence of ldp:hasMemberRelation or ldp:isMemberOfRelation, the membership-"
+"constant-URI might occupy either the subject or object position in "
+"membership triples."
+msgstr ""
+
+#. Property label for Linked Data Platform Vocabulary:insertedContentRelation
+msgid "insertedContentRelation"
+msgstr "insertedContentRelation"
+
+#. Property comment for Linked Data Platform
+#. Vocabulary:insertedContentRelation
+msgid ""
+"Indicates which triple in a creation request should be used as the member-"
+"URI value in the membership triple added when the creation request is "
+"successful."
+msgstr ""
+
+#. Property label for Linked Data Platform Vocabulary:member
+msgid "member"
+msgstr "miembro"
+
+#. Property comment for Linked Data Platform Vocabulary:member
+msgid ""
+"LDP servers should use this predicate as the membership predicate if there "
+"is no obvious predicate from an application vocabulary to use."
+msgstr ""
+
+#. Property label for Linked Data Platform Vocabulary:contains
+msgid "contains"
+msgstr "contiene"
+
+#. Property comment for Linked Data Platform Vocabulary:contains
+msgid "Links a container with resources created through the container."
+msgstr "Vincula un contenedor con recursos creados a través del contenedor."
+
+#. Property label for Linked Data Platform Vocabulary:constrainedBy
+msgid "constrainedBy"
+msgstr "constrainedBy"
+
+#. Property comment for Linked Data Platform Vocabulary:constrainedBy
+msgid ""
+"Links a resource with constraints that the server requires requests like "
+"creation and update to conform to."
+msgstr ""
+"Vincula un recurso con las restricciones que el servidor requiere con "
+"solicitudes como creación y actualización para ajustarse."
+
+#. Property label for Linked Data Platform Vocabulary:pageSortCriteria
+msgid "pageSortCriteria"
+msgstr "pageSortCriteria"
+
+#. Property comment for Linked Data Platform Vocabulary:pageSortCriteria
+msgid ""
+"Link to the list of sorting criteria used by the server in a representation."
+"  Typically used on Link response headers as an extension link relation URI "
+"in the rel= parameter."
+msgstr ""
+"Enlace a la lista de criterios de clasificación utilizados por el servidor "
+"en una representación. Normalmente se utiliza en los encabezados de "
+"respuesta como una URI de relación de vínculo de extensión en el rel= "
+"parámetro "
+
+#. Property label for Linked Data Platform Vocabulary:pageSortPredicate
+msgid "pageSortPredicate"
+msgstr "pageSortPredicate"
+
+#. Property comment for Linked Data Platform Vocabulary:pageSortPredicate
+msgid ""
+"Predicate used to specify the order of the members across a page sequence's "
+"in-sequence page resources; it asserts nothing about the order of members in"
+" the representation of a single page."
+msgstr ""
+"Normas utilizadas para especificar el orden de los miembros en los recursos "
+"de páginas en secuencia pertenecientes a una secuencia de  páginas; no se "
+"asegura nada sobre el orden de los miembros en la representación de una sola"
+" página."
+
+#. Property label for Linked Data Platform Vocabulary:pageSortOrder
+msgid "pageSortOrder"
+msgstr "pageSortOrder"
+
+#. Property comment for Linked Data Platform Vocabulary:pageSortOrder
+msgid ""
+"The ascending/descending/etc order used to order the members across pages in"
+" a page sequence."
+msgstr ""
+"Orden ascendente/ descendente /etc utilizado para ordenar los miembros en "
+"las páginas en una secuencia de páginas."
+
+#. Property label for Linked Data Platform Vocabulary:pageSortCollation
+msgid "pageSortCollation"
+msgstr "pageSortCollation"
+
+#. Property comment for Linked Data Platform Vocabulary:pageSortCollation
+msgid ""
+"The collation used to order the members across pages in a page sequence when"
+" comparing strings."
+msgstr ""
+"La intercalación utilizada para ordenar los miembros a través de una "
+"secuencia de páginas al comparar cadenas."
+
+#. Property comment for Linked Data Platform Vocabulary:pageSequence
+msgid ""
+"Link to a page sequence resource, as defined by LDP Paging.  Typically used "
+"to communicate the sorting criteria used to allocate LDPC members to pages."
+msgstr ""
+"Enlace a un recurso de secuencia de página, según lo definido por la "
+"paginación LDP. Normalmente se utiliza para comunicar los criterios de "
+"clasificación utilizados para asignar miembros LDPC a las páginas."
+
+#. Class label for Fedora Commons Repository Ontology:AnnotatedResource
+msgid "annotated resource"
+msgstr "Recurso registrado"
+
+#. Class comment for Fedora Commons Repository Ontology:AnnotatedResource
+msgid "A Resource that maintains properties in its own right."
+msgstr "Recurso que mantiene propiedades por si mismo."
+
+#. Class label for Fedora Commons Repository Ontology:Binary
+msgid "binary"
+msgstr "binario"
+
+#. Class comment for Fedora Commons Repository Ontology:Binary
+msgid "A bitstream, with no further data properties."
+msgstr "Flujo de bits, sin más propiedades de datos."
+
+#. Class label for Fedora Commons Repository Ontology:Blanknode
+msgid "blank node"
+msgstr "nodo vacío"
+
+#. Class comment for Fedora Commons Repository Ontology:Blanknode
+msgid "An entity that is a representation of an RDF blank node."
+msgstr "Entidad que es una representación de un nodo en blanco de RDF."
+
+#. Class label for Fedora Commons Repository Ontology:Configuration
+msgid "Fedora transform configuration"
+msgstr "Configuración transformación de Fedora"
+
+#. Class comment for Fedora Commons Repository Ontology:Configuration
+msgid "A container for transform configuration."
+msgstr "Contenedor para el cambio en la configuración."
+
+#. Class label for Fedora Commons Repository Ontology:NonRdfSourceDescription
+msgid "Fedora NonRdfSourceDescription"
+msgstr "Fedora NonRdfSourceDescription"
+
+#. Class comment for Fedora Commons Repository
+#. Ontology:NonRdfSourceDescription
+msgid "A container for a bitstream and associated properties."
+msgstr "Contenedor para un flujo de bits y propiedades asociadas."
+
+#. Class label for Fedora Commons Repository Ontology:EmbedResources
+msgid "embed resources"
+msgstr "Recursos incrustados"
+
+#. Class comment for Fedora Commons Repository Ontology:EmbedResources
+msgid "The set of triples representing child resources of a given resource."
+msgstr ""
+"Triple representación  del conjunto de recursos secundarios que representan "
+"un determinado recurso"
+
+#. Class label for Fedora Commons Repository Ontology:InboundReferences
+msgid "inbound references"
+msgstr "Referencias entrantes"
+
+#. Class comment for Fedora Commons Repository Ontology:InboundReferences
+msgid ""
+"The set of triples representing other repository resources which link to a "
+"given resource."
+msgstr ""
+"Conjunto de triple representación de otros recursos en el repositorio que "
+"enlazan a un recurso determinado."
+
+#. Class label for Fedora Commons Repository Ontology:NodeTypeConfiguration
+msgid "Fedora transform node type configuration"
+msgstr "Configuración de tipo de nodo de transformación de Fedora"
+
+#. Class comment for Fedora Commons Repository Ontology:NodeTypeConfiguration
+msgid "A container for transform node type configuration."
+msgstr "Contenedor para la configuración de tipo de nodo de transformación."
+
+#. Class label for Fedora Commons Repository Ontology:Container
+msgid "Fedora Container"
+msgstr "Contenedor Fedora"
+
+#. Class comment for Fedora Commons Repository Ontology:Container
+msgid ""
+"A Fedora Container: the fundamental quantum of durable content in a Fedora "
+"repository."
+msgstr ""
+"Contenedor de Fedora: cantidad fundamental de contenido persistente en un "
+"repositorio de Fedora."
+
+#. Class label for Fedora Commons Repository Ontology:Pairtree
+msgid "pair tree"
+msgstr ""
+
+#. Class comment for Fedora Commons Repository Ontology:Pairtree
+msgid ""
+"An entity that is a an intermediary node created in a PairTree hierarchy."
+msgstr ""
+
+#. Class label for Fedora Commons Repository Ontology:Relations
+msgid "Relations"
+msgstr "Relaciones"
+
+#. Class comment for Fedora Commons Repository Ontology:Relations
+msgid "An entity that may be related to other repository entities."
+msgstr ""
+"Entidad que puede estar relacionada con otras entidades del repositorio."
+
+#. Class label for Fedora Commons Repository Ontology:Resource
+msgid "Fedora resource"
+msgstr "Recurso Fedora"
+
+#. Class comment for Fedora Commons Repository Ontology:Resource
+msgid ""
+"An entity that has been committed to the repository for safekeeping. For "
+"example, Fedora objects and datastreams are resources. A Fixity is not, "
+"because the provenance of the instance is entirely internal to the "
+"repository."
+msgstr ""
+"Una entidad que ha sido asignada en el repositorio para su conservación. Por"
+" ejemplo, los objetos de Fedora y recursos de flujos de datos. Una "
+"vinculación no lo es, porque la procedencia de la instancia es completamente"
+" interna al repositorio."
+
+#. Class label for Fedora Commons Repository Ontology:ServerManaged
+msgid "server managed"
+msgstr "servidor administrado"
+
+#. Class comment for Fedora Commons Repository Ontology:ServerManaged
+msgid ""
+"The system-generated triples for a given resource (as opposed to explicity-"
+"declared properties)."
+msgstr ""
+"Las tripletas generadas por el sistema para un recurso determinado (en "
+"contraposición a las propiedades declaradas explícitamente)."
+
+#. Class label for Fedora Commons Repository Ontology:Thing
+msgid "Fedora thing"
+msgstr "Lo de Fedora"
+
+#. Class comment for Fedora Commons Repository Ontology:Thing
+msgid "Something that is contemplated in the Fedora repository model."
+msgstr "Algo que se contempla en el modelo de repositorio de Fedora."
+
+#. Class label for Fedora Commons Repository Ontology:Tombstone
+msgid "tombstone"
+msgstr ""
+
+#. Class comment for Fedora Commons Repository Ontology:Tombstone
+msgid "An entity that is a marker for a deleted node."
+msgstr "Entidad que es un marcador para un nodo eliminado."
+
+#. Class label for Fedora Commons Repository Ontology:Version
+msgid "A snapshot of a Fedora object at a given point in time."
+msgstr "Representación de un objeto de Fedora, en un momento determinado."
+
+#. Property label for Fedora Commons Repository Ontology:clusterCacheMode
+msgid "clusterCacheMode"
+msgstr "clusterCacheMode"
+
+#. Property label for Fedora Commons Repository Ontology:clusterMembers
+msgid "clusterMembers"
+msgstr "clusterMembers"
+
+#. Property label for Fedora Commons Repository Ontology:clusterName
+msgid "clusterName"
+msgstr "clusterName"
+
+#. Property label for Fedora Commons Repository Ontology:clusterNodeAddress
+msgid "clusterNodeAddress"
+msgstr "clusterNodeAddress"
+
+#. Property label for Fedora Commons Repository Ontology:clusterNodeView
+msgid "clusterNodeView"
+msgstr "clusterNodeView"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:clusterPhysicalAddress
+msgid "clusterPhysicalAddress"
+msgstr "clusterPhysicalAddress"
+
+#. Property label for Fedora Commons Repository Ontology:clusterSize
+msgid "clusterSize"
+msgstr "clusterSize"
+
+#. Property label for Fedora Commons Repository Ontology:computedChecksum
+msgid "computedChecksum"
+msgstr "computedChecksum"
+
+#. Property label for Fedora Commons Repository Ontology:computedSize
+msgid "computedSize"
+msgstr "computedSize"
+
+#. Property label for Fedora Commons Repository Ontology:couldNotStoreProperty
+msgid "couldNotStoreProperty"
+msgstr "couldNotStoreProperty"
+
+#. Property label for Fedora Commons Repository Ontology:created
+msgid "created"
+msgstr "creado"
+
+#. Property label for Fedora Commons Repository Ontology:createdBy
+msgid "createdBy"
+msgstr "createdBy"
+
+#. Property label for Fedora Commons Repository Ontology:frozenMixinTypes
+msgid "frozenMixinTypes"
+msgstr "frozenMixinTypes"
+
+#. Property label for Fedora Commons Repository Ontology:frozenPrimaryType
+msgid "frozenPrimaryType"
+msgstr "frozenPrimaryType"
+
+#. Property label for Fedora Commons Repository Ontology:frozenUuid
+msgid "frozenUuid"
+msgstr "frozenUuid"
+
+#. Property label for Fedora Commons Repository Ontology:hasLocation
+msgid "hasLocation"
+msgstr "hasLocation"
+
+#. Property label for Fedora Commons Repository Ontology:hasNodeType
+msgid "hasNodeType"
+msgstr "hasNodeType"
+
+#. Property label for Fedora Commons Repository Ontology:hasVersionLabel
+msgid "hasVersionLabel"
+msgstr "hasVersionLabel"
+
+#. Property label for Fedora Commons Repository Ontology:isCheckedOut
+msgid "isCheckedOut"
+msgstr "isCheckedOut"
+
+#. Property label for Fedora Commons Repository Ontology:lastModified
+msgid "lastModified"
+msgstr "lastModified"
+
+#. Property label for Fedora Commons Repository Ontology:lastModifiedBy
+msgid "lastModifiedBy"
+msgstr "lastModifiedBy"
+
+#. Property label for Fedora Commons Repository Ontology:mimeType
+msgid "mimeType"
+msgstr "mimeType"
+
+#. Property label for Fedora Commons Repository Ontology:mixinTypes
+msgid "mixinTypes"
+msgstr "mixinTypes"
+
+#. Property label for Fedora Commons Repository Ontology:numFixityChecks
+msgid "numFixityChecks"
+msgstr "numFixityChecks"
+
+#. Property label for Fedora Commons Repository Ontology:numFixityErrors
+msgid "numFixityErrors"
+msgstr "numFixityErrors"
+
+#. Property label for Fedora Commons Repository Ontology:numFixityRepaired
+msgid "numFixityRepaired"
+msgstr "numFixityRepaired"
+
+#. Property label for Fedora Commons Repository Ontology:numberOfChildren
+msgid "numberOfChildren"
+msgstr "numberOfChildren"
+
+#. Property label for Fedora Commons Repository Ontology:objectCount
+msgid "objectCount"
+msgstr "objectCount"
+
+#. Property label for Fedora Commons Repository Ontology:objectSize
+msgid "objectSize"
+msgstr "objectSize"
+
+#. Property label for Fedora Commons Repository Ontology:primaryType
+msgid "primaryType"
+msgstr "primaryType"
+
+#. Property label for Fedora Commons Repository Ontology:UnmappedType
+msgid "UnmappedType"
+msgstr "UnmappedType"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryCustomRepName
+msgid "repositoryCustomRepName"
+msgstr "repositoryCustomRepName"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryIdentifierStability
+msgid "repositoryIdentifierStability"
+msgstr "repositoryIdentifierStability"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrRepositoryName
+msgid "repositoryJcrRepositoryName"
+msgstr "repositoryJcrRepositoryName"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrRepositoryVendor
+msgid "repositoryJcrRepositoryVendor"
+msgstr "repositoryJcrRepositoryVendor"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrRepositoryVendorUrl
+msgid "repositoryJcrRepositoryVendorUrl"
+msgstr "repositoryJcrRepositoryVendorUrl"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrRepositoryVersion
+msgid "repositoryJcrRepositoryVersion"
+msgstr "repositoryJcrRepositoryVersion"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrSpecificationName
+msgid "repositoryJcrSpecificationName"
+msgstr "repositoryJcrSpecificationName"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryJcrSpecificationVersion
+msgid "repositoryJcrSpecificationVersion"
+msgstr "repositoryJcrSpecificationVersion"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryLevel1Supported
+msgid "repositoryLevel1Supported"
+msgstr "repositoryLevel1Supported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryLevel2Supported
+msgid "repositoryLevel2Supported"
+msgstr "repositoryLevel2Supported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementAutocreatedDefinitionsSupported
+msgid "repositoryNodeTypeManagementAutocreatedDefinitionsSupported"
+msgstr "repositoryNodeTypeManagementAutocreatedDefinitionsSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementInheritance
+msgid "repositoryNodeTypeManagementInheritance"
+msgstr "repositoryNodeTypeManagementInheritance"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementMultipleBinaryPropertiesSupported
+msgid "repositoryNodeTypeManagementMultipleBinaryPropertiesSupported"
+msgstr "repositoryNodeTypeManagementMultipleBinaryPropertiesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementMultivaluedPropertiesSupported
+msgid "repositoryNodeTypeManagementMultivaluedPropertiesSupported"
+msgstr "repositoryNodeTypeManagementMultivaluedPropertiesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementOrderableChildNodesSupported
+msgid "repositoryNodeTypeManagementOrderableChildNodesSupported"
+msgstr "repositoryNodeTypeManagementOrderableChildNodesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementOverridesSupported
+msgid "repositoryNodeTypeManagementOverridesSupported"
+msgstr "repositoryNodeTypeManagementOverridesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementPrimaryItemNameSupported
+msgid "repositoryNodeTypeManagementPrimaryItemNameSupported"
+msgstr "repositoryNodeTypeManagementPrimaryItemNameSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementPropertyTypes
+msgid "repositoryNodeTypeManagementPropertyTypes"
+msgstr "repositoryNodeTypeManagementPropertyTypes"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementResidualDefinitionsSupported
+msgid "repositoryNodeTypeManagementResidualDefinitionsSupported"
+msgstr "repositoryNodeTypeManagementResidualDefinitionsSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementSameNameSiblingsSupported
+msgid "repositoryNodeTypeManagementSameNameSiblingsSupported"
+msgstr "repositoryNodeTypeManagementSameNameSiblingsSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementUpdateInUseSupported
+msgid "repositoryNodeTypeManagementUpdateInUseSupported"
+msgstr "repositoryNodeTypeManagementUpdateInUseSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryNodeTypeManagementValueConstraintsSupported
+msgid "repositoryNodeTypeManagementValueConstraintsSupported"
+msgstr "repositoryNodeTypeManagementValueConstraintsSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionAccessControlSupported
+msgid "repositoryOptionAccessControlSupported"
+msgstr "repositoryOptionAccessControlSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionActivitiesSupported
+msgid "repositoryOptionActivitiesSupported"
+msgstr "repositoryOptionActivitiesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionBaselinesSupported
+msgid "repositoryOptionBaselinesSupported"
+msgstr "repositoryOptionBaselinesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionJournaledObservationSupported
+msgid "repositoryOptionJournaledObservationSupported"
+msgstr "repositoryOptionJournaledObservationSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionLifecycleSupported
+msgid "repositoryOptionLifecycleSupported"
+msgstr "repositoryOptionLifecycleSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionLockingSupported
+msgid "repositoryOptionLockingSupported"
+msgstr "repositoryOptionLockingSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionNodeAndPropertyWithSameNameSupported
+msgid "repositoryOptionNodeAndPropertyWithSameNameSupported"
+msgstr "repositoryOptionNodeAndPropertyWithSameNameSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionNodeTypeManagementSupported
+msgid "repositoryOptionNodeTypeManagementSupported"
+msgstr "repositoryOptionNodeTypeManagementSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionObservationSupported
+msgid "repositoryOptionObservationSupported"
+msgstr "repositoryOptionObservationSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionQuerySqlSupported
+msgid "repositoryOptionQuerySqlSupported"
+msgstr "repositoryOptionQuerySqlSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionRetentionSupported
+msgid "repositoryOptionRetentionSupported"
+msgstr "repositoryOptionRetentionSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionShareableNodesSupported
+msgid "repositoryOptionShareableNodesSupported"
+msgstr "repositoryOptionShareableNodesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionSimpleVersioningSupported
+msgid "repositoryOptionSimpleVersioningSupported"
+msgstr "repositoryOptionSimpleVersioningSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionTransactionsSupported
+msgid "repositoryOptionTransactionsSupported"
+msgstr "repositoryOptionTransactionsSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionUnfiledContentSupported
+msgid "repositoryOptionUnfiledContentSupported"
+msgstr "repositoryOptionUnfiledContentSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionUpdateMixinNodeTypesSupported
+msgid "repositoryOptionUpdateMixinNodeTypesSupported"
+msgstr "repositoryOptionUpdateMixinNodeTypesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionUpdatePrimaryNodeTypeSupported
+msgid "repositoryOptionUpdatePrimaryNodeTypeSupported"
+msgstr "repositoryOptionUpdatePrimaryNodeTypeSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionVersioningSupported
+msgid "repositoryOptionVersioningSupported"
+msgstr "repositoryOptionVersioningSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionWorkspaceManagementSupported
+msgid "repositoryOptionWorkspaceManagementSupported"
+msgstr "repositoryOptionWorkspaceManagementSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionXmlExportSupported
+msgid "repositoryOptionXmlExportSupported"
+msgstr "repositoryOptionXmlExportSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryOptionXmlImportSupported
+msgid "repositoryOptionXmlImportSupported"
+msgstr "repositoryOptionXmlImportSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryQueryFullTextSearchSupported
+msgid "repositoryQueryFullTextSearchSupported"
+msgstr "repositoryQueryFullTextSearchSupported"
+
+#. Property label for Fedora Commons Repository Ontology:repositoryQueryJoins
+msgid "repositoryQueryJoins"
+msgstr "repositoryQueryJoins"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryQueryStoredQueriesSupported
+msgid "repositoryQueryStoredQueriesSupported"
+msgstr "repositoryQueryStoredQueriesSupported"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryQueryXpathDocOrder
+msgid "repositoryQueryXpathDocOrder"
+msgstr "repositoryQueryXpathDocOrder"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryQueryXpathPosIndex
+msgid "repositoryQueryXpathPosIndex"
+msgstr "repositoryQueryXpathPosIndex"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:repositoryWriteSupported
+msgid "repositoryWriteSupported"
+msgstr "repositoryWriteSupported"
+
+#. Property label for Fedora Commons Repository Ontology:uuid
+msgid "uuid"
+msgstr "uuid"
+
+#. Property label for Fedora Commons Repository Ontology:baseVersion
+msgid "base version"
+msgstr "Versión base"
+
+#. Property label for Fedora Commons Repository Ontology:hasChild
+msgid "has child"
+msgstr "tiene hijo"
+
+#. Property label for Fedora Commons Repository Ontology:hasContent
+msgid "has content"
+msgstr "tiene contenido"
+
+#. Property comment for Fedora Commons Repository Ontology:hasContent
+msgid "Indicates a binary in which content is stored for this datastream."
+msgstr ""
+"Indica un binario en el que se almacena el contenido de este flujo de datos."
+
+#. Property label for Fedora Commons Repository Ontology:hasDefaultWorkspace
+msgid "has default workspace"
+msgstr "posee espacio de trabajo predeterminado"
+
+#. Property comment for Fedora Commons Repository Ontology:hasDefaultWorkspace
+msgid "Indicates the default workspace of the repository."
+msgstr "Indica el espacio de trabajo predeterminado del repositorio."
+
+#. Property label for Fedora Commons Repository Ontology:hasMember
+msgid "has member"
+msgstr "posee miembros"
+
+#. Property comment for Fedora Commons Repository Ontology:hasMember
+msgid ""
+"Links to a newly-minted identifier which can be used to create a repository "
+"resource."
+msgstr ""
+"Enlaces a un identificador recién creado que puede ser usado para crear un "
+"recurso de repositorio."
+
+#. Property label for Fedora Commons Repository Ontology:hasParent
+msgid "has parent"
+msgstr "tiene padre"
+
+#. Property label for Fedora Commons Repository Ontology:hasResultsMember
+msgid "has results member"
+msgstr ""
+
+#. Property label for Fedora Commons Repository Ontology:hasVersion
+msgid "has version"
+msgstr "tiene versión"
+
+#. Property label for Fedora Commons Repository Ontology:hasWorkspace
+msgid "has workspace"
+msgstr "posee espacio de trabajo"
+
+#. Property comment for Fedora Commons Repository Ontology:hasWorkspace
+msgid "Links to a workspace of the repository."
+msgstr "Enlaces a un espacio de trabajo del repositorio."
+
+#. Property label for Fedora Commons Repository Ontology:isContentOf
+msgid "is content of"
+msgstr "es contenido de"
+
+#. Property comment for Fedora Commons Repository Ontology:isContentOf
+msgid "Indicates a datastream for which this resource contains the content. "
+msgstr ""
+"Indica un flujo de datos para el cual este recurso contiene el contenido."
+
+#. Property label for Fedora Commons Repository Ontology:predecessors
+msgid "predecessors"
+msgstr "predecesores"
+
+#. Property label for Fedora Commons Repository Ontology:hasAccessRoles
+msgid "has access roles"
+msgstr "tiene roles de acceso"
+
+#. Property label for Fedora Commons Repository Ontology:hasFixityService
+msgid "has fixity service"
+msgstr ""
+
+#. Property label for Fedora Commons Repository Ontology:hasNamespaces
+msgid "has namespaces"
+msgstr "tiene nombres de espacios"
+
+#. Property label for Fedora Commons Repository Ontology:hasWorkspaces
+msgid "has workspaces"
+msgstr "tiene espacios de trabajo"
+
+#. Property label for Fedora Commons Repository Ontology:hasVersions
+msgid "has versions"
+msgstr "tiene versiones"
+
+#. Property label for Fedora Commons Repository Ontology:sparql
+msgid "has sparql service"
+msgstr "posee servicio sparql"
+
+#. Property label for Fedora Commons Repository Ontology:digest
+msgid "digest"
+msgstr ""
+
+#. Property label for Fedora Commons Repository Ontology:exportsAs
+msgid "exports as"
+msgstr "exportar como"
+
+#. Property label for Fedora Commons Repository Ontology:hasMoreResults
+msgid "has more results"
+msgstr "tiene más resultados"
+
+#. Property label for Fedora Commons Repository
+#. Ontology:hasTransactionProvider
+msgid "has transaction provider"
+msgstr "tiene proveedor de transacciones"
+
+#. Property label for Fedora Commons Repository Ontology:writable
+msgid "writable"
+msgstr "escritura"
+
+#: Module.php:119
+msgid "Last Modified"
+msgstr "Ultima modificación"
+
+#: Module.php:120
+msgid "Link"
+msgstr "Enlace"
+
+#: view/fedora-connector/index/index.phtml:5
+#: view/fedora-connector/index/past-imports.phtml:6
+msgid "Fedora Import"
+msgstr "Importar Fedora"
+
+#: view/fedora-connector/index/index.phtml:5
+msgid "Import Settings"
+msgstr "Importar ajustes"
+
+#: view/fedora-connector/index/past-imports.phtml:6
+msgid "Past Imports"
+msgstr "Importaciones pasadas"
+
+#: view/fedora-connector/index/past-imports.phtml:19
+msgid "Undo?"
+msgstr "Deshacer?"
+
+#: view/fedora-connector/index/past-imports.phtml:20
+msgid "Job ID"
+msgstr "ID de tarea"
+
+#: view/fedora-connector/index/past-imports.phtml:43
+msgid "Container's item does not exist."
+msgstr "El elemento del contenedor no existe."
+
+#: view/fedora-connector/index/past-imports.phtml:56
+msgid "Added: "
+msgstr "Agregado:"
+
+#: view/fedora-connector/index/past-imports.phtml:57
+msgid "Updated: "
+msgstr "Actualizado:"
+
+#: view/fedora-connector/index/past-imports.phtml:62
+msgid "Undone: "
+msgstr "Deshacer:"
+
+#: src/Controller/IndexController.php:23
+msgid "There was a problem connecting to the Fedora Container URI"
+msgstr ""
+"Se ha producido un problema  al conectarse a la URI del contenedor de Fedora"
+
+#: src/Controller/IndexController.php:30
+#, php-format
+msgid "Importing in Job ID %s"
+msgstr "Importación en el identificador de tarea %s"
+
+#: src/Controller/IndexController.php:36
+msgid "There was an error during validation"
+msgstr "Se ha producido un error durante la validación"
+
+#: src/Controller/IndexController.php:52
+#, php-format
+msgid "Undo in progress in the following jobs: %s"
+msgstr "Deshacer avance en las siguientes tareas: %s"
+
+#: src/Form/ImportForm.php:16
+msgid "Fedora container URI"
+msgstr "URI del contenedor Fedora"
+
+#: src/Form/ImportForm.php:17
+msgid "The URI of the Fedora container"
+msgstr "El URI del contenedor de Fedora"
+
+#: src/Form/ImportForm.php:29
+msgid "Import files into Omeka S"
+msgstr "Importar archivos en Omeka S"
+
+#: src/Form/ImportForm.php:30
+msgid ""
+"If checked, original files will be imported into Omeka S. Otherwise, "
+"derivates will be displayed when possible, with links back to the original "
+"file in the Fedora repository."
+msgstr ""
+"Si se marcan, los archivos originales se importarán a Omeka S. De lo "
+"contrario, los archivos secundarios se mostrarán cuando sea posible, con "
+"enlaces al archivo original en el repositorio de Fedora."
+
+#: src/Form/ImportForm.php:39
+msgid "A note about the purpose or source of this import"
+msgstr "Un memo acerca del propósito o causa de esta importación"
+
+#: src/Form/ImportForm.php:51
+msgid "Optional. Import items into this item set."
+msgstr "Opcional. Importe elementos en este conjunto de elementos."
+
+#: src/Form/ConfigForm.php:21
+msgid "The Fedora Vocabulary is already installed."
+msgstr "El vocabulario de Fedora ya está instalado."
+
+#: src/Form/ConfigForm.php:23
+msgid "Import the Fedora Vocabulary."
+msgstr "Importar el vocabulario de Fedora."
+
+#: src/Form/ConfigForm.php:30
+msgid "Import Fedora Vocabulary"
+msgstr "Importar vocabulario Fedora"
+
+#: src/Form/ConfigForm.php:46
+msgid "The Linked Data Platform Vocabulary is already installed."
+msgstr "El Vocabulario de plataforma de datos vinculados ya está instalado."
+
+#: src/Form/ConfigForm.php:48
+msgid "Import the Linked Data Platform Vocabulary."
+msgstr "Importar vocabulario de la plataforma de datos vinculados."
+
+#: src/Form/ConfigForm.php:55
+msgid "Import Linked Data Platform Vocabulary"
+msgstr "Importar vocabulario de la plataforma de datos vinculados "
+
+#: config/module.config.php:76
+msgid "Fedora Connector"
+msgstr "Conector Fedora"
+
+#: Module.php:85
+msgid "Fedora Vocabulary"
+msgstr "Vocabulario Fedora"
+
+#: Module.php:86
+msgid "Vocabulary for a Fedora Repository"
+msgstr "Vocabulario para repositorio de Fedora"
+
+#: Module.php:98
+msgid "Linked Data Platform Vocabulary"
+msgstr "Vocabulario de plataforma de datos vinculados"
+
+#: Module.php:99
+msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
+msgstr ""
+"Vocabulario para la plataforma de datos vinculados. Utilizado por Fedora"
