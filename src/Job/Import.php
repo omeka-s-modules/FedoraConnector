@@ -2,9 +2,9 @@
 namespace FedoraConnector\Job;
 
 use Omeka\Job\AbstractJob;
-use EasyRdf_Graph;
-use EasyRdf_Resource;
-use EasyRdf_Namespace;
+use \EasyRdf\Graph;
+use EasyRdf\Resource as RdfResource;
+use \EasyRdf\RdfNamespace;
 
 class Import extends AbstractJob
 {
@@ -69,9 +69,9 @@ class Import extends AbstractJob
         $this->client->setUri($uri);
         $response = $this->client->send();
         $rdf = $response->getBody();
-        EasyRdf_Namespace::set('fedora', 'http://fedora.info/definitions/v4/repository#');
-        EasyRdf_Namespace::set('ldp', 'http://www.w3.org/ns/ldp#');
-        $graph = new EasyRdf_Graph();
+        RdfNamespace::set('fedora', 'http://fedora.info/definitions/v4/repository#');
+        RdfNamespace::set('ldp', 'http://www.w3.org/ns/ldp#');
+        $graph = new Graph();
 
         $graph->parse($rdf);
 
@@ -99,7 +99,7 @@ class Import extends AbstractJob
             $itemId = $response->getContent()->id();
         }
 
-        $lastModifiedProperty = new EasyRdf_Resource('http://fedora.info/definitions/v4/repository#lastModified');
+        $lastModifiedProperty = new RdfResource('http://fedora.info/definitions/v4/repository#lastModified');
         $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
         if ($lastModifiedLiteral) {
             $lastModifiedValue = $lastModifiedLiteral->getValue();
@@ -129,7 +129,7 @@ class Import extends AbstractJob
         }
     }
 
-    public function resourceToJson(EasyRdf_Resource $resource)
+    public function resourceToJson(RdfResource $resource)
     {
         $json = [];
         if ($this->itemSetId) {
@@ -137,7 +137,7 @@ class Import extends AbstractJob
         }
 
         foreach ($resource->propertyUris() as $property) {
-            $easyRdfProperty = new EasyRdf_Resource($property);
+            $easyRdfProperty = new RdfResource($property);
             $propertyId = $this->getPropertyId($easyRdfProperty);
             if (!$propertyId) {
                 continue;
@@ -204,12 +204,12 @@ class Import extends AbstractJob
     /**
      * Get the property id for an rdf property, if known in Omeka
      *
-     * @param string or EasyRdf_Resource $property
+     * @param string or RdfResource $property
      */
     protected function getPropertyId($property)
     {
         if (is_string($property)) {
-            $property = new EasyRdf_Resource($property);
+            $property = new RdfResource($property);
         }
         $propertyUri = $property->getUri();
         //work around fedora's use of dc11
@@ -235,7 +235,7 @@ class Import extends AbstractJob
     protected function getClassId($class)
     {
         if (is_string($class)) {
-            $class = new EasyRdf_Resource($class);
+            $class = new RdfResource($class);
         }
         $classUri = $class->getUri();
         $localName = $class->localName();
