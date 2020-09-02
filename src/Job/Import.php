@@ -2,9 +2,9 @@
 namespace FedoraConnector\Job;
 
 use Omeka\Job\AbstractJob;
-use \EasyRdf\Graph;
+use EasyRdf\Graph;
 use EasyRdf\Resource as RdfResource;
-use \EasyRdf\RdfNamespace;
+use EasyRdf\RdfNamespace;
 
 class Import extends AbstractJob
 {
@@ -204,7 +204,7 @@ class Import extends AbstractJob
     /**
      * Get the property id for an rdf property, if known in Omeka
      *
-     * @param string or RdfResource $property
+     * @param string|RdfResource $property
      */
     protected function getPropertyId($property)
     {
