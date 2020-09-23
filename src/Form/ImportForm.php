@@ -14,7 +14,7 @@ class ImportForm extends Form
             'type' => 'url',
             'options' => [
                 'label' => 'Fedora container URI', // @translate
-                'info' => 'The URI of the Fedora container', // @translate
+                'info' => 'URI of the Fedora container for the repository, collection or resource to import.', // @translate
             ],
             'attributes' => [
                 'id' => 'container_uri',
