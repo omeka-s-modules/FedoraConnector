@@ -3,7 +3,6 @@ namespace FedoraConnector\Form;
 
 use Omeka\Form\Element\ItemSetSelect;
 use Laminas\Form\Form;
-use Laminas\Form\Element\Select;
 
 class ImportForm extends Form
 {

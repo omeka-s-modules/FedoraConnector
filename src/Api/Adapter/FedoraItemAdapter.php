@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace FedoraConnector\Api\Adapter;
 
 use Doctrine\ORM\QueryBuilder;

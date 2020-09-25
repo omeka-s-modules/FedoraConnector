@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace FedoraConnector\Api\Representation;
 
 use Omeka\Api\Representation\AbstractEntityRepresentation;

@@ -12,8 +12,8 @@ return [
     ],
     'api_adapters' => [
         'invokables' => [
-            'fedora_items'   => 'FedoraConnector\Api\Adapter\FedoraItemAdapter',
-            'fedora_imports' => 'FedoraConnector\Api\Adapter\FedoraImportAdapter'
+            'fedora_items' => 'FedoraConnector\Api\Adapter\FedoraItemAdapter',
+            'fedora_imports' => 'FedoraConnector\Api\Adapter\FedoraImportAdapter',
         ],
     ],
     'controllers' => [
@@ -42,27 +42,27 @@ return [
             'admin' => [
                 'child_routes' => [
                     'fedora-connector' => [
-                        'type'    => 'Literal',
+                        'type' => 'Literal',
                         'options' => [
-                            'route'    => '/fedora-connector',
+                            'route' => '/fedora-connector',
                             'defaults' => [
                                 '__NAMESPACE__' => 'FedoraConnector\Controller',
-                                'controller'    => 'Index',
-                                'action'        => 'index',
+                                'controller' => 'Index',
+                                'action' => 'index',
                             ],
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
                             'past-imports' => [
-                                'type'    => 'Literal',
+                                'type' => 'Literal',
                                 'options' => [
                                     'route' => '/past-imports',
                                     'defaults' => [
                                         '__NAMESPACE__' => 'FedoraConnector\Controller',
-                                        'controller'    => 'Index',
-                                        'action'        => 'past-imports',
+                                        'controller' => 'Index',
+                                        'action' => 'past-imports',
                                     ],
-                                ]
+                                ],
                             ],
                         ],
                     ],
@@ -73,21 +73,21 @@ return [
     'navigation' => [
         'AdminModule' => [
             [
-                'label'      => 'Fedora Connector', // @translate
-                'route'      => 'admin/fedora-connector',
-                'resource'   => 'FedoraConnector\Controller\Index',
-                'pages'      => [
+                'label' => 'Fedora Connector', // @translate
+                'route' => 'admin/fedora-connector',
+                'resource' => 'FedoraConnector\Controller\Index',
+                'pages' => [
                     [
-                        'label'      => 'Import', // @translate
-                        'route'      => 'admin/fedora-connector',
-                        'resource'   => 'FedoraConnector\Controller\Index',
+                        'label' => 'Import', // @translate
+                        'route' => 'admin/fedora-connector',
+                        'resource' => 'FedoraConnector\Controller\Index',
                     ],
                     [
-                        'label'      => 'Past Imports', // @translate
-                        'route'      => 'admin/fedora-connector/past-imports',
+                        'label' => 'Past Imports', // @translate
+                        'route' => 'admin/fedora-connector/past-imports',
                         'controller' => 'Index',
-                        'action'     => 'past-imports',
-                        'resource'   => 'FedoraConnector\Controller\Index',
+                        'action' => 'past-imports',
+                        'resource' => 'FedoraConnector\Controller\Index',
                     ],
                 ],
             ],

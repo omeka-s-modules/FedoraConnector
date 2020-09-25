@@ -2,7 +2,6 @@
 namespace FedoraConnector;
 
 use Omeka\Module\AbstractModule;
-use Omeka\Entity\Job;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Renderer\PhpRenderer;
 use Laminas\Mvc\Controller\AbstractController;
@@ -115,7 +114,7 @@ class Module extends AbstractModule
         $fedoraItems = $response->getContent();
         if ($fedoraItems) {
             $fedoraItem = $fedoraItems[0];
-            echo '<h3>' . $view->translate('Original')  . '</h3>';
+            echo '<h3>' . $view->translate('Original') . '</h3>';
             echo '<p>' . $view->translate('Last Modified') . ' ' . $view->i18n()->dateFormat($fedoraItem->lastModified()) . '</p>';
             echo '<p><a href="' . $fedoraItem->uri() . '">' . $view->translate('Link') . '</a></p>';
         }
