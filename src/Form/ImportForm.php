@@ -2,8 +2,7 @@
 namespace FedoraConnector\Form;
 
 use Omeka\Form\Element\ItemSetSelect;
-use Zend\Form\Form;
-use Zend\Form\Element\Select;
+use Laminas\Form\Form;
 
 class ImportForm extends Form
 {

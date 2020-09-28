@@ -2,7 +2,7 @@
 namespace FedoraConnector\Service\Form;
 
 use FedoraConnector\Form\ImportForm;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 
 class ImportFormFactory implements FactoryInterface

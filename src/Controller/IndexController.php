@@ -2,8 +2,8 @@
 namespace FedoraConnector\Controller;
 
 use FedoraConnector\Form\ImportForm;
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 use Omeka\Stdlib\Message;
 
 class IndexController extends AbstractActionController
