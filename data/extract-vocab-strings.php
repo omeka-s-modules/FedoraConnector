@@ -9,7 +9,7 @@
  */
 require dirname(dirname(dirname(__DIR__))) . '/bootstrap.php';
 $config = require OMEKA_PATH . '/application/config/application.config.php';
-$application = Zend\Mvc\Application::init($config);
+$application = Laminas\Mvc\Application::init($config);
 $services = $application->getServiceManager();
 
 $rdfImporter = $services->get('Omeka\RdfImporter');

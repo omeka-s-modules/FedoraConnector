@@ -2,7 +2,7 @@
 namespace FedoraConnector\Service\Form;
 
 use FedoraConnector\Form\ConfigForm;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 
 class ConfigFormFactory implements FactoryInterface
