@@ -34,6 +34,18 @@ class ImportForm extends Form
         ]);
 
         $this->add([
+            'name' => 'ignore_parent',
+            'type' => 'checkbox',
+            'options' => [
+                'label' => 'Ignore parent container', // @translate
+                'info' => 'If checked, only descendents of the container at URI above will be imported as items--not the parent container itself.', // @translate
+            ],
+            'attributes' => [
+                'id' => 'ignore-parent',
+            ],
+        ]);
+
+        $this->add([
             'name' => 'comment',
             'type' => 'textarea',
             'options' => [
