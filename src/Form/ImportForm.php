@@ -46,14 +46,14 @@ class ImportForm extends Form
         ]);
 
         $this->add([
-            'name' => 'import_children',
+            'name' => 'only_direct_children',
             'type' => 'checkbox',
             'options' => [
                 'label' => 'Import direct descendents only', // @translate
                 'info' => 'If checked, only direct descendents of the container at URI above will be imported (i.e. no children of children). Otherwise, all resources below container will be recursively imported', // @translate
             ],
             'attributes' => [
-                'id' => 'import-children',
+                'id' => 'only_direct_children',
             ],
         ]);
 
