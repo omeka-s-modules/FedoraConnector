@@ -34,6 +34,30 @@ class ImportForm extends Form
         ]);
 
         $this->add([
+            'name' => 'ignore_parent',
+            'type' => 'checkbox',
+            'options' => [
+                'label' => 'Ignore parent container', // @translate
+                'info' => 'If checked, only descendents of the container at URI above will be imported as items--not the parent container itself.', // @translate
+            ],
+            'attributes' => [
+                'id' => 'ignore-parent',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'only_direct_children',
+            'type' => 'checkbox',
+            'options' => [
+                'label' => 'Import direct descendents only', // @translate
+                'info' => 'If checked, only direct descendents of the container at URI above will be imported (i.e. no children of children). Otherwise, all resources below container will be recursively imported', // @translate
+            ],
+            'attributes' => [
+                'id' => 'only_direct_children',
+            ],
+        ]);
+
+        $this->add([
             'name' => 'comment',
             'type' => 'textarea',
             'options' => [

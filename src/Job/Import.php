@@ -72,55 +72,65 @@ class Import extends AbstractJob
         RdfNamespace::set('fedora', 'http://fedora.info/definitions/v4/repository#');
         RdfNamespace::set('ldp', 'http://www.w3.org/ns/ldp#');
         $graph = new Graph();
-
+        
         $graph->parse($rdf);
 
         $containerToImport = $graph->resource($uri);
         $containers = $graph->allOfType("http://fedora.info/definitions/v4/repository#Container");
         $binaries = $graph->allOfType("http://fedora.info/definitions/v4/repository#Binary");
+        $isTopLevel = ($uri === $this->getArg('container_uri'));
 
-        $json = $this->resourceToJson($containerToImport);
+        //if ignore_parent set, don't import parent object
+        if (!($this->getArg('ignore_parent') && $isTopLevel)) {
+            $json = $this->resourceToJson($containerToImport);
 
-        if ($this->getArg('ingest_files')) {
-            foreach ($binaries as $binary) {
-                $mediaJson = $this->resourceToJson($binary);
-                $mediaJson['o:ingester'] = 'url';
-                $mediaJson['o:source'] = $binary->getUri();
-                $mediaJson['ingest_url'] = $binary->getUri();
-                $json['o:media'][] = $mediaJson;
+            if ($this->getArg('ingest_files')) {
+                foreach ($binaries as $binary) {
+                    $mediaJson = $this->resourceToJson($binary);
+                    $mediaJson['o:ingester'] = 'url';
+                    $mediaJson['o:source'] = $binary->getUri();
+                    $mediaJson['ingest_url'] = $binary->getUri();
+                    $json['o:media'][] = $mediaJson;
+                }
+            }
+
+            if ($omekaItem) {
+                $response = $this->api->update('items', $omekaItem->id(), $json);
+                $itemId = $omekaItem->id();
+            } else {
+                $response = $this->api->create('items', $json);
+                $itemId = $response->getContent()->id();
+            }
+
+            $lastModifiedProperty = new RdfResource('http://fedora.info/definitions/v4/repository#lastModified');
+            $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
+            if ($lastModifiedLiteral) {
+                $lastModifiedValue = $lastModifiedLiteral->getValue();
+            } else {
+                $lastModifiedValue = null;
+            }
+
+            $fedoraItemJson = [
+                                'o:job' => ['o:id' => $this->job->getId()],
+                                'o:item' => ['o:id' => $itemId],
+                                'uri' => $uri,
+                                'last_modified' => $lastModifiedValue,
+                              ];
+
+            if ($fedoraItem) {
+                $response = $this->api->update('fedora_items', $fedoraItem->id(), $fedoraItemJson);
+                $this->updatedCount++;
+            } else {
+                $this->addedCount++;
+                $response = $this->api->create('fedora_items', $fedoraItemJson);
             }
         }
-
-        if ($omekaItem) {
-            $response = $this->api->update('items', $omekaItem->id(), $json);
-            $itemId = $omekaItem->id();
-        } else {
-            $response = $this->api->create('items', $json);
-            $itemId = $response->getContent()->id();
+        
+        //if only_direct_children set, only recurse one level down from top
+        if ($this->getArg('only_direct_children') && !$isTopLevel) {
+            return;
         }
-
-        $lastModifiedProperty = new RdfResource('http://fedora.info/definitions/v4/repository#lastModified');
-        $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
-        if ($lastModifiedLiteral) {
-            $lastModifiedValue = $lastModifiedLiteral->getValue();
-        } else {
-            $lastModifiedValue = null;
-        }
-
-        $fedoraItemJson = [
-                            'o:job' => ['o:id' => $this->job->getId()],
-                            'o:item' => ['o:id' => $itemId],
-                            'uri' => $uri,
-                            'last_modified' => $lastModifiedValue,
-                          ];
-
-        if ($fedoraItem) {
-            $response = $this->api->update('fedora_items', $fedoraItem->id(), $fedoraItemJson);
-            $this->updatedCount++;
-        } else {
-            $this->addedCount++;
-            $response = $this->api->create('fedora_items', $fedoraItemJson);
-        }
+        
         foreach ($containers as $container) {
             $containerUri = $container->getUri();
             if ($containerUri != $uri) {

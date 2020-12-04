@@ -28,7 +28,7 @@ class IndexController extends AbstractActionController
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
                 $message = new Message('Importing in Job ID %s', // @translate
-                                        $job->getId);
+                                        $job->getId());
                 $this->messenger()->addSuccess($message);
                 $view->setVariable('job', $job);
                 return $this->redirect()->toRoute('admin/fedora-connector/past-imports');
