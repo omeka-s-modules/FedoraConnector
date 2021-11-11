@@ -14,7 +14,7 @@ class Import extends AbstractJob
 
     protected $api;
 
-    protected $itemSetId;
+    protected $itemSetArray;
 
     protected $addedCount;
 
@@ -40,7 +40,7 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(['Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"']);
         $uri = $this->getArg('container_uri');
-        $this->itemSetArray = $this->getArg('itemSet', false);
+        $this->itemSetArray = $this->getArg('itemSets', false);
         //importContainer calls itself on all child containers
         $this->importContainer($uri);
 

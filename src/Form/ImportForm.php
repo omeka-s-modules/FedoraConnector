@@ -2,6 +2,7 @@
 namespace FedoraConnector\Form;
 
 use Omeka\Form\Element\ItemSetSelect;
+use Omeka\Form\Element\SiteSelect;
 use Laminas\Form\Form;
 
 class ImportForm extends Form
@@ -70,24 +71,24 @@ class ImportForm extends Form
         ]);
 
         $this->add([
-                'name' => 'itemSet',
-                'type' => ItemSetSelect::class,
-                'attributes' => [
-                    'class' => 'chosen-select',
-                    'data-placeholder' => 'Select item set(s)', // @translate
-                    'multiple' => true,
-                    'id' => 'item-set',
-                ],
-                'options' => [
-                    'label' => 'Item set', // @translate
-                    'info' => 'Optional. Import items into item set(s).', // @translate
-                    'empty_option' => ''
-                ],
+            'name' => 'itemSets',
+            'type' => ItemSetSelect::class,
+            'attributes' => [
+                'class' => 'chosen-select',
+                'data-placeholder' => 'Select item set(s)', // @translate
+                'multiple' => true,
+                'id' => 'item-sets',
+            ],
+            'options' => [
+                'label' => 'Item sets', // @translate
+                'info' => 'Optional. Import items into item set(s).', // @translate
+                'empty_option' => ''
+            ],
         ]);
 
         $inputFilter = $this->getInputFilter();
         $inputFilter->add([
-            'name' => 'itemSet',
+            'name' => 'itemSets',
             'required' => false,
         ]);
     }
