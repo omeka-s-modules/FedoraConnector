@@ -72,13 +72,16 @@ class ImportForm extends Form
         $this->add([
                 'name' => 'itemSet',
                 'type' => ItemSetSelect::class,
+                'attributes' => [
+                    'class' => 'chosen-select',
+                    'data-placeholder' => 'Select item set(s)', // @translate
+                    'multiple' => true,
+                    'id' => 'item-set',
+                ],
                 'options' => [
                     'label' => 'Item set', // @translate
-                    'info' => 'Optional. Import items into this item set.', // @translate
-                    'empty_option' => 'Select item set', // @translate
-                ],
-                'attributes' => [
-                    'id' => 'item-set',
+                    'info' => 'Optional. Import items into item set(s).', // @translate
+                    'empty_option' => ''
                 ],
         ]);
 

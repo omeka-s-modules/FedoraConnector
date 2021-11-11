@@ -40,7 +40,7 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(['Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"']);
         $uri = $this->getArg('container_uri');
-        $this->itemSetId = $this->getArg('itemSet', false);
+        $this->itemSetArray = $this->getArg('itemSet', false);
         //importContainer calls itself on all child containers
         $this->importContainer($uri);
 
@@ -95,6 +95,12 @@ class Import extends AbstractJob
             }
 
             if ($omekaItem) {
+                // keep existing item sets, add any new item sets
+                $existingItem = $this->api->search('items', ['id' => $omekaItem->id()])->getContent();
+                $existingItemSets = array_keys($existingItem[0]->itemSets()) ?: [];
+                $newItemSets = $json['o:item_set'] ?: [];
+                $json['o:item_set'] = array_merge($existingItemSets, $newItemSets);
+
                 $response = $this->api->update('items', $omekaItem->id(), $json);
                 $itemId = $omekaItem->id();
             } else {
@@ -142,8 +148,11 @@ class Import extends AbstractJob
     public function resourceToJson(RdfResource $resource)
     {
         $json = [];
-        if ($this->itemSetId) {
-            $json['o:item_set'] = [['o:id' => $this->itemSetId]];
+        if ($this->itemSetArray) {
+            foreach ($this->itemSetArray as $itemSet) {
+                $itemSets[] = $itemSet;
+            }
+            $json['o:item_set'] = $itemSets;
         }
 
         foreach ($resource->propertyUris() as $property) {
