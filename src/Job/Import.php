@@ -16,6 +16,8 @@ class Import extends AbstractJob
 
     protected $itemSetArray;
 
+    protected $itemSites;
+
     protected $addedCount;
 
     protected $updatedCount;
@@ -41,6 +43,7 @@ class Import extends AbstractJob
         $this->client->setHeaders(['Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"']);
         $uri = $this->getArg('container_uri');
         $this->itemSetArray = $this->getArg('itemSets', false);
+        $this->itemSiteArray = $this->getArg('itemSites', false);
         //importContainer calls itself on all child containers
         $this->importContainer($uri);
 
@@ -153,6 +156,15 @@ class Import extends AbstractJob
                 $itemSets[] = $itemSet;
             }
             $json['o:item_set'] = $itemSets;
+        }
+
+        if ($this->itemSiteArray) {
+            foreach ($this->itemSiteArray as $itemSite) {
+                $itemSites[] = $itemSite;
+            }
+            $json['o:site'] = $itemSites;
+        } else {
+            $json['o:site'] = [];
         }
 
         foreach ($resource->propertyUris() as $property) {
