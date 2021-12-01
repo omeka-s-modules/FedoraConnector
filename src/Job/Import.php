@@ -98,11 +98,16 @@ class Import extends AbstractJob
             }
 
             if ($omekaItem) {
-                // keep existing item sets, add any new item sets
+                // keep existing item sets/sites, add any new item sets/sites
                 $existingItem = $this->api->search('items', ['id' => $omekaItem->id()])->getContent();
+
                 $existingItemSets = array_keys($existingItem[0]->itemSets()) ?: [];
                 $newItemSets = $json['o:item_set'] ?: [];
                 $json['o:item_set'] = array_merge($existingItemSets, $newItemSets);
+
+                $existingItemSites = array_keys($existingItem[0]->sites()) ?: [];
+                $newItemSites = $json['o:site'] ?: [];
+                $json['o:site'] = array_merge($existingItemSites, $newItemSites);
 
                 $response = $this->api->update('items', $omekaItem->id(), $json);
                 $itemId = $omekaItem->id();
