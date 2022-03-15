@@ -1,3 +1,7 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Hong Zhang <zhangh@unlv.nevada.edu>, 2018
@@ -7,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-08 11:33-0500\n"
+"POT-Creation-Date: 2022-03-15 14:14-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
 "Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2018\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
@@ -17,851 +21,11 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. Class label for Linked Data Platform Vocabulary:Resource
-msgid "Resource"
-msgstr "资源"
-
-#. Class comment for Linked Data Platform Vocabulary:Resource
-msgid ""
-"A HTTP-addressable resource whose lifecycle is managed by a LDP server."
-msgstr "生命周期由LDP（关联数据平台）服务器管理的一个HTTP可寻址资源。"
-
-#. Class label for Linked Data Platform Vocabulary:RDFSource
-msgid "RDFSource"
-msgstr "RDFSource"
-
-#. Class comment for Linked Data Platform Vocabulary:RDFSource
-msgid ""
-"A Linked Data Platform Resource (LDPR) whose state is represented as RDF."
-msgstr "状态以RDF来表示的关联数据平台资源（LDPR）。"
-
-#. Class label for Linked Data Platform Vocabulary:NonRDFSource
-msgid "NonRDFSource"
-msgstr "NonRDFSource"
-
-#. Class comment for Linked Data Platform Vocabulary:NonRDFSource
-msgid ""
-"A Linked Data Platform Resource (LDPR) whose state is NOT represented as "
-"RDF."
-msgstr "状态不以RDF来表示的关联数据平台资源（LDPR）。"
-
-#. Class label for Linked Data Platform Vocabulary:Container
-msgid "Container"
-msgstr "容器"
-
-#. Class comment for Linked Data Platform Vocabulary:Container
-msgid ""
-"A Linked Data Platform RDF Source (LDP-RS) that also conforms to additional "
-"patterns and conventions for managing membership. Readers should refer to "
-"the specification defining this ontology for the list of behaviors "
-"associated with it."
-msgstr "一个同时符合管理成员资格的额外格式和惯例的关联数据平台RDF源（LDP-DS）。读者应当参考定义了与其相关的行为系列的本体论的规范。"
-
-#. Class label for Linked Data Platform Vocabulary:BasicContainer
-msgid "BasicContainer"
-msgstr "BasicContainer"
-
-#. Class comment for Linked Data Platform Vocabulary:BasicContainer
-msgid ""
-"An LDPC that uses a predefined predicate to simply link to its contained "
-"resources."
-msgstr "使用预定义谓词来简单链接到它包含的资源的一个LDPC（关联数据平台词汇）。"
-
-#. Class label for Linked Data Platform Vocabulary:DirectContainer
-msgid "DirectContainer"
-msgstr "DirectContainer"
-
-#. Class comment for Linked Data Platform Vocabulary:DirectContainer
-msgid ""
-"An LDPC that is similar to a LDP-DC but it allows an indirection with the "
-"ability to list as member a resource, such as a URI representing a real-"
-"world object, that is different from the resource that is created."
-msgstr ""
-"一个LDPC（关联数据平台词汇）类似于LDP-DC，但它允许一个能把资源列为成员的间接，譬如一个URI可以代表不同于被创建的资源的现实世界中的物体。"
-
-#. Class label for Linked Data Platform Vocabulary:IndirectContainer
-msgid "IndirectContainer"
-msgstr "IndirectContainer"
-
-#. Class comment for Linked Data Platform Vocabulary:IndirectContainer
-msgid ""
-"An LDPC that has the flexibility of choosing what form the membership "
-"triples take."
-msgstr "一个LDPC（关联数据平台词汇）, 可以灵活选择成员资格三元组能使用的格式。"
-
-#. Class label for Linked Data Platform Vocabulary:PageSortCriterion
-msgid "PageSortCriterion"
-msgstr "PageSortCriterion"
-
-#. Class comment for Linked Data Platform Vocabulary:PageSortCriterion
-msgid ""
-"Element in the list of sorting criteria used by the server to assign "
-"container members to pages."
-msgstr "服务器用来给页面指定容器成员的排序标准列表中的元素。"
-
-#. Class label for Linked Data Platform Vocabulary:Page
-#. Property label for Linked Data Platform Vocabulary:pageSequence
-msgid "Page"
-msgstr "Page"
-
-#. Class comment for Linked Data Platform Vocabulary:Page
-msgid ""
-"URI signifying that the resource is an in-sequence page resource, as defined"
-" by LDP Paging.  Typically used on Link rel='type' response headers."
-msgstr "表示了资源是一个序列内的页面资源的URI，由LDP搜寻定义。一般用于链接的rel='type' 的应答头中。"
-
-#. Property label for Linked Data Platform Vocabulary:hasMemberRelation
-msgid "hasMemberRelation"
-msgstr "hasMemberRelation"
-
-#. Property comment for Linked Data Platform Vocabulary:hasMemberRelation
-msgid ""
-"Indicates which predicate is used in membership triples, and that the "
-"membership triple pattern is < membership-constant-URI , object-of-"
-"hasMemberRelation, member-URI >."
-msgstr ""
-"表明哪个谓词是用在成员资格三元组中，以及成员资格三元组的格式为<成员资格固定URI，hasMemberRelation的宾语，成员URI>。"
-
-#. Property label for Linked Data Platform Vocabulary:isMemberOfRelation
-msgid "isMemmberOfRelation"
-msgstr "isMemmberOfRelation"
-
-#. Property comment for Linked Data Platform Vocabulary:isMemberOfRelation
-msgid ""
-"Indicates which predicate is used in membership triples, and that the "
-"membership triple pattern is < member-URI , object-of-isMemberOfRelation, "
-"membership-constant-URI >."
-msgstr ""
-"表明哪个谓词是用在成员资格三元组中，以及成员资格三元组的格式为<成员URI，isMemberOfRelation的宾语，成员资格固定URI>。"
-
-#. Property label for Linked Data Platform Vocabulary:membershipResource
-msgid "membershipResource"
-msgstr "membershipResource"
-
-#. Property comment for Linked Data Platform Vocabulary:membershipResource
-msgid ""
-"Indicates the membership-constant-URI in a membership triple.  Depending "
-"upon the membership triple pattern a container uses, as indicated by the "
-"presence of ldp:hasMemberRelation or ldp:isMemberOfRelation, the membership-"
-"constant-URI might occupy either the subject or object position in "
-"membership triples."
-msgstr ""
-"表明了在成员资格三元组中的成员资格固定URI。按照一个容器使用的成员资格三元组格式，正如被ldp:hasMemberRelation 或 "
-"ldp:isMemberOfRelation的存在所表明，成员资格固定URI可能在成员资格三元组中占据主语或宾语位置。"
-
-#. Property label for Linked Data Platform Vocabulary:insertedContentRelation
-msgid "insertedContentRelation"
-msgstr "insertedContentRelation"
-
-#. Property comment for Linked Data Platform
-#. Vocabulary:insertedContentRelation
-msgid ""
-"Indicates which triple in a creation request should be used as the member-"
-"URI value in the membership triple added when the creation request is "
-"successful."
-msgstr "表明了当创建请求成功时，创建请求中的哪一个三元组应当被用作成员资格三元组中的成员URI值。"
-
-#. Property label for Linked Data Platform Vocabulary:member
-msgid "member"
-msgstr "成员"
-
-#. Property comment for Linked Data Platform Vocabulary:member
-msgid ""
-"LDP servers should use this predicate as the membership predicate if there "
-"is no obvious predicate from an application vocabulary to use."
-msgstr "如果应用词汇中没有明显的谓词可用，LDP服务器应当使用该谓词当作成员资格谓词。"
-
-#. Property label for Linked Data Platform Vocabulary:contains
-msgid "contains"
-msgstr "包含"
-
-#. Property comment for Linked Data Platform Vocabulary:contains
-msgid "Links a container with resources created through the container."
-msgstr "把一个容器和在该容器中产生的资源联系起来。"
-
-#. Property label for Linked Data Platform Vocabulary:constrainedBy
-msgid "constrainedBy"
-msgstr "constrainedBy"
-
-#. Property comment for Linked Data Platform Vocabulary:constrainedBy
-msgid ""
-"Links a resource with constraints that the server requires requests like "
-"creation and update to conform to."
-msgstr "链接一个资源，带有服务器要求创建和更新等请求需符合的限制条件。"
-
-#. Property label for Linked Data Platform Vocabulary:pageSortCriteria
-msgid "pageSortCriteria"
-msgstr "pageSortCriteria"
-
-#. Property comment for Linked Data Platform Vocabulary:pageSortCriteria
-msgid ""
-"Link to the list of sorting criteria used by the server in a representation."
-"  Typically used on Link response headers as an extension link relation URI "
-"in the rel= parameter."
-msgstr "链接至在一个表现中服务器使用的排序标准列表。一般用于链接应答头，当作rel=参数中扩展链接关系URI。"
-
-#. Property label for Linked Data Platform Vocabulary:pageSortPredicate
-msgid "pageSortPredicate"
-msgstr "pageSortPredicate"
-
-#. Property comment for Linked Data Platform Vocabulary:pageSortPredicate
-msgid ""
-"Predicate used to specify the order of the members across a page sequence's "
-"in-sequence page resources; it asserts nothing about the order of members in"
-" the representation of a single page."
-msgstr "用于指定所有的在一个页面序列中的序列内页面资源的成员顺序的谓词；它没有断定有关单个页面表现内的成员顺序。"
-
-#. Property label for Linked Data Platform Vocabulary:pageSortOrder
-msgid "pageSortOrder"
-msgstr "pageSortOrder"
-
-#. Property comment for Linked Data Platform Vocabulary:pageSortOrder
-msgid ""
-"The ascending/descending/etc order used to order the members across pages in"
-" a page sequence."
-msgstr "在页面系列的各页面上为成员排序的升序/降序/等的排列顺序。"
-
-#. Property label for Linked Data Platform Vocabulary:pageSortCollation
-msgid "pageSortCollation"
-msgstr "pageSortCollation"
-
-#. Property comment for Linked Data Platform Vocabulary:pageSortCollation
-msgid ""
-"The collation used to order the members across pages in a page sequence when"
-" comparing strings."
-msgstr "当比较字符串时在页面系列的各页面上为成员排序的校勘。"
-
-#. Property comment for Linked Data Platform Vocabulary:pageSequence
-msgid ""
-"Link to a page sequence resource, as defined by LDP Paging.  Typically used "
-"to communicate the sorting criteria used to allocate LDPC members to pages."
-msgstr "链接至一个由LDP（关联数据平台）分页定义的页面序列资源。一般用来交流用于分配LDPC成员给页面的排序标准。"
-
-#. Class label for Fedora Commons Repository Ontology:AnnotatedResource
-msgid "annotated resource"
-msgstr "已注释的资源"
-
-#. Class comment for Fedora Commons Repository Ontology:AnnotatedResource
-msgid "A Resource that maintains properties in its own right."
-msgstr "维护自身属性的一个资源。"
-
-#. Class label for Fedora Commons Repository Ontology:Binary
-msgid "binary"
-msgstr "二进制"
-
-#. Class comment for Fedora Commons Repository Ontology:Binary
-msgid "A bitstream, with no further data properties."
-msgstr "比特流，没有更多数据属性。"
-
-#. Class label for Fedora Commons Repository Ontology:Blanknode
-msgid "blank node"
-msgstr "空白节点"
-
-#. Class comment for Fedora Commons Repository Ontology:Blanknode
-msgid "An entity that is a representation of an RDF blank node."
-msgstr "是一个RDF空白节点的表现的一个实体。"
-
-#. Class label for Fedora Commons Repository Ontology:Configuration
-msgid "Fedora transform configuration"
-msgstr "Fedora转化设置"
-
-#. Class comment for Fedora Commons Repository Ontology:Configuration
-msgid "A container for transform configuration."
-msgstr "转化设置的一个容器。"
-
-#. Class label for Fedora Commons Repository Ontology:NonRdfSourceDescription
-msgid "Fedora NonRdfSourceDescription"
-msgstr "Fedora NonRdfSourceDescription"
-
-#. Class comment for Fedora Commons Repository
-#. Ontology:NonRdfSourceDescription
-msgid "A container for a bitstream and associated properties."
-msgstr "用于比特流和关联属性的一个容器。"
-
-#. Class label for Fedora Commons Repository Ontology:EmbedResources
-msgid "embed resources"
-msgstr "内嵌资源"
-
-#. Class comment for Fedora Commons Repository Ontology:EmbedResources
-msgid "The set of triples representing child resources of a given resource."
-msgstr "代表一个给定资源的子资源的一组三元组。"
-
-#. Class label for Fedora Commons Repository Ontology:InboundReferences
-msgid "inbound references"
-msgstr "向内的引用"
-
-#. Class comment for Fedora Commons Repository Ontology:InboundReferences
-msgid ""
-"The set of triples representing other repository resources which link to a "
-"given resource."
-msgstr "代表其它库资源的链接到一个给定资源的一组三元组。"
-
-#. Class label for Fedora Commons Repository Ontology:NodeTypeConfiguration
-msgid "Fedora transform node type configuration"
-msgstr "Fedora转化节点类型设置"
-
-#. Class comment for Fedora Commons Repository Ontology:NodeTypeConfiguration
-msgid "A container for transform node type configuration."
-msgstr "转化节点类型设置的一个容器。"
-
-#. Class label for Fedora Commons Repository Ontology:Container
-msgid "Fedora Container"
-msgstr "Fedora容器"
-
-#. Class comment for Fedora Commons Repository Ontology:Container
-msgid ""
-"A Fedora Container: the fundamental quantum of durable content in a Fedora "
-"repository."
-msgstr "Fedoras容器：Fedoras库中的持久内容的基本量。"
-
-#. Class label for Fedora Commons Repository Ontology:Pairtree
-msgid "pair tree"
-msgstr "对树"
-
-#. Class comment for Fedora Commons Repository Ontology:Pairtree
-msgid ""
-"An entity that is a an intermediary node created in a PairTree hierarchy."
-msgstr "是在PairTree层级上创建的一个中间节点的一个实体。"
-
-#. Class label for Fedora Commons Repository Ontology:Relations
-msgid "Relations"
-msgstr "关系"
-
-#. Class comment for Fedora Commons Repository Ontology:Relations
-msgid "An entity that may be related to other repository entities."
-msgstr "可能会关联到其它的库实体的一个实体。"
-
-#. Class label for Fedora Commons Repository Ontology:Resource
-msgid "Fedora resource"
-msgstr "Fedora资源"
-
-#. Class comment for Fedora Commons Repository Ontology:Resource
-msgid ""
-"An entity that has been committed to the repository for safekeeping. For "
-"example, Fedora objects and datastreams are resources. A Fixity is not, "
-"because the provenance of the instance is entirely internal to the "
-"repository."
-msgstr "已被提交给库以便保管的一个实体。譬如，Fedora对象和数据流是资源。固定性不是，因为该实例的出处完全在库的内部。"
-
-#. Class label for Fedora Commons Repository Ontology:ServerManaged
-msgid "server managed"
-msgstr "在服务器上管理"
-
-#. Class comment for Fedora Commons Repository Ontology:ServerManaged
-msgid ""
-"The system-generated triples for a given resource (as opposed to explicity-"
-"declared properties)."
-msgstr "用于一个给定资源的系统生成的三元组（相对于明确声明的属性）。"
-
-#. Class label for Fedora Commons Repository Ontology:Thing
-msgid "Fedora thing"
-msgstr "Fedora事物"
-
-#. Class comment for Fedora Commons Repository Ontology:Thing
-msgid "Something that is contemplated in the Fedora repository model."
-msgstr "在Fedora库模型中构思出来的东西。"
-
-#. Class label for Fedora Commons Repository Ontology:Tombstone
-msgid "tombstone"
-msgstr "墓碑"
-
-#. Class comment for Fedora Commons Repository Ontology:Tombstone
-msgid "An entity that is a marker for a deleted node."
-msgstr "是被删除节点的标记的一个实体。"
-
-#. Class label for Fedora Commons Repository Ontology:Version
-msgid "A snapshot of a Fedora object at a given point in time."
-msgstr "在给定时间点的Fedora对象的快照。"
-
-#. Property label for Fedora Commons Repository Ontology:clusterCacheMode
-msgid "clusterCacheMode"
-msgstr "clusterCacheMode"
-
-#. Property label for Fedora Commons Repository Ontology:clusterMembers
-msgid "clusterMembers"
-msgstr "clusterMembers"
-
-#. Property label for Fedora Commons Repository Ontology:clusterName
-msgid "clusterName"
-msgstr "clusterName"
-
-#. Property label for Fedora Commons Repository Ontology:clusterNodeAddress
-msgid "clusterNodeAddress"
-msgstr "clusterNodeAddress"
-
-#. Property label for Fedora Commons Repository Ontology:clusterNodeView
-msgid "clusterNodeView"
-msgstr "clusterNodeView"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:clusterPhysicalAddress
-msgid "clusterPhysicalAddress"
-msgstr "clusterPhysicalAddress"
-
-#. Property label for Fedora Commons Repository Ontology:clusterSize
-msgid "clusterSize"
-msgstr "clusterSize"
-
-#. Property label for Fedora Commons Repository Ontology:computedChecksum
-msgid "computedChecksum"
-msgstr "computedChecksum"
-
-#. Property label for Fedora Commons Repository Ontology:computedSize
-msgid "computedSize"
-msgstr "computedSize"
-
-#. Property label for Fedora Commons Repository Ontology:couldNotStoreProperty
-msgid "couldNotStoreProperty"
-msgstr "couldNotStoreProperty"
-
-#. Property label for Fedora Commons Repository Ontology:created
-msgid "created"
-msgstr "created"
-
-#. Property label for Fedora Commons Repository Ontology:createdBy
-msgid "createdBy"
-msgstr "createdBy"
-
-#. Property label for Fedora Commons Repository Ontology:frozenMixinTypes
-msgid "frozenMixinTypes"
-msgstr "frozenMixinTypes"
-
-#. Property label for Fedora Commons Repository Ontology:frozenPrimaryType
-msgid "frozenPrimaryType"
-msgstr "frozenPrimaryType"
-
-#. Property label for Fedora Commons Repository Ontology:frozenUuid
-msgid "frozenUuid"
-msgstr "frozenUuid"
-
-#. Property label for Fedora Commons Repository Ontology:hasLocation
-msgid "hasLocation"
-msgstr "hasLocation"
-
-#. Property label for Fedora Commons Repository Ontology:hasNodeType
-msgid "hasNodeType"
-msgstr "hasNodeType"
-
-#. Property label for Fedora Commons Repository Ontology:hasVersionLabel
-msgid "hasVersionLabel"
-msgstr "hasVersionLabel"
-
-#. Property label for Fedora Commons Repository Ontology:isCheckedOut
-msgid "isCheckedOut"
-msgstr "isCheckedOut"
-
-#. Property label for Fedora Commons Repository Ontology:lastModified
-msgid "lastModified"
-msgstr "lastModified"
-
-#. Property label for Fedora Commons Repository Ontology:lastModifiedBy
-msgid "lastModifiedBy"
-msgstr "lastModifiedBy"
-
-#. Property label for Fedora Commons Repository Ontology:mimeType
-msgid "mimeType"
-msgstr "mimeType"
-
-#. Property label for Fedora Commons Repository Ontology:mixinTypes
-msgid "mixinTypes"
-msgstr "mixinTypes"
-
-#. Property label for Fedora Commons Repository Ontology:numFixityChecks
-msgid "numFixityChecks"
-msgstr "numFixityChecks"
-
-#. Property label for Fedora Commons Repository Ontology:numFixityErrors
-msgid "numFixityErrors"
-msgstr "numFixityErrors"
-
-#. Property label for Fedora Commons Repository Ontology:numFixityRepaired
-msgid "numFixityRepaired"
-msgstr "numFixityRepaired"
-
-#. Property label for Fedora Commons Repository Ontology:numberOfChildren
-msgid "numberOfChildren"
-msgstr "numberOfChildren"
-
-#. Property label for Fedora Commons Repository Ontology:objectCount
-msgid "objectCount"
-msgstr "objectCount"
-
-#. Property label for Fedora Commons Repository Ontology:objectSize
-msgid "objectSize"
-msgstr "objectSize"
-
-#. Property label for Fedora Commons Repository Ontology:primaryType
-msgid "primaryType"
-msgstr "primaryType"
-
-#. Property label for Fedora Commons Repository Ontology:UnmappedType
-msgid "UnmappedType"
-msgstr "UnmappedType"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryCustomRepName
-msgid "repositoryCustomRepName"
-msgstr "repositoryCustomRepName"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryIdentifierStability
-msgid "repositoryIdentifierStability"
-msgstr "repositoryIdentifierStability"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrRepositoryName
-msgid "repositoryJcrRepositoryName"
-msgstr "repositoryJcrRepositoryName"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrRepositoryVendor
-msgid "repositoryJcrRepositoryVendor"
-msgstr "repositoryJcrRepositoryVendor"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrRepositoryVendorUrl
-msgid "repositoryJcrRepositoryVendorUrl"
-msgstr "repositoryJcrRepositoryVendorUrl"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrRepositoryVersion
-msgid "repositoryJcrRepositoryVersion"
-msgstr "repositoryJcrRepositoryVersion"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrSpecificationName
-msgid "repositoryJcrSpecificationName"
-msgstr "repositoryJcrSpecificationName"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryJcrSpecificationVersion
-msgid "repositoryJcrSpecificationVersion"
-msgstr "repositoryJcrSpecificationVersion"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryLevel1Supported
-msgid "repositoryLevel1Supported"
-msgstr "repositoryLevel1Supported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryLevel2Supported
-msgid "repositoryLevel2Supported"
-msgstr "repositoryLevel2Supported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementAutocreatedDefinitionsSupported
-msgid "repositoryNodeTypeManagementAutocreatedDefinitionsSupported"
-msgstr "repositoryNodeTypeManagementAutocreatedDefinitionsSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementInheritance
-msgid "repositoryNodeTypeManagementInheritance"
-msgstr "repositoryNodeTypeManagementInheritance"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementMultipleBinaryPropertiesSupported
-msgid "repositoryNodeTypeManagementMultipleBinaryPropertiesSupported"
-msgstr "repositoryNodeTypeManagementMultipleBinaryPropertiesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementMultivaluedPropertiesSupported
-msgid "repositoryNodeTypeManagementMultivaluedPropertiesSupported"
-msgstr "repositoryNodeTypeManagementMultivaluedPropertiesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementOrderableChildNodesSupported
-msgid "repositoryNodeTypeManagementOrderableChildNodesSupported"
-msgstr "repositoryNodeTypeManagementOrderableChildNodesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementOverridesSupported
-msgid "repositoryNodeTypeManagementOverridesSupported"
-msgstr "repositoryNodeTypeManagementOverridesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementPrimaryItemNameSupported
-msgid "repositoryNodeTypeManagementPrimaryItemNameSupported"
-msgstr "repositoryNodeTypeManagementPrimaryItemNameSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementPropertyTypes
-msgid "repositoryNodeTypeManagementPropertyTypes"
-msgstr "repositoryNodeTypeManagementPropertyTypes"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementResidualDefinitionsSupported
-msgid "repositoryNodeTypeManagementResidualDefinitionsSupported"
-msgstr "repositoryNodeTypeManagementResidualDefinitionsSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementSameNameSiblingsSupported
-msgid "repositoryNodeTypeManagementSameNameSiblingsSupported"
-msgstr "repositoryNodeTypeManagementSameNameSiblingsSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementUpdateInUseSupported
-msgid "repositoryNodeTypeManagementUpdateInUseSupported"
-msgstr "repositoryNodeTypeManagementUpdateInUseSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryNodeTypeManagementValueConstraintsSupported
-msgid "repositoryNodeTypeManagementValueConstraintsSupported"
-msgstr "repositoryNodeTypeManagementValueConstraintsSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionAccessControlSupported
-msgid "repositoryOptionAccessControlSupported"
-msgstr "repositoryOptionAccessControlSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionActivitiesSupported
-msgid "repositoryOptionActivitiesSupported"
-msgstr "repositoryOptionActivitiesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionBaselinesSupported
-msgid "repositoryOptionBaselinesSupported"
-msgstr "repositoryOptionBaselinesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionJournaledObservationSupported
-msgid "repositoryOptionJournaledObservationSupported"
-msgstr "repositoryOptionJournaledObservationSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionLifecycleSupported
-msgid "repositoryOptionLifecycleSupported"
-msgstr "repositoryOptionLifecycleSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionLockingSupported
-msgid "repositoryOptionLockingSupported"
-msgstr "repositoryOptionLockingSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionNodeAndPropertyWithSameNameSupported
-msgid "repositoryOptionNodeAndPropertyWithSameNameSupported"
-msgstr "repositoryOptionNodeAndPropertyWithSameNameSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionNodeTypeManagementSupported
-msgid "repositoryOptionNodeTypeManagementSupported"
-msgstr "repositoryOptionNodeTypeManagementSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionObservationSupported
-msgid "repositoryOptionObservationSupported"
-msgstr "repositoryOptionObservationSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionQuerySqlSupported
-msgid "repositoryOptionQuerySqlSupported"
-msgstr "repositoryOptionQuerySqlSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionRetentionSupported
-msgid "repositoryOptionRetentionSupported"
-msgstr "repositoryOptionRetentionSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionShareableNodesSupported
-msgid "repositoryOptionShareableNodesSupported"
-msgstr "repositoryOptionShareableNodesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionSimpleVersioningSupported
-msgid "repositoryOptionSimpleVersioningSupported"
-msgstr "repositoryOptionSimpleVersioningSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionTransactionsSupported
-msgid "repositoryOptionTransactionsSupported"
-msgstr "repositoryOptionTransactionsSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionUnfiledContentSupported
-msgid "repositoryOptionUnfiledContentSupported"
-msgstr "repositoryOptionUnfiledContentSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionUpdateMixinNodeTypesSupported
-msgid "repositoryOptionUpdateMixinNodeTypesSupported"
-msgstr "repositoryOptionUpdateMixinNodeTypesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionUpdatePrimaryNodeTypeSupported
-msgid "repositoryOptionUpdatePrimaryNodeTypeSupported"
-msgstr "repositoryOptionUpdatePrimaryNodeTypeSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionVersioningSupported
-msgid "repositoryOptionVersioningSupported"
-msgstr "repositoryOptionVersioningSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionWorkspaceManagementSupported
-msgid "repositoryOptionWorkspaceManagementSupported"
-msgstr "repositoryOptionWorkspaceManagementSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionXmlExportSupported
-msgid "repositoryOptionXmlExportSupported"
-msgstr "repositoryOptionXmlExportSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryOptionXmlImportSupported
-msgid "repositoryOptionXmlImportSupported"
-msgstr "repositoryOptionXmlImportSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryQueryFullTextSearchSupported
-msgid "repositoryQueryFullTextSearchSupported"
-msgstr "repositoryQueryFullTextSearchSupported"
-
-#. Property label for Fedora Commons Repository Ontology:repositoryQueryJoins
-msgid "repositoryQueryJoins"
-msgstr "repositoryQueryJoins"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryQueryStoredQueriesSupported
-msgid "repositoryQueryStoredQueriesSupported"
-msgstr "repositoryQueryStoredQueriesSupported"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryQueryXpathDocOrder
-msgid "repositoryQueryXpathDocOrder"
-msgstr "repositoryQueryXpathDocOrder"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryQueryXpathPosIndex
-msgid "repositoryQueryXpathPosIndex"
-msgstr "repositoryQueryXpathPosIndex"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:repositoryWriteSupported
-msgid "repositoryWriteSupported"
-msgstr "repositoryWriteSupported"
-
-#. Property label for Fedora Commons Repository Ontology:uuid
-msgid "uuid"
-msgstr "uuid"
-
-#. Property label for Fedora Commons Repository Ontology:baseVersion
-msgid "base version"
-msgstr "基础版本"
-
-#. Property label for Fedora Commons Repository Ontology:hasChild
-msgid "has child"
-msgstr "有子数据"
-
-#. Property label for Fedora Commons Repository Ontology:hasContent
-msgid "has content"
-msgstr "有内容"
-
-#. Property comment for Fedora Commons Repository Ontology:hasContent
-msgid "Indicates a binary in which content is stored for this datastream."
-msgstr "表明了保存该数据流内容的一个二进制文件。"
-
-#. Property label for Fedora Commons Repository Ontology:hasDefaultWorkspace
-msgid "has default workspace"
-msgstr "有默认工作空间"
-
-#. Property comment for Fedora Commons Repository Ontology:hasDefaultWorkspace
-msgid "Indicates the default workspace of the repository."
-msgstr "表明了库中的默认工作空间。"
-
-#. Property label for Fedora Commons Repository Ontology:hasMember
-msgid "has member"
-msgstr "有成员"
-
-#. Property comment for Fedora Commons Repository Ontology:hasMember
-msgid ""
-"Links to a newly-minted identifier which can be used to create a repository "
-"resource."
-msgstr "链接到一个新创造的可以用来创建一个库资源的标识符。"
-
-#. Property label for Fedora Commons Repository Ontology:hasParent
-msgid "has parent"
-msgstr "有父数据"
-
-#. Property label for Fedora Commons Repository Ontology:hasResultsMember
-msgid "has results member"
-msgstr "有结果成员"
-
-#. Property label for Fedora Commons Repository Ontology:hasVersion
-msgid "has version"
-msgstr "有版本"
-
-#. Property label for Fedora Commons Repository Ontology:hasWorkspace
-msgid "has workspace"
-msgstr "有工作空间"
-
-#. Property comment for Fedora Commons Repository Ontology:hasWorkspace
-msgid "Links to a workspace of the repository."
-msgstr "通往库中的工作空间的链接。"
-
-#. Property label for Fedora Commons Repository Ontology:isContentOf
-msgid "is content of"
-msgstr "是以下的内容："
-
-#. Property comment for Fedora Commons Repository Ontology:isContentOf
-msgid "Indicates a datastream for which this resource contains the content. "
-msgstr "表明了该资源包含了其内容的一个数据流。"
-
-#. Property label for Fedora Commons Repository Ontology:predecessors
-msgid "predecessors"
-msgstr "前任"
-
-#. Property label for Fedora Commons Repository Ontology:hasAccessRoles
-msgid "has access roles"
-msgstr "有访问角色"
-
-#. Property label for Fedora Commons Repository Ontology:hasFixityService
-msgid "has fixity service"
-msgstr "有固定性服务"
-
-#. Property label for Fedora Commons Repository Ontology:hasNamespaces
-msgid "has namespaces"
-msgstr "有命名空间"
-
-#. Property label for Fedora Commons Repository Ontology:hasWorkspaces
-msgid "has workspaces"
-msgstr "有工作空间"
-
-#. Property label for Fedora Commons Repository Ontology:hasVersions
-msgid "has versions"
-msgstr "有版本"
-
-#. Property label for Fedora Commons Repository Ontology:sparql
-msgid "has sparql service"
-msgstr "有sparql服务"
-
-#. Property label for Fedora Commons Repository Ontology:digest
-msgid "digest"
-msgstr "消化"
-
-#. Property label for Fedora Commons Repository Ontology:exportsAs
-msgid "exports as"
-msgstr "导出为"
-
-#. Property label for Fedora Commons Repository Ontology:hasMoreResults
-msgid "has more results"
-msgstr "有更多结果"
-
-#. Property label for Fedora Commons Repository
-#. Ontology:hasTransactionProvider
-msgid "has transaction provider"
-msgstr "有交易提供者"
-
-#. Property label for Fedora Commons Repository Ontology:writable
-msgid "writable"
-msgstr "可写入"
-
-#: Module.php:119
+#: Module.php:118
 msgid "Last Modified"
 msgstr "最后修改于"
 
-#: Module.php:120
+#: Module.php:119
 msgid "Link"
 msgstr "链接"
 
@@ -880,11 +44,19 @@ msgstr "以往的导入"
 
 #: view/fedora-connector/index/past-imports.phtml:19
 msgid "Undo?"
-msgstr "撤销？"
+msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:20
 msgid "Job ID"
 msgstr "任务ID"
+
+#: view/fedora-connector/index/past-imports.phtml:21
+msgid "Container"
+msgstr "容器"
+
+#: view/fedora-connector/index/past-imports.phtml:34
+msgid "Undo job"
+msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:43
 msgid "Container's item does not exist."
@@ -900,7 +72,113 @@ msgstr "更新于："
 
 #: view/fedora-connector/index/past-imports.phtml:62
 msgid "Undone: "
-msgstr "已撤销："
+msgstr ""
+
+#: config/module.config.php:76
+msgid "Fedora Connector"
+msgstr "Fedora连接器"
+
+#: Module.php:84
+msgid "Fedora Vocabulary"
+msgstr "Fedora词汇"
+
+#: Module.php:85
+msgid "Vocabulary for a Fedora Repository"
+msgstr "给Fedora库的词汇"
+
+#: Module.php:97
+msgid "Linked Data Platform Vocabulary"
+msgstr "关联数据平台词汇"
+
+#: Module.php:98
+msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
+msgstr "关联数据平台使用的词汇。被Fedora使用。"
+
+#: src/Form/ConfigForm.php:21
+msgid "The Fedora Vocabulary is already installed."
+msgstr "Fedora词汇已经安装。"
+
+#: src/Form/ConfigForm.php:23
+msgid "Import the Fedora Vocabulary."
+msgstr "导入Ferora词汇。"
+
+#: src/Form/ConfigForm.php:30
+msgid "Import Fedora Vocabulary"
+msgstr "导入Ferora词汇"
+
+#: src/Form/ConfigForm.php:47
+msgid "The Linked Data Platform Vocabulary is already installed."
+msgstr "关联数据平台词汇已经安装。"
+
+#: src/Form/ConfigForm.php:49
+msgid "Import the Linked Data Platform Vocabulary."
+msgstr "导入关联数据平台词汇。"
+
+#: src/Form/ConfigForm.php:56
+msgid "Import Linked Data Platform Vocabulary"
+msgstr "导入关联数据平台词汇。"
+
+#: src/Form/ImportForm.php:34
+msgid "Fedora container URI"
+msgstr "Fedora容器URI"
+
+#: src/Form/ImportForm.php:35
+msgid ""
+"The URI of the Fedora container for the repository, collection or resource "
+"to import."
+msgstr ""
+
+#: src/Form/ImportForm.php:47
+msgid "Import files into Omeka S"
+msgstr "导入文件至Omeka S"
+
+#: src/Form/ImportForm.php:48
+msgid ""
+"If checked, original files will be imported into Omeka S. Otherwise, "
+"derivates will be displayed when possible, with links back to the original "
+"file in the Fedora repository."
+msgstr "如果点选的话，原始文件将被导入进Omeka S。否则，在可能时将显示衍生文件，链接到Fedora库的初始文件。"
+
+#: src/Form/ImportForm.php:59
+msgid "Ignore parent container"
+msgstr ""
+
+#: src/Form/ImportForm.php:60
+msgid ""
+"If checked, only descendents of the container at URI above will be imported "
+"as items--not the parent container itself."
+msgstr ""
+
+#: src/Form/ImportForm.php:71
+msgid "Import direct descendents only"
+msgstr ""
+
+#: src/Form/ImportForm.php:72
+msgid ""
+"If checked, only direct descendents of the container at URI above will be "
+"imported (i.e. no children of children). Otherwise, all resources below "
+"container will be recursively imported"
+msgstr ""
+
+#: src/Form/ImportForm.php:84
+msgid "A note about the purpose or source of this import"
+msgstr "A note about the purpose or source of this import"
+
+#: src/Form/ImportForm.php:96
+msgid "Select item set(s)"
+msgstr ""
+
+#: src/Form/ImportForm.php:102
+msgid "Optional. Import items into item set(s)."
+msgstr ""
+
+#: src/Form/ImportForm.php:126
+msgid "Select site(s)"
+msgstr ""
+
+#: src/Form/ImportForm.php:132
+msgid "Optional. Import items into site(s)."
+msgstr ""
 
 #: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
@@ -919,74 +197,3 @@ msgstr "There was an error during validation"
 #, php-format
 msgid "Undo in progress in the following jobs: %s"
 msgstr "在以下任务中的撤销操作正在进行：%s"
-
-#: src/Form/ImportForm.php:16
-msgid "Fedora container URI"
-msgstr "Fedora容器URI"
-
-#: src/Form/ImportForm.php:17
-msgid "The URI of the Fedora container"
-msgstr "Ferora容器的URI"
-
-#: src/Form/ImportForm.php:29
-msgid "Import files into Omeka S"
-msgstr "导入文件至Omeka S"
-
-#: src/Form/ImportForm.php:30
-msgid ""
-"If checked, original files will be imported into Omeka S. Otherwise, "
-"derivates will be displayed when possible, with links back to the original "
-"file in the Fedora repository."
-msgstr "如果点选的话，原始文件将被导入进Omeka S。否则，在可能时将显示衍生文件，链接到Fedora库的初始文件。"
-
-#: src/Form/ImportForm.php:39
-msgid "A note about the purpose or source of this import"
-msgstr "A note about the purpose or source of this import"
-
-#: src/Form/ImportForm.php:51
-msgid "Optional. Import items into this item set."
-msgstr "可选项。把条目导入进该条目集。 "
-
-#: src/Form/ConfigForm.php:21
-msgid "The Fedora Vocabulary is already installed."
-msgstr "Fedora词汇已经安装。"
-
-#: src/Form/ConfigForm.php:23
-msgid "Import the Fedora Vocabulary."
-msgstr "导入Ferora词汇。"
-
-#: src/Form/ConfigForm.php:30
-msgid "Import Fedora Vocabulary"
-msgstr "导入Ferora词汇"
-
-#: src/Form/ConfigForm.php:46
-msgid "The Linked Data Platform Vocabulary is already installed."
-msgstr "关联数据平台词汇已经安装。"
-
-#: src/Form/ConfigForm.php:48
-msgid "Import the Linked Data Platform Vocabulary."
-msgstr "导入关联数据平台词汇。"
-
-#: src/Form/ConfigForm.php:55
-msgid "Import Linked Data Platform Vocabulary"
-msgstr "导入关联数据平台词汇。"
-
-#: config/module.config.php:76
-msgid "Fedora Connector"
-msgstr "Fedora连接器"
-
-#: Module.php:85
-msgid "Fedora Vocabulary"
-msgstr "Fedora词汇"
-
-#: Module.php:86
-msgid "Vocabulary for a Fedora Repository"
-msgstr "给Fedora库的词汇"
-
-#: Module.php:98
-msgid "Linked Data Platform Vocabulary"
-msgstr "关联数据平台词汇"
-
-#: Module.php:99
-msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
-msgstr "关联数据平台使用的词汇。被Fedora使用。"

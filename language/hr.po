@@ -4,7 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Rivo Zängov <eraser@eraser.ee>, 2018
+# Angela-Marina Batarelo <angela-marina.batarelo@ericsson.com>, 2021
+# Josip Ilic <josip.ilic@ericsson.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -13,46 +14,46 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-15 14:14-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
-"Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2018\n"
-"Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
+"Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
+"Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: Module.php:118
 msgid "Last Modified"
-msgstr "Viimati muudetud"
+msgstr "Zadnji Put Promijenjeno"
 
 #: Module.php:119
 msgid "Link"
-msgstr "ink"
+msgstr "Poveznica"
 
 #: view/fedora-connector/index/index.phtml:5
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Fedora Import"
-msgstr "Fedora import"
+msgstr "Fedora Uvoz"
 
 #: view/fedora-connector/index/index.phtml:5
 msgid "Import Settings"
-msgstr "Importimise seaded"
+msgstr "Postavke Uvoza"
 
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Past Imports"
-msgstr "Varasemad importimised"
+msgstr "Prošli Uvozi"
 
 #: view/fedora-connector/index/past-imports.phtml:19
 msgid "Undo?"
-msgstr "Tühistada?"
+msgstr "Poništi?"
 
 #: view/fedora-connector/index/past-imports.phtml:20
 msgid "Job ID"
-msgstr "Töö ID"
+msgstr "ID posla"
 
 #: view/fedora-connector/index/past-imports.phtml:21
 msgid "Container"
-msgstr "Konteiner"
+msgstr "Kontejner"
 
 #: view/fedora-connector/index/past-imports.phtml:34
 msgid "Undo job"
@@ -60,67 +61,147 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:43
 msgid "Container's item does not exist."
-msgstr "Konteineri ühikut pole olemas."
+msgstr ""
+"Stavka spremnika ne postoji.\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: view/fedora-connector/index/past-imports.phtml:56
 msgid "Added: "
-msgstr "Lisatud:"
+msgstr "Dodano:"
 
 #: view/fedora-connector/index/past-imports.phtml:57
 msgid "Updated: "
-msgstr "Värskendatud:"
+msgstr "Ažurirano:"
 
 #: view/fedora-connector/index/past-imports.phtml:62
 msgid "Undone: "
-msgstr "Tühistati:"
+msgstr "Poništeno:"
 
 #: config/module.config.php:76
 msgid "Fedora Connector"
-msgstr "Fedora ühendaja"
+msgstr ""
+"Fedora konektor\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: Module.php:84
 msgid "Fedora Vocabulary"
-msgstr "Fedora sõnastik"
+msgstr ""
+"Fedora rječnik\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: Module.php:85
 msgid "Vocabulary for a Fedora Repository"
-msgstr "Fedora hoidla sõnastik"
+msgstr ""
+"Rječnik za Fedora spremište\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: Module.php:97
 msgid "Linked Data Platform Vocabulary"
 msgstr ""
+"Rječnik rječnika povezane platforme podataka\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: Module.php:98
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
 msgstr ""
+"Rječnik za povezanu podatkovnu platformu. Koristi Fedora\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: src/Form/ConfigForm.php:21
 msgid "The Fedora Vocabulary is already installed."
-msgstr ""
+msgstr "Fedora Vokabular je već instaliran."
 
 #: src/Form/ConfigForm.php:23
 msgid "Import the Fedora Vocabulary."
-msgstr ""
+msgstr "Uvedi Fedora Vokabular"
 
 #: src/Form/ConfigForm.php:30
 msgid "Import Fedora Vocabulary"
-msgstr ""
+msgstr "Uvedi Fedora Vokabular"
 
 #: src/Form/ConfigForm.php:47
 msgid "The Linked Data Platform Vocabulary is already installed."
 msgstr ""
+"Rječnik rječnika povezane platforme podataka već je instaliran.\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: src/Form/ConfigForm.php:49
 msgid "Import the Linked Data Platform Vocabulary."
 msgstr ""
+"Uvezite rječnik rječnika povezane platforme.\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: src/Form/ConfigForm.php:56
 msgid "Import Linked Data Platform Vocabulary"
 msgstr ""
+"Uvoz rječnika povezane platforme podataka\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: src/Form/ImportForm.php:34
 msgid "Fedora container URI"
 msgstr ""
+"URI Fedora spremnik\n"
+" \n"
+"\n"
+" \n"
+" \n"
+" \n"
+" \n"
+" "
 
 #: src/Form/ImportForm.php:35
 msgid ""
@@ -130,7 +211,7 @@ msgstr ""
 
 #: src/Form/ImportForm.php:47
 msgid "Import files into Omeka S"
-msgstr "Impordi faile Omeka S-i"
+msgstr "Uvedi datoteke u Omeka S"
 
 #: src/Form/ImportForm.php:48
 msgid ""
@@ -138,6 +219,9 @@ msgid ""
 "derivates will be displayed when possible, with links back to the original "
 "file in the Fedora repository."
 msgstr ""
+"Ako je označeno, izvorne datoteke bit će uvezene u Omeka S. Inače, izvodi će"
+" se prikazivati ​​kad god je to moguće, s vezama natrag na izvornu datoteku "
+"u Fedora spremištu."
 
 #: src/Form/ImportForm.php:59
 msgid "Ignore parent container"
@@ -162,7 +246,7 @@ msgstr ""
 
 #: src/Form/ImportForm.php:84
 msgid "A note about the purpose or source of this import"
-msgstr ""
+msgstr "Bilješka o svrsi ili izvoru ovog uvoza"
 
 #: src/Form/ImportForm.php:96
 msgid "Select item set(s)"
@@ -182,7 +266,7 @@ msgstr ""
 
 #: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
-msgstr ""
+msgstr "Pojavio se problem prilikom povezivanja s URI-em Fedora Spremnika"
 
 #: src/Controller/IndexController.php:30
 #, php-format
@@ -191,7 +275,7 @@ msgstr ""
 
 #: src/Controller/IndexController.php:36
 msgid "There was an error during validation"
-msgstr "Kontrollimisel tekkis tõrge"
+msgstr "Pojavila se greška prilikom validacije"
 
 #: src/Controller/IndexController.php:52
 #, php-format
