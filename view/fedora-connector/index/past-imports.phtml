@@ -36,17 +36,10 @@ $escape = $this->plugin('escapeHtml');
             <td>
                 <?php $args = $job->args();
                 $containerUri = $args['container_uri'];
-                echo $containerUri;
-                $response = $this->api()->search('fedora_items', array('uri' => $containerUri));
-                $content = $response->getContent();
-                if (count($content) == 0) {
-                    echo ' -- ' . $this->translate("Container's item does not exist.");
-                } else {
-                    $containerFedoraItem = $content[0];
-                    $containerItem = $containerFedoraItem->item();
-                    echo ' -- ' . $containerItem->displayTitle();
-                }
-
+                // Find the container ID to use as a shorter link
+                $urlArray = explode('/', $containerUri);
+                $lastElement = end($urlArray);
+                echo $this->hyperlink($lastElement, $containerUri);
                 ?>
             </td>
             <td>
