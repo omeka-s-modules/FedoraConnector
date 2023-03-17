@@ -7,12 +7,19 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
 {
     public function getJsonLd()
     {
+        if ($this->undoJob()) {
+            $undo_job = $this->undoJob()->getReference();
+        }
+        if ($this->rerunJob()) {
+            $rerun_job = $this->rerunJob()->getReference();
+        }
         return [
             'added_count' => $this->resource->getAddedCount(),
             'updated_count' => $this->resource->getUpdatedCount(),
             'comment' => $this->resource->getComment(),
-            'o:job' => $this->getReference(), //two calls to getRefercence for different data looks odd. @todo
-            'o:undo_job' => $this->getReference(),
+            'o:job' => $this->getReference(),
+            'o:undo_job' => $undo_job,
+            'o:rerun_job' => $rerun_job,
         ];
     }
 
@@ -31,6 +38,12 @@ class FedoraImportRepresentation extends AbstractEntityRepresentation
     {
         return $this->getAdapter('jobs')
             ->getRepresentation($this->resource->getUndoJob());
+    }
+
+    public function rerunJob()
+    {
+        return $this->getAdapter('jobs')
+            ->getRepresentation($this->resource->getRerunJob());
     }
 
     public function comment()
