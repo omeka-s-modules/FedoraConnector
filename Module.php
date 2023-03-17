@@ -66,10 +66,16 @@ class Module extends AbstractModule
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
         $sharedEventManager->attach(
-                'Omeka\Controller\Admin\Item',
-                'view.show.after',
-                [$this, 'showSource']
-                );
+            'Omeka\Controller\Admin\Item',
+            'view.show.after',
+            [$this, 'showSource']
+            );
+
+        $sharedEventManager->attach(
+            \Omeka\Api\Adapter\ItemAdapter::class,
+            'api.search.query',
+            [$this, 'importSearch']
+        );
     }
     /**
      * Get this module's configuration form.
@@ -135,6 +141,23 @@ class Module extends AbstractModule
             echo '<h3>' . $view->translate('Original') . '</h3>';
             echo '<p>' . $view->translate('Last Modified') . ' ' . $view->i18n()->dateFormat($fedoraItem->lastModified()) . '</p>';
             echo '<p><a href="' . $fedoraItem->uri() . '">' . $view->translate('Link') . '</a></p>';
+        }
+    }
+
+    public function importSearch($event)
+    {
+        $query = $event->getParam('request')->getContent();
+        if (isset($query['fedora_import_id'])) {
+            $qb = $event->getParam('queryBuilder');
+            $adapter = $event->getTarget();
+            $importItemAlias = $adapter->createAlias();
+            $qb->innerJoin(
+                \FedoraConnector\Entity\FedoraItem::class, $importItemAlias,
+                'WITH', "$importItemAlias.item = omeka_root.id"
+            )->andWhere($qb->expr()->eq(
+                "$importItemAlias.job",
+                $adapter->createNamedParameter($qb, $query['fedora_import_id'])
+            ));
         }
     }
 }

@@ -96,9 +96,9 @@ class IndexController extends AbstractActionController
     protected function rerunJob($jobId)
     {
         $response = $this->api()->search('fedora_imports', ['job_id' => $jobId]);
-        $dspaceImport = $response->getContent()[0];
+        $fedoraImport = $response->getContent()[0];
         // Get original import job args to run again
-        $rerunData = $dspaceImport->job()->args();
+        $rerunData = $fedoraImport->job()->args();
         $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $rerunData);
         $response = $this->api()->update('fedora_imports',
                 $fedoraImport->id(),
