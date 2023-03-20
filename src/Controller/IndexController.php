@@ -19,7 +19,7 @@ class IndexController extends AbstractActionController
             if ($form->isValid()) {
                 $uri = $data['container_uri'];
                 // do a quick check that the endpoint is available
-                if (! file_get_contents($uri)) {
+                if (! @file_get_contents($uri)) {
                     $this->messenger()->addError('There was a problem connecting to the Fedora Container URI'); // @translate
                     return $view;
                 }
