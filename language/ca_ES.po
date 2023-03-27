@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hong Zhang <zhangh@unlv.nevada.edu>, 2018
+# Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023
 # 
 #, fuzzy
 msgid ""
@@ -13,34 +13,34 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-27 16:02-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
-"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2018\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
+"Last-Translator: Rubén Alcaraz Martínez <rubenalcarazmartinez@gmail.com>, 2023\n"
+"Language-Team: Catalan (Spain) (https://www.transifex.com/omeka/teams/14184/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ca_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Module.php:142
 msgid "Last Modified"
-msgstr "最后修改于"
+msgstr "Darrera modificació"
 
 #: Module.php:143
 msgid "Link"
-msgstr "链接"
+msgstr "Enllaç"
 
 #: view/fedora-connector/index/index.phtml:5
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Fedora Import"
-msgstr "Fedora导入"
+msgstr ""
 
 #: view/fedora-connector/index/index.phtml:5
 msgid "Import Settings"
-msgstr "导入设置"
+msgstr "Importa els paràmetres"
 
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Past Imports"
-msgstr "以往的导入"
+msgstr "Importacions anteriors"
 
 #: view/fedora-connector/index/past-imports.phtml:19
 msgid "Undo"
@@ -52,11 +52,11 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:21
 msgid "Job ID"
-msgstr "任务ID"
+msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:22
 msgid "Container"
-msgstr "容器"
+msgstr "Contenidor"
 
 #: view/fedora-connector/index/past-imports.phtml:36
 msgid "Undo job"
@@ -72,55 +72,55 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:75
 msgid "Undone: "
-msgstr ""
+msgstr "Desfet:"
 
 #: config/module.config.php:76
 msgid "Fedora Connector"
-msgstr "Fedora连接器"
+msgstr "Fedora Connector"
 
 #: Module.php:108
 msgid "Fedora Vocabulary"
-msgstr "Fedora词汇"
+msgstr "Vocabulari del Fedora"
 
 #: Module.php:109
 msgid "Vocabulary for a Fedora Repository"
-msgstr "给Fedora库的词汇"
+msgstr ""
 
 #: Module.php:121
 msgid "Linked Data Platform Vocabulary"
-msgstr "关联数据平台词汇"
+msgstr ""
 
 #: Module.php:122
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
-msgstr "关联数据平台使用的词汇。被Fedora使用。"
+msgstr ""
 
 #: src/Form/ConfigForm.php:21
 msgid "The Fedora Vocabulary is already installed."
-msgstr "Fedora词汇已经安装。"
+msgstr ""
 
 #: src/Form/ConfigForm.php:23
 msgid "Import the Fedora Vocabulary."
-msgstr "导入Ferora词汇。"
+msgstr "Importa el vocabulari del Fedora."
 
 #: src/Form/ConfigForm.php:30
 msgid "Import Fedora Vocabulary"
-msgstr "导入Ferora词汇"
+msgstr "Importa el vocabulari del Fedora"
 
 #: src/Form/ConfigForm.php:47
 msgid "The Linked Data Platform Vocabulary is already installed."
-msgstr "关联数据平台词汇已经安装。"
+msgstr ""
 
 #: src/Form/ConfigForm.php:49
 msgid "Import the Linked Data Platform Vocabulary."
-msgstr "导入关联数据平台词汇。"
+msgstr ""
 
 #: src/Form/ConfigForm.php:56
 msgid "Import Linked Data Platform Vocabulary"
-msgstr "导入关联数据平台词汇。"
+msgstr ""
 
 #: src/Form/ImportForm.php:34
 msgid "Fedora container URI"
-msgstr "Fedora容器URI"
+msgstr ""
 
 #: src/Form/ImportForm.php:35
 msgid ""
@@ -130,14 +130,14 @@ msgstr ""
 
 #: src/Form/ImportForm.php:47
 msgid "Import files into Omeka S"
-msgstr "导入文件至Omeka S"
+msgstr "Importa els fitxers a l'Omeka S"
 
 #: src/Form/ImportForm.php:48
 msgid ""
 "If checked, original files will be imported into Omeka S. Otherwise, "
 "derivates will be displayed when possible, with links back to the original "
 "file in the Fedora repository."
-msgstr "如果点选的话，原始文件将被导入进Omeka S。否则，在可能时将显示衍生文件，链接到Fedora库的初始文件。"
+msgstr ""
 
 #: src/Form/ImportForm.php:59
 msgid "Ignore parent container"
@@ -162,7 +162,7 @@ msgstr ""
 
 #: src/Form/ImportForm.php:84
 msgid "A note about the purpose or source of this import"
-msgstr "A note about the purpose or source of this import"
+msgstr ""
 
 #: src/Form/ImportForm.php:96
 msgid "Select item set(s)"
@@ -174,24 +174,24 @@ msgstr ""
 
 #: src/Form/ImportForm.php:126
 msgid "Select site(s)"
-msgstr ""
+msgstr "Selecciona el lloc(s)"
 
 #: src/Form/ImportForm.php:132
 msgid "Optional. Import items into site(s)."
-msgstr ""
+msgstr "Opcional. Importa els registres en el lloc(s)."
 
 #: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
-msgstr "连接到Fedora容器URI 时发生问题"
+msgstr ""
 
 #: src/Controller/IndexController.php:30
 #, php-format
 msgid "Importing in Job ID %s"
-msgstr "正在导入任务ID %s"
+msgstr ""
 
 #: src/Controller/IndexController.php:36
 msgid "There was an error during validation"
-msgstr "There was an error during validation"
+msgstr "Hi ha hagut un error en la validació"
 
 #: src/Controller/IndexController.php:53
 #, php-format

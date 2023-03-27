@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 14:14-0700\n"
+"POT-Creation-Date: 2023-03-27 16:02-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
 "Last-Translator: Rivo Zängov <eraser@eraser.ee>, 2018\n"
 "Language-Team: Estonian (https://www.transifex.com/omeka/teams/14184/et/)\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Module.php:118
+#: Module.php:142
 msgid "Last Modified"
 msgstr "Viimati muudetud"
 
-#: Module.php:119
+#: Module.php:143
 msgid "Link"
 msgstr "ink"
 
@@ -43,34 +43,34 @@ msgid "Past Imports"
 msgstr "Varasemad importimised"
 
 #: view/fedora-connector/index/past-imports.phtml:19
-msgid "Undo?"
-msgstr "Tühistada?"
+msgid "Undo"
+msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:20
+msgid "Re-run"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:21
 msgid "Job ID"
 msgstr "Töö ID"
 
-#: view/fedora-connector/index/past-imports.phtml:21
+#: view/fedora-connector/index/past-imports.phtml:22
 msgid "Container"
 msgstr "Konteiner"
 
-#: view/fedora-connector/index/past-imports.phtml:34
+#: view/fedora-connector/index/past-imports.phtml:36
 msgid "Undo job"
 msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:43
-msgid "Container's item does not exist."
-msgstr "Konteineri ühikut pole olemas."
+#: view/fedora-connector/index/past-imports.phtml:37
+msgid "Rerun job"
+msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:56
-msgid "Added: "
-msgstr "Lisatud:"
+#: view/fedora-connector/index/past-imports.phtml:73
+msgid "Reran: "
+msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:57
-msgid "Updated: "
-msgstr "Värskendatud:"
-
-#: view/fedora-connector/index/past-imports.phtml:62
+#: view/fedora-connector/index/past-imports.phtml:75
 msgid "Undone: "
 msgstr "Tühistati:"
 
@@ -78,19 +78,19 @@ msgstr "Tühistati:"
 msgid "Fedora Connector"
 msgstr "Fedora ühendaja"
 
-#: Module.php:84
+#: Module.php:108
 msgid "Fedora Vocabulary"
 msgstr "Fedora sõnastik"
 
-#: Module.php:85
+#: Module.php:109
 msgid "Vocabulary for a Fedora Repository"
 msgstr "Fedora hoidla sõnastik"
 
-#: Module.php:97
+#: Module.php:121
 msgid "Linked Data Platform Vocabulary"
 msgstr ""
 
-#: Module.php:98
+#: Module.php:122
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
 msgstr ""
 
@@ -193,7 +193,16 @@ msgstr ""
 msgid "There was an error during validation"
 msgstr "Kontrollimisel tekkis tõrge"
 
-#: src/Controller/IndexController.php:52
+#: src/Controller/IndexController.php:53
 #, php-format
-msgid "Undo in progress in the following jobs: %s"
+msgid "Undo in progress on the following jobs: %s"
+msgstr ""
+
+#: src/Controller/IndexController.php:63
+#, php-format
+msgid "Rerun in progress on the following jobs: %s"
+msgstr ""
+
+#: src/Controller/IndexController.php:68
+msgid "Error: no jobs selected"
 msgstr ""

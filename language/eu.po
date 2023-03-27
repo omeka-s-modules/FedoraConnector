@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Hong Zhang <zhangh@unlv.nevada.edu>, 2018
+# Iametza Interaktiboa, 2022
 # 
 #, fuzzy
 msgid ""
@@ -13,34 +13,34 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-03-27 16:02-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
-"Last-Translator: Hong Zhang <zhangh@unlv.nevada.edu>, 2018\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/omeka/teams/14184/zh_CN/)\n"
+"Last-Translator: Iametza Interaktiboa, 2022\n"
+"Language-Team: Basque (https://www.transifex.com/omeka/teams/14184/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: eu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Module.php:142
 msgid "Last Modified"
-msgstr "最后修改于"
+msgstr "Azkenekoz Aldatua"
 
 #: Module.php:143
 msgid "Link"
-msgstr "链接"
+msgstr "Lotura"
 
 #: view/fedora-connector/index/index.phtml:5
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Fedora Import"
-msgstr "Fedora导入"
+msgstr "Fedora Inportazioa"
 
 #: view/fedora-connector/index/index.phtml:5
 msgid "Import Settings"
-msgstr "导入设置"
+msgstr "Inportazio Ezaugarriak"
 
 #: view/fedora-connector/index/past-imports.phtml:6
 msgid "Past Imports"
-msgstr "以往的导入"
+msgstr "Pasatako Inportazioak"
 
 #: view/fedora-connector/index/past-imports.phtml:19
 msgid "Undo"
@@ -52,15 +52,15 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:21
 msgid "Job ID"
-msgstr "任务ID"
+msgstr "Lan ID"
 
 #: view/fedora-connector/index/past-imports.phtml:22
 msgid "Container"
-msgstr "容器"
+msgstr "Edukitzailea"
 
 #: view/fedora-connector/index/past-imports.phtml:36
 msgid "Undo job"
-msgstr ""
+msgstr "Desegin lana"
 
 #: view/fedora-connector/index/past-imports.phtml:37
 msgid "Rerun job"
@@ -72,86 +72,92 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:75
 msgid "Undone: "
-msgstr ""
+msgstr "Deseginda:"
 
 #: config/module.config.php:76
 msgid "Fedora Connector"
-msgstr "Fedora连接器"
+msgstr "Fedora Konektorea"
 
 #: Module.php:108
 msgid "Fedora Vocabulary"
-msgstr "Fedora词汇"
+msgstr "Fedora Hiztegia"
 
 #: Module.php:109
 msgid "Vocabulary for a Fedora Repository"
-msgstr "给Fedora库的词汇"
+msgstr "Fedora Biltegirako hiztegia"
 
 #: Module.php:121
 msgid "Linked Data Platform Vocabulary"
-msgstr "关联数据平台词汇"
+msgstr "Lotutako Datu Plataforma Hiztegia"
 
 #: Module.php:122
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
-msgstr "关联数据平台使用的词汇。被Fedora使用。"
+msgstr "Lotutako Datu Plataformarentzat hiztegia. Fedorak erabilia"
 
 #: src/Form/ConfigForm.php:21
 msgid "The Fedora Vocabulary is already installed."
-msgstr "Fedora词汇已经安装。"
+msgstr "Fedora Hiztegia lehendik instalatuta dago."
 
 #: src/Form/ConfigForm.php:23
 msgid "Import the Fedora Vocabulary."
-msgstr "导入Ferora词汇。"
+msgstr "Inportatu Fedora Hiztegia."
 
 #: src/Form/ConfigForm.php:30
 msgid "Import Fedora Vocabulary"
-msgstr "导入Ferora词汇"
+msgstr "Inportatu Fedora Hiztegia"
 
 #: src/Form/ConfigForm.php:47
 msgid "The Linked Data Platform Vocabulary is already installed."
-msgstr "关联数据平台词汇已经安装。"
+msgstr "Lotutako Datu Plataforma Hiztegia lehendik instalatuta dago."
 
 #: src/Form/ConfigForm.php:49
 msgid "Import the Linked Data Platform Vocabulary."
-msgstr "导入关联数据平台词汇。"
+msgstr "Inportatu Lotutako Datu Plataforma Hiztegia."
 
 #: src/Form/ConfigForm.php:56
 msgid "Import Linked Data Platform Vocabulary"
-msgstr "导入关联数据平台词汇。"
+msgstr "Inportatu Lotutako Datu Plataforma Hiztegia"
 
 #: src/Form/ImportForm.php:34
 msgid "Fedora container URI"
-msgstr "Fedora容器URI"
+msgstr "Fedora edukitaile URIa"
 
 #: src/Form/ImportForm.php:35
 msgid ""
 "The URI of the Fedora container for the repository, collection or resource "
 "to import."
 msgstr ""
+"Inportatzeko Fedora edukitzaileko biltegi, bilduma edo baliabidearen URIa."
 
 #: src/Form/ImportForm.php:47
 msgid "Import files into Omeka S"
-msgstr "导入文件至Omeka S"
+msgstr "Inportatu fitxategiak Omeka S barruan"
 
 #: src/Form/ImportForm.php:48
 msgid ""
 "If checked, original files will be imported into Omeka S. Otherwise, "
 "derivates will be displayed when possible, with links back to the original "
 "file in the Fedora repository."
-msgstr "如果点选的话，原始文件将被导入进Omeka S。否则，在可能时将显示衍生文件，链接到Fedora库的初始文件。"
+msgstr ""
+"Hautatuta badago, fitxategi originalak inportatuko dira Omeka Sra. Bestela, "
+"eratorriak erakutsiko dira ahal denean, Fedora biltegirako fitxategi "
+"originalera itzultzeko estekekin."
 
 #: src/Form/ImportForm.php:59
 msgid "Ignore parent container"
-msgstr ""
+msgstr "Ez ikusia egin edukitzaile gurasoari"
 
 #: src/Form/ImportForm.php:60
 msgid ""
 "If checked, only descendents of the container at URI above will be imported "
 "as items--not the parent container itself."
 msgstr ""
+"Hautatuta badago, hurrengo helbideko edukitzailearen semeak bakarrik "
+"inportatuko dira elementu bezala--ez guraso edukitzailea bera."
 
 #: src/Form/ImportForm.php:71
 msgid "Import direct descendents only"
-msgstr ""
+msgstr "Inportatu zuzeneko ondorengoak bakarrik"
 
 #: src/Form/ImportForm.php:72
 msgid ""
@@ -159,39 +165,42 @@ msgid ""
 "imported (i.e. no children of children). Otherwise, all resources below "
 "container will be recursively imported"
 msgstr ""
+"Hautatuta badago, hurrengo helbideko edukitzailearen zuzeneko semeak "
+"bakarrik inportatuko dira (adb. ez semearen semeak). Bestela, edukitzaileko "
+"baliabide guztiak errekurtsiboki inportatuko dira."
 
 #: src/Form/ImportForm.php:84
 msgid "A note about the purpose or source of this import"
-msgstr "A note about the purpose or source of this import"
+msgstr "Inportazio honen helburu edo jatorriaren inguruko oharra"
 
 #: src/Form/ImportForm.php:96
 msgid "Select item set(s)"
-msgstr ""
+msgstr "Hautatu elementu multzoa(k)"
 
 #: src/Form/ImportForm.php:102
 msgid "Optional. Import items into item set(s)."
-msgstr ""
+msgstr "Hautazkoa. Inportatu elementuak elementu multzoan/multzoetan."
 
 #: src/Form/ImportForm.php:126
 msgid "Select site(s)"
-msgstr ""
+msgstr "Hautatu ataria(k)"
 
 #: src/Form/ImportForm.php:132
 msgid "Optional. Import items into site(s)."
-msgstr ""
+msgstr "Hautazkoa. Inportatu elementuak atarian/atarietan."
 
 #: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
-msgstr "连接到Fedora容器URI 时发生问题"
+msgstr "Errore bat egon da Fedora Edukitzailearen URI helbidera konektatzean"
 
 #: src/Controller/IndexController.php:30
 #, php-format
 msgid "Importing in Job ID %s"
-msgstr "正在导入任务ID %s"
+msgstr "%s Lan ID inportatzen"
 
 #: src/Controller/IndexController.php:36
 msgid "There was an error during validation"
-msgstr "There was an error during validation"
+msgstr "Errorea egon da balidazio garaian"
 
 #: src/Controller/IndexController.php:53
 #, php-format

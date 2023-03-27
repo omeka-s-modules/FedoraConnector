@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 14:14-0700\n"
+"POT-Creation-Date: 2023-03-27 16:02-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
 "Last-Translator: Josip Ilic <josip.ilic@ericsson.com>, 2021\n"
 "Language-Team: Croatian (https://www.transifex.com/omeka/teams/14184/hr/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: Module.php:118
+#: Module.php:142
 msgid "Last Modified"
 msgstr "Zadnji Put Promijenjeno"
 
-#: Module.php:119
+#: Module.php:143
 msgid "Link"
 msgstr "Poveznica"
 
@@ -44,42 +44,34 @@ msgid "Past Imports"
 msgstr "Prošli Uvozi"
 
 #: view/fedora-connector/index/past-imports.phtml:19
-msgid "Undo?"
-msgstr "Poništi?"
+msgid "Undo"
+msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:20
+msgid "Re-run"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:21
 msgid "Job ID"
 msgstr "ID posla"
 
-#: view/fedora-connector/index/past-imports.phtml:21
+#: view/fedora-connector/index/past-imports.phtml:22
 msgid "Container"
 msgstr "Kontejner"
 
-#: view/fedora-connector/index/past-imports.phtml:34
+#: view/fedora-connector/index/past-imports.phtml:36
 msgid "Undo job"
 msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:43
-msgid "Container's item does not exist."
+#: view/fedora-connector/index/past-imports.phtml:37
+msgid "Rerun job"
 msgstr ""
-"Stavka spremnika ne postoji.\n"
-" \n"
-"\n"
-" \n"
-" \n"
-" \n"
-" \n"
-" "
 
-#: view/fedora-connector/index/past-imports.phtml:56
-msgid "Added: "
-msgstr "Dodano:"
+#: view/fedora-connector/index/past-imports.phtml:73
+msgid "Reran: "
+msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:57
-msgid "Updated: "
-msgstr "Ažurirano:"
-
-#: view/fedora-connector/index/past-imports.phtml:62
+#: view/fedora-connector/index/past-imports.phtml:75
 msgid "Undone: "
 msgstr "Poništeno:"
 
@@ -95,7 +87,7 @@ msgstr ""
 " \n"
 " "
 
-#: Module.php:84
+#: Module.php:108
 msgid "Fedora Vocabulary"
 msgstr ""
 "Fedora rječnik\n"
@@ -107,7 +99,7 @@ msgstr ""
 " \n"
 " "
 
-#: Module.php:85
+#: Module.php:109
 msgid "Vocabulary for a Fedora Repository"
 msgstr ""
 "Rječnik za Fedora spremište\n"
@@ -119,7 +111,7 @@ msgstr ""
 " \n"
 " "
 
-#: Module.php:97
+#: Module.php:121
 msgid "Linked Data Platform Vocabulary"
 msgstr ""
 "Rječnik rječnika povezane platforme podataka\n"
@@ -131,7 +123,7 @@ msgstr ""
 " \n"
 " "
 
-#: Module.php:98
+#: Module.php:122
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
 msgstr ""
 "Rječnik za povezanu podatkovnu platformu. Koristi Fedora\n"
@@ -277,7 +269,16 @@ msgstr ""
 msgid "There was an error during validation"
 msgstr "Pojavila se greška prilikom validacije"
 
-#: src/Controller/IndexController.php:52
+#: src/Controller/IndexController.php:53
 #, php-format
-msgid "Undo in progress in the following jobs: %s"
+msgid "Undo in progress on the following jobs: %s"
+msgstr ""
+
+#: src/Controller/IndexController.php:63
+#, php-format
+msgid "Rerun in progress on the following jobs: %s"
+msgstr ""
+
+#: src/Controller/IndexController.php:68
+msgid "Error: no jobs selected"
 msgstr ""
