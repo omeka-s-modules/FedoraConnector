@@ -14,6 +14,8 @@ class Import extends AbstractJob
 
     protected $api;
 
+    protected $resourceTemplateId;
+
     protected $itemSetArray;
 
     protected $itemSites;
@@ -42,6 +44,7 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders(['Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"']);
         $uri = $this->getArg('container_uri');
+        $this->resourceTemplateId = (int) $this->getArg('resource_template', 0);
         $this->itemSetArray = $this->getArg('itemSets', false);
         $this->itemSiteArray = $this->getArg('itemSites', false);
         //importContainer calls itself on all child containers
@@ -170,6 +173,10 @@ class Import extends AbstractJob
             $json['o:site'] = $itemSites;
         } else {
             $json['o:site'] = [];
+        }
+
+        if ($this->resourceTemplateId) {
+            $itemJson['o:resource_template']['o:id'] = (int) $this->resourceTemplateId;
         }
 
         foreach ($resource->propertyUris() as $property) {
