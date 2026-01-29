@@ -3,6 +3,7 @@ namespace FedoraConnector\Job;
 
 use Omeka\Job\AbstractJob;
 use EasyRdf\Graph;
+use Laminas\Http\Response as Response;
 use EasyRdf\Resource as RdfResource;
 use EasyRdf\RdfNamespace;
 
@@ -24,6 +25,8 @@ class Import extends AbstractJob
 
     protected $updatedCount;
 
+    protected $visitedUris = [];
+
     public function perform()
     {
         $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
@@ -42,13 +45,16 @@ class Import extends AbstractJob
 
         $this->propertyUriIdMap = [];
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
-        $this->client->setHeaders(['Prefer' => 'return=representation; include="http://fedora.info/definitions/v4/repository#EmbedResources"']);
+        $this->client->setHeaders([
+            'Accept' => 'application/ld+json',
+            'Prefer' => 'return=representation; include="http://www.w3.org/ns/ldp#PreferContainment http://fedora.info/definitions/v4/repository#EmbedResources"'
+        ]);
         $uri = $this->getArg('container_uri');
         $this->resourceTemplateId = (int) $this->getArg('resource_template', 0);
         $this->itemSetArray = $this->getArg('itemSets', false);
         $this->itemSiteArray = $this->getArg('itemSites', false);
-        //importContainer calls itself on all child containers
-        $this->importContainer($uri);
+        //importResource calls itself on all child containers
+        $this->importResource($uri);
 
         $fedoraImportJson = [
                             'o:job' => ['o:id' => $this->job->getId()],
@@ -59,8 +65,17 @@ class Import extends AbstractJob
         $response = $this->api->update('fedora_imports', $importRecordId, $fedoraImportJson);
     }
 
-    public function importContainer($uri)
+    public function importResource($uri)
     {
+        if (isset($this->visitedUris[$uri])) {
+            return;
+        }
+        $this->visitedUris[$uri] = true;
+
+        if (preg_match('#/(pages|orderProxies|files)(/|$)#', $uri)) {
+            return;
+        }
+
         //see if the item has already been imported
         $response = $this->api->search('fedora_items', ['uri' => $uri]);
         $content = $response->getContent();
@@ -74,28 +89,48 @@ class Import extends AbstractJob
 
         $this->client->setUri($uri);
         $response = $this->client->send();
+
         $rdf = $response->getBody();
+
         RdfNamespace::set('fedora', 'http://fedora.info/definitions/v4/repository#');
         RdfNamespace::set('ldp', 'http://www.w3.org/ns/ldp#');
-        $graph = new Graph();
-        
-        $graph->parse($rdf);
+        RdfNamespace::set('pcdm', 'http://pcdm.org/models#');
+        RdfNamespace::set('ore', 'http://www.openarchives.org/ore/terms/');
+        RdfNamespace::set('dcterms', 'http://purl.org/dc/terms/');
+        RdfNamespace::set('schema', 'http://schema.org/');
 
-        $containerToImport = $graph->resource($uri);
-        $containers = $graph->allOfType("http://fedora.info/definitions/v4/repository#Container");
-        $binaries = $graph->allOfType("http://fedora.info/definitions/v4/repository#Binary");
+        // Determine RDF format
+        $contentType = $response->getHeaders()->get('Content-Type')->getFieldValue();
+        $format = strpos($contentType, 'json') !== false ? 'jsonld' : null;
+
+        $graph = new Graph();
+        $graph->parse($rdf, $format);
+        $normalizedUri = rtrim($uri, '/');
+        $resource = $graph->resource($normalizedUri);
+
+        $members = $this->getMembers($resource, $graph, $normalizedUri);
+
         $isTopLevel = ($uri === $this->getArg('container_uri'));
 
-        //if ignore_parent set, don't import parent object
+        // if ignore_parent set, don't import parent object
         if (!($this->getArg('ignore_parent') && $isTopLevel)) {
-            $json = $this->resourceToJson($containerToImport);
+            $json = $this->resourceToJson($resource);
 
             if ($this->getArg('ingest_files')) {
+                // parse out and ingest binary files
+                $binaries = $this->collectBinariesRecursively($members);
                 foreach ($binaries as $binary) {
-                    $mediaJson = $this->resourceToJson($binary);
+                    $mediaJson = [];
+                    // build new graph for binary metadata
+                    $metadataUri = rtrim($binary, '/') . '/fcr:metadata';
+                    $this->client->setUri($metadataUri);
+                    $response = $this->client->send();
+                    $graph = new Graph();
+                    $graph->parse($response->getBody(), 'jsonld');
+                    $mediaJson = $this->resourceToJson($graph->resource($binary));
                     $mediaJson['o:ingester'] = 'url';
-                    $mediaJson['o:source'] = $binary->getUri();
-                    $mediaJson['ingest_url'] = $binary->getUri();
+                    $mediaJson['o:source'] = $binary;
+                    $mediaJson['ingest_url'] = $binary;
                     $json['o:media'][] = $mediaJson;
                 }
             }
@@ -118,14 +153,10 @@ class Import extends AbstractJob
                 $response = $this->api->create('items', $json);
                 $itemId = $response->getContent()->id();
             }
+            $json['o:media'] = [];
 
-            $lastModifiedProperty = new RdfResource('http://fedora.info/definitions/v4/repository#lastModified');
-            $lastModifiedLiteral = $containerToImport->getLiteral($lastModifiedProperty);
-            if ($lastModifiedLiteral) {
-                $lastModifiedValue = $lastModifiedLiteral->getValue();
-            } else {
-                $lastModifiedValue = null;
-            }
+            $lastModified = $resource->getLiteral('fedora:lastModified');
+            $lastModifiedValue = $lastModified ? $lastModified->getValue() : null;
 
             $fedoraItemJson = [
                                 'o:job' => ['o:id' => $this->job->getId()],
@@ -143,16 +174,25 @@ class Import extends AbstractJob
             }
         }
         
-        //if only_direct_children set, only recurse one level down from top
-        if ($this->getArg('only_direct_children') && !$isTopLevel) {
-            return;
-        }
-        
-        foreach ($containers as $container) {
-            $containerUri = $container->getUri();
-            if ($containerUri != $uri) {
-                $this->importContainer($containerUri);
+        // if only_direct_children set, only recurse one level down from top
+-       if ($this->getArg('only_direct_children') && !$isTopLevel) {
+-           return;
+-       }
+        $mediaItems = [];
+
+        foreach ($members as $member) {
+            $memberUri = rtrim($member->getUri(), '/');
+
+            if ($this->isBinaryUri($memberUri)) {
+                continue; // handle later in media ingestion
             }
+        
+            // Don't recurse Fedora admin links
+            if (preg_match('#/(pages|orderProxies|files)(/|$)#', $memberUri)) {
+                continue;
+            }
+
+            $this->importResource($memberUri);
         }
     }
 
@@ -242,6 +282,115 @@ class Import extends AbstractJob
                 'type' => 'uri',
                 ];
         return $json;
+    }
+
+    /**
+     * Get children of a Fedora resource.
+     * Handles direct membership, IndirectContainers with proxies, and URI-based inference.
+     *
+     * @param RdfResource $resource
+     * @param Graph $graph The full graph containing the resource
+     * @param string $uri The resource URI (parent)
+     * @return EasyRdf\Resource[] Array of child resources
+     */
+    protected function getMembers(RdfResource $resource, Graph $graph, string $uri): array
+    {
+        $members = [];
+
+        $types = $resource->typesAsResources();
+        $isIndirectContainer = false;
+        foreach ($types as $type) {
+            if ($type->getUri() === 'http://www.w3.org/ns/ldp#IndirectContainer') {
+                $isIndirectContainer = true;
+                break;
+            }
+        }
+
+        if ($isIndirectContainer) {
+            foreach ($graph->resources() as $res) {
+                $proxyFor = $res->allResources('http://www.openarchives.org/ore/terms#proxyFor');
+                foreach ($proxyFor as $realMember) {
+                    // Check if this proxy belongs to our container
+                    $proxyContainer = $res->get('http://www.openarchives.org/ore/terms#proxyIn');
+                    $proxyContainerUri = $proxyContainer ? $proxyContainer->getUri() : null;
+                    if ($proxyContainerUri === $uri) {
+                        $members[] = $realMember;
+                    }
+                }
+            }
+        }
+
+        $members = array_merge($members, $resource->allResources('ldp:contains'));
+        $members = array_merge($members, $resource->allResources('pcdm:hasMember'));
+        $members = array_merge($members, $resource->allResources('schema:hasPart'));
+        $members = array_merge($members, $resource->allResources('ore:aggregates'));
+
+        $members = array_unique($members, SORT_REGULAR);
+
+        return $members;
+    }
+
+    protected function loadGraphForUri($uri)
+    {
+        $this->client->setUri($uri);
+        $response = $this->client->send();
+
+        // Detect if RDF
+        $contentType = $response->getHeaderLine('Content-Type');
+        if (strpos($contentType, 'json') === false) {
+            return new Graph();
+        }
+
+        $graph = new Graph();
+        $graph->parse($response->getBody(), 'jsonld');
+        return $graph;
+    }
+
+    /**
+     * Recursively collect all binaries under a set of members
+     *
+     * @param EasyRdf\Resource $members
+     * @return EasyRdf\Resource
+     */
+    protected function collectBinariesRecursively(array $members): array
+    {
+        $binaries = [];
+        foreach ($members as $member) {
+            $uri = $member->getUri();
+        
+            // HEAD request to check Content-Type
+            $this->client->setUri($uri);
+            $response = $this->client->send();
+            $contentType = $response->getHeaders()->get('Content-Type')->getFieldValue();
+        
+            $isBinary = strpos($contentType, 'application/ld+json') === false && strpos($contentType, 'rdf') === false;
+            if ($isBinary) {
+                $binaries[] = $uri;
+                continue;
+            }
+        
+            // Parse RDF of child to get its members
+            $rdf = $response->getBody();
+            $format = strpos($contentType, 'json') !== false ? 'jsonld' : null;
+            $graph = new Graph();
+            $graph->parse($rdf, $format);
+            $res = $graph->resource($uri);
+        
+            $childMembers = array_merge(
+                $res->allResources('schema:hasPart'),
+                $res->allResources('ldp:contains'),
+                $res->allResources('pcdm:hasMember'),
+                $res->allResources('ore:aggregates')
+            );
+        
+            $binaries = array_merge($binaries, $this->collectBinariesRecursively($childMembers));
+        }
+        return array_values(array_unique($binaries, SORT_REGULAR));
+    }
+    
+    protected function isBinaryUri(string $uri): bool
+    {
+        return preg_match('/\.(tif|tiff|jpg|jpeg|png|pdf)$/i', $uri);
     }
 
     /**
