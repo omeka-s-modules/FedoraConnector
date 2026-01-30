@@ -65,11 +65,6 @@ class Module extends AbstractModule
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
-        $sharedEventManager->attach(
-            'Omeka\Controller\Admin\Item',
-            'view.show.after',
-            [$this, 'showSource']
-            );
 
         $sharedEventManager->attach(
             \Omeka\Api\Adapter\ItemAdapter::class,
@@ -128,20 +123,6 @@ class Module extends AbstractModule
         }
         //assuming that exceptions get thrown before here, just return true
         return true;
-    }
-    public function showSource($event)
-    {
-        $view = $event->getTarget();
-        $item = $view->item;
-        $api = $this->getServiceLocator()->get('Omeka\ApiManager');
-        $response = $api->search('fedora_items', ['item_id' => $item->id()]);
-        $fedoraItems = $response->getContent();
-        if ($fedoraItems) {
-            $fedoraItem = $fedoraItems[0];
-            echo '<h3>' . $view->translate('Original') . '</h3>';
-            echo '<p>' . $view->translate('Last Modified') . ' ' . $view->i18n()->dateFormat($fedoraItem->lastModified()) . '</p>';
-            echo '<p><a href="' . $fedoraItem->uri() . '">' . $view->translate('Link') . '</a></p>';
-        }
     }
 
     public function importSearch($event)
