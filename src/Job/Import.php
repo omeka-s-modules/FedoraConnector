@@ -15,6 +15,8 @@ class Import extends AbstractJob
 
     protected $api;
 
+    protected $logger;
+
     protected $resourceTemplateId;
 
     protected $itemSetArray;
@@ -30,6 +32,7 @@ class Import extends AbstractJob
     public function perform()
     {
         $this->api = $this->getServiceLocator()->get('Omeka\ApiManager');
+        $this->logger = $this->getServiceLocator()->get('Omeka\Logger');
         $comment = $this->getArg('comment');
         $fedoraImportJson = [
                             'o:job' => ['o:id' => $this->job->getId()],
@@ -101,6 +104,9 @@ class Import extends AbstractJob
 
         // Determine RDF format
         $contentType = $response->getHeaders()->get('Content-Type')->getFieldValue();
+        if (strpos($contentType, 'json') === false && strpos($contentType, 'rdf') === false) {
+            return;
+        }
         $format = strpos($contentType, 'json') !== false ? 'jsonld' : null;
 
         $graph = new Graph();
@@ -147,10 +153,22 @@ class Import extends AbstractJob
                 $newItemSites = $json['o:site'] ?: [];
                 $json['o:site'] = array_merge($existingItemSites, $newItemSites);
 
-                $response = $this->api->update('items', $omekaItem->id(), $json);
+                // Continue with next item on error
+                try {
+                    $response = $this->api->update('items', $omekaItem->id(), $json);
+                } catch (\Exception $e) {
+                    $this->logger->err((string) $e);
+                    return;
+                }
                 $itemId = $omekaItem->id();
             } else {
-                $response = $this->api->create('items', $json);
+                // Continue with next item on error
+                try {
+                    $response = $this->api->create('items', $json);
+                } catch (\Exception $e) {
+                    $this->logger->err((string) $e);
+                    return;
+                }
                 $itemId = $response->getContent()->id();
             }
             $json['o:media'] = [];
@@ -175,9 +193,9 @@ class Import extends AbstractJob
         }
         
         // if only_direct_children set, only recurse one level down from top
--       if ($this->getArg('only_direct_children') && !$isTopLevel) {
--           return;
--       }
+        if ($this->getArg('only_direct_children') && !$isTopLevel) {
+            return;
+        }
         $mediaItems = [];
 
         foreach ($members as $member) {
@@ -216,7 +234,7 @@ class Import extends AbstractJob
         }
 
         if ($this->resourceTemplateId) {
-            $itemJson['o:resource_template']['o:id'] = (int) $this->resourceTemplateId;
+            $json['o:resource_template']['o:id'] = (int) $this->resourceTemplateId;
         }
 
         foreach ($resource->propertyUris() as $property) {
@@ -357,32 +375,31 @@ class Import extends AbstractJob
         $binaries = [];
         foreach ($members as $member) {
             $uri = $member->getUri();
-        
+
             // HEAD request to check Content-Type
             $this->client->setUri($uri);
             $response = $this->client->send();
             $contentType = $response->getHeaders()->get('Content-Type')->getFieldValue();
-        
             $isBinary = strpos($contentType, 'application/ld+json') === false && strpos($contentType, 'rdf') === false;
             if ($isBinary) {
                 $binaries[] = $uri;
                 continue;
             }
-        
+
             // Parse RDF of child to get its members
             $rdf = $response->getBody();
             $format = strpos($contentType, 'json') !== false ? 'jsonld' : null;
             $graph = new Graph();
             $graph->parse($rdf, $format);
             $res = $graph->resource($uri);
-        
+
             $childMembers = array_merge(
                 $res->allResources('schema:hasPart'),
                 $res->allResources('ldp:contains'),
                 $res->allResources('pcdm:hasMember'),
                 $res->allResources('ore:aggregates')
             );
-        
+
             $binaries = array_merge($binaries, $this->collectBinariesRecursively($childMembers));
         }
         return array_values(array_unique($binaries, SORT_REGULAR));
