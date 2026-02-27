@@ -1,0 +1,64 @@
+.fedora-connector-inputs { 
+    display: flex; 
+    flex-direction: column;
+}
+
+.fedora tbody th {
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.fedora td.fedora-comment .tablesaw-cell-content {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+}
+
+.fedora td.fedora-items .tablesaw-cell-content {
+    display: inline;
+}
+
+.fedora .tablesaw td:first-of-type {
+    background: transparent !important;
+}
+
+@media screen and (max-width: 640px) {
+    .fedora .tablesaw {
+        border: 0;
+    }
+
+    .fedora .tablesaw tbody th,
+    .fedora .tablesaw tbody td {
+        display: flex;
+    }
+
+    .fedora .tablesaw tbody tr {
+        border: 1px solid #dfdfdf;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+    }
+
+    .fedora .tablesaw tbody th {
+        background-color: rgba(0,0,0,.04);
+        border-top: 0;
+    }
+
+    .fedora .tablesaw tbody tr td:last-child {
+        border-bottom: 0;
+    }
+
+    .tablesaw td:first-of-type .tablesaw-cell-label {
+        width: 30%;
+        height: auto;
+        padding: 0 .6em 0 0;
+    }
+
+    .tablesaw td:first-of-type .tablesaw-cell-content {
+        width: 70%;
+    }
+}
+
+#import {
+    position: relative;
+}

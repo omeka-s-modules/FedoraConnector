@@ -1,24 +1,28 @@
 <?php
-$this->htmlElement('body')->appendAttribute('class', 'fedora jobs undo');
+$this->headLink()->appendStylesheet($this->assetUrl('css/fedora-connector.css', 'FedoraConnector'));
+$this->htmlElement('body')->appendAttribute('class', 'fedora jobs undo browse');
 $escape = $this->plugin('escapeHtml');
 ?>
 
 <?php echo $this->pageTitle($this->translate('Fedora Import'), 1, $this->translate('Past Imports')); ?>
+
 <?php if(empty($imports)): ?>
 
 <?php else: ?>
-<?php echo $this->pagination(); ?>
 
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+    <?php echo $this->browse()->renderSortSelector('fedora_past_imports'); ?>
+</div>
 <form method='POST'>
     <fieldset id='page-actions'>
         <input type='submit' value="<?php echo $this->translate('Submit'); ?>" />
     </fieldset>
-    <table class="tablesaw" data-tablesaw-mode="stack">
+    <table class="tablesaw" data-tablesaw-mode="stack" aria-label="<?php echo $this->translate('Past Imports'); ?>">
         <thead>
             <tr>
-                <th><?php echo $escape($this->translate('Undo'));?></th>
-                <th><?php echo $escape($this->translate('Re-run'));?></th>
-                <th><?php echo $this->sortLink($this->translate('Job ID'), 'id');?></th>
+                <th scope="col"><?php echo $this->translate('Job ID'); ?></th>
+                <th scope="col"><?php echo $escape($this->translate('Actions'));?></th>
                 <th><?php echo $escape($this->translate('Container'));?></th>
                 <th><?php echo $escape($this->translate('Comment'));?></th>
                 <th><?php echo $escape($this->translate('Items'));?></th>
@@ -31,35 +35,48 @@ $escape = $this->plugin('escapeHtml');
         <?php foreach ($imports as $import): ?>
         <?php $job = $import->job(); ?>
         <?php $undoJob = $import->undoJob(); ?>
+        <?php $disableOption = ($job->jobClass() == 'FedoraConnector\Job\Undo') ? 'disabled' : ''; ?>
         <?php $rerunJob = $import->rerunJob(); ?>
-        <tr class="<?php echo isset($undone) ? 'undone' : ''; ?>" >
-            <td><input type='checkbox' name='undoJobs[]' value='<?php echo $job->id(); ?>' aria-label="<?php echo $this->translate('Undo job'); ?>" />
-            <td><input type='checkbox' name='rerunJobs[]' value='<?php echo $job->id(); ?>' aria-label="<?php echo $this->translate('Rerun job'); ?>" />
-            <td><?php echo $job->link($job->id()); ?></td>
+        <tr>
+            <th scope="row"><?php echo $job->link($job->id()); ?></th>
             <td>
-                <?php $args = $job->args();
-                $containerUri = $args['container_uri'];
-                // Find the container ID to use as a shorter link
-                $urlArray = explode('/', $containerUri);
-                $lastElement = end($urlArray);
-                echo $this->hyperlink($lastElement, $containerUri);
-                ?>
-            </td>
-            <td>
-                <?php echo $import->comment(); ?>
+                <div class="fedora-connector-inputs" role="radiogroup" aria-label="<?php echo $this->translate('Action options'); ?>">
+                <label>
+                    <input type='radio' name='jobActions[<?php echo $job->id(); ?>]' value checked aria-label="<?php echo $this->translate('[No Action]'); ?>" />
+                    <?php echo $this->translate('[No Action]'); ?>
+                </label>
+                <label>
+                    <input type='radio' name='jobActions[<?php echo $job->id(); ?>]' value='undo' aria-label="<?php echo $this->translate('Undo'); ?>" <?php echo $disableOption; ?> />
+                    <?php echo $this->translate('Undo'); ?>
+                </label>
+                <label>
+                    <input type='radio' name='jobActions[<?php echo $job->id(); ?>]' value='rerun' aria-label="<?php echo $this->translate('Re-run'); ?>" <?php echo $disableOption; ?> />
+                    <?php echo $this->translate('Re-run'); ?>
+                </label>
+                </div>
             </td>
             <td>
                 <?php
-                if ($rerunJob) {
-                    $linkID = $rerunJob->id();
-                } else {
-                    $linkID = $job->id();
-                }
+                $args = $job->args();
+                $containerUri = $args['container_uri'];
+                // Find the container ID to use as link text
+                $urlArray = explode('/', $containerUri);
+                $lastElement = end($urlArray);
+                $linkText = $lastElement !== '' ? $lastElement : $this->translate('collection link');
+                echo $this->hyperlink($linkText, $containerUri, ['target' => '_blank']);
+                ?>
+            </td>
+            <td class="fedora-comment">
+                <?php echo $import->comment(); ?>
+            </td>
+            <td class="fedora-items">
+                <?php
+                $linkID = $job->id();
                 $totalCount = $import->addedCount() + $import->updatedCount();
                 // Only link to search results for Job IDs with associated items
                 $totalResults = $this->api()->search('items', ['fedora_import_id' => $linkID]);
-                if ($totalResults->getTotalResults() > 0 && $totalCount > 0) {
-                    echo $this->hyperlink('Total: ' . $totalCount, $this->url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['fedora_import_id' => $linkID]])) . '<br>';
+                if ($totalResults->getTotalResults() > 0) {
+                    echo $this->hyperlink('Total: ' . $totalResults->getTotalResults(), $this->url('admin/default', ['controller' => 'item', 'action' => 'browse'], ['query' => ['fedora_import_id' => $linkID]]), ['target' => '_blank']) . '<br>';
                 } else {
                     echo 'Total: ' . $totalCount . '<br>';
                 }
