@@ -61,6 +61,9 @@ class Module extends AbstractModule
             $connection->exec("ALTER TABLE fedora_import ADD CONSTRAINT FK_EA775FC84C276F75 FOREIGN KEY (undo_job_id) REFERENCES job (id);");
             $connection->exec("ALTER TABLE fedora_import ADD CONSTRAINT FK_EA775FC87071F49C FOREIGN KEY (rerun_job_id) REFERENCES job (id);");
         }
+        if (Comparator::lessThan($oldVersion, '1.7.0')) {
+            $connection->exec("ALTER TABLE fedora_import CHANGE comment comment LONGTEXT DEFAULT NULL;");
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
