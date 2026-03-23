@@ -14,23 +14,29 @@ class Undo extends AbstractJob
         // Delete items
         $response = $api->search('fedora_items', ['job_id' => $jobId]);
         $fedoraItems = $response->getContent();
+        $deletedItemCount = 0;
+        $deletedFileCount = 0;
         if ($fedoraItems) {
             foreach ($fedoraItems as $fedoraItem) {
-                $fedoraResponse = $api->delete('fedora_items', $fedoraItem->id());
-                $itemResponse = $api->delete('items', $fedoraItem->item()->id());
+                $deletedFileCount += count($fedoraItem->item()->media());
+                $api->delete('fedora_items', $fedoraItem->id());
+                $api->delete('items', $fedoraItem->item()->id());
                 $deletedItemCount++;
             }
         }
 
-        if ($deletedItemCount) {
-            $deletedItemComment = $deletedItemCount . ' items deleted';
-            $comment = strlen($comment) ? $comment . '; ' . $deletedItemComment : $deletedItemComment;
-        }
+        $commentParts = array_filter([
+            $comment,
+            $deletedItemCount ? $deletedItemCount . ' items deleted' : null,
+            $deletedFileCount ? $deletedFileCount . ' files deleted' : null,
+        ]);
+        $comment = implode('; ', $commentParts);
         $fedoraImportJson = [
                             'o:job' => ['o:id' => $this->job->getId()],
                             'comment' => $comment,
                             'added_count' => 0,
                             'updated_count' => 0,
+                            'added_files' => 0,
                           ];
         $response = $api->create('fedora_imports', $fedoraImportJson);
         $jobArgs = $this->job->getArgs();

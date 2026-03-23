@@ -32,7 +32,7 @@ class Module extends AbstractModule
     {
         $connection = $serviceLocator->get('Omeka\Connection');
         $connection->exec("CREATE TABLE fedora_item (id INT AUTO_INCREMENT NOT NULL, item_id INT NOT NULL, job_id INT NOT NULL, uri VARCHAR(255) NOT NULL, last_modified DATETIME NOT NULL, UNIQUE INDEX UNIQ_D02FFFF9126F525E (item_id), INDEX IDX_D02FFFF9BE04EA9 (job_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;");
-        $connection->exec("CREATE TABLE fedora_import (id INT AUTO_INCREMENT NOT NULL, job_id INT NOT NULL, undo_job_id INT DEFAULT NULL, rerun_job_id INT DEFAULT NULL, added_count INT NOT NULL, updated_count INT NOT NULL, comment LONGTEXT DEFAULT NULL, UNIQUE INDEX UNIQ_EA775FC8BE04EA9 (job_id), UNIQUE INDEX UNIQ_EA775FC84C276F75 (undo_job_id), UNIQUE INDEX UNIQ_EA775FC87071F49C (rerun_job_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;");
+        $connection->exec("CREATE TABLE fedora_import (id INT AUTO_INCREMENT NOT NULL, job_id INT NOT NULL, undo_job_id INT DEFAULT NULL, rerun_job_id INT DEFAULT NULL, added_count INT NOT NULL, updated_count INT NOT NULL, added_files INT NOT NULL, comment LONGTEXT DEFAULT NULL, UNIQUE INDEX UNIQ_EA775FC8BE04EA9 (job_id), UNIQUE INDEX UNIQ_EA775FC84C276F75 (undo_job_id), UNIQUE INDEX UNIQ_EA775FC87071F49C (rerun_job_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB;");
         $connection->exec("ALTER TABLE fedora_item ADD CONSTRAINT FK_D02FFFF9126F525E FOREIGN KEY (item_id) REFERENCES item (id) ON DELETE CASCADE;");
         $connection->exec("ALTER TABLE fedora_item ADD CONSTRAINT FK_D02FFFF9BE04EA9 FOREIGN KEY (job_id) REFERENCES job (id);");
         $connection->exec("ALTER TABLE fedora_import ADD CONSTRAINT FK_EA775FC8BE04EA9 FOREIGN KEY (job_id) REFERENCES job (id);");
@@ -64,6 +64,9 @@ class Module extends AbstractModule
         if (Comparator::lessThan($oldVersion, '1.7.0')) {
             $connection->exec("ALTER TABLE fedora_import CHANGE comment comment LONGTEXT DEFAULT NULL;");
         }
+        if (Comparator::lessThan($oldVersion, '1.7.1')) {
+            $connection->exec("ALTER TABLE fedora_import ADD added_files INT NOT NULL;");
+        }
     }
 
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
@@ -72,7 +75,12 @@ class Module extends AbstractModule
         $sharedEventManager->attach(
             \Omeka\Api\Adapter\ItemAdapter::class,
             'api.search.query',
-            [$this, 'importSearch']
+            [$this, 'itemSearch']
+        );
+        $sharedEventManager->attach(
+            \Omeka\Api\Adapter\MediaAdapter::class,
+            'api.search.query',
+            [$this, 'mediaSearch']
         );
     }
     /**
@@ -128,7 +136,7 @@ class Module extends AbstractModule
         return true;
     }
 
-    public function importSearch($event)
+    public function itemSearch($event)
     {
         $query = $event->getParam('request')->getContent();
         if (isset($query['fedora_import_id'])) {
@@ -138,6 +146,23 @@ class Module extends AbstractModule
             $qb->innerJoin(
                 \FedoraConnector\Entity\FedoraItem::class, $importItemAlias,
                 'WITH', "$importItemAlias.item = omeka_root.id"
+            )->andWhere($qb->expr()->eq(
+                "$importItemAlias.job",
+                $adapter->createNamedParameter($qb, $query['fedora_import_id'])
+            ));
+        }
+    }
+
+    public function mediaSearch($event)
+    {
+        $query = $event->getParam('request')->getContent();
+        if (isset($query['fedora_import_id'])) {
+            $qb = $event->getParam('queryBuilder');
+            $adapter = $event->getTarget();
+            $importItemAlias = $adapter->createAlias();
+            $qb->innerJoin(
+                \FedoraConnector\Entity\FedoraItem::class, $importItemAlias,
+                'WITH', "$importItemAlias.item = omeka_root.item"
             )->andWhere($qb->expr()->eq(
                 "$importItemAlias.job",
                 $adapter->createNamedParameter($qb, $query['fedora_import_id'])

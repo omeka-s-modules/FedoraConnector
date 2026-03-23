@@ -27,6 +27,8 @@ class Import extends AbstractJob
 
     protected $updatedCount;
 
+    protected $addedFiles;
+
     protected $visitedUris = [];
 
     public function perform()
@@ -39,12 +41,14 @@ class Import extends AbstractJob
                             'comment' => $comment,
                             'added_count' => 0,
                             'updated_count' => 0,
+                            'added_files' => 0,
                           ];
         $response = $this->api->create('fedora_imports', $fedoraImportJson);
         $importRecordId = $response->getContent()->id();
 
         $this->addedCount = 0;
         $this->updatedCount = 0;
+        $this->addedFiles = 0;
 
         $this->propertyUriIdMap = [];
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
@@ -64,6 +68,7 @@ class Import extends AbstractJob
                             'comment' => $comment,
                             'added_count' => $this->addedCount,
                             'updated_count' => $this->updatedCount,
+                            'added_files' => $this->addedFiles,
                           ];
         $response = $this->api->update('fedora_imports', $importRecordId, $fedoraImportJson);
     }
@@ -161,6 +166,15 @@ class Import extends AbstractJob
                     return;
                 }
                 $itemId = $omekaItem->id();
+
+                // Count successfully added files
+                if ($this->getArg('ingest_files')) {
+                    foreach ($response->getContent()->media() as $media) {
+                        if ($media->hasOriginal()) {
+                            $this->addedFiles++;
+                        }
+                    }
+                }
             } else {
                 // Continue with next item on error
                 try {
@@ -170,6 +184,16 @@ class Import extends AbstractJob
                     return;
                 }
                 $itemId = $response->getContent()->id();
+
+                // Count successfully added files
+                if ($this->getArg('ingest_files')) {
+                    $itemRepresentation = $this->api->read('items', $itemId)->getContent();
+                    foreach ($itemRepresentation->media() as $media) {
+                        if ($media->hasOriginal()) {
+                            $this->addedFiles++;
+                        }
+                    }
+                }
             }
             $json['o:media'] = [];
 
