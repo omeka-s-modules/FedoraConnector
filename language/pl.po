@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Iametza Interaktiboa, 2024
+# Tomasz Sopylo <tomasz@sopylo.pl>, 2026
 # 
 #, fuzzy
 msgid ""
@@ -13,13 +13,13 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-23 12:19-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
-"Last-Translator: Iametza Interaktiboa, 2024\n"
-"Language-Team: Basque (https://app.transifex.com/omeka/teams/14184/eu/)\n"
+"Last-Translator: Tomasz Sopylo <tomasz@sopylo.pl>, 2026\n"
+"Language-Team: Polish (https://app.transifex.com/omeka/teams/14184/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: eu\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: src/Controller/IndexController.php:32
 msgid "Importing in: "
@@ -45,20 +45,20 @@ msgstr ""
 #: view/fedora-connector/index/index.phtml:5
 #: view/fedora-connector/index/past-imports.phtml:7
 msgid "Fedora Import"
-msgstr "Fedora Inportazioa"
+msgstr "Importowanie Fedory"
 
 #: view/fedora-connector/index/index.phtml:5
 msgid "Import Settings"
-msgstr "Inportazio Ezaugarriak"
+msgstr "Ustawienia importu"
 
 #: view/fedora-connector/index/past-imports.phtml:7
 #: view/fedora-connector/index/past-imports.phtml:21
 msgid "Past Imports"
-msgstr "Pasatako Inportazioak"
+msgstr "Importy z przeszłości"
 
 #: view/fedora-connector/index/past-imports.phtml:24
 msgid "Job ID"
-msgstr "Lan ID"
+msgstr "ID pracy"
 
 #: view/fedora-connector/index/past-imports.phtml:25
 msgid "Actions"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:26
 msgid "Container"
-msgstr "Edukitzailea"
+msgstr "Kontener"
 
 #: view/fedora-connector/index/past-imports.phtml:43
 msgid "Action options"
@@ -80,12 +80,12 @@ msgstr ""
 #: view/fedora-connector/index/past-imports.phtml:49
 #: view/fedora-connector/index/past-imports.phtml:50
 msgid "Undo"
-msgstr "Desegin"
+msgstr "Cofnij"
 
 #: view/fedora-connector/index/past-imports.phtml:53
 #: view/fedora-connector/index/past-imports.phtml:54
 msgid "Re-run"
-msgstr "Berriro jaurti"
+msgstr "Uruchom ponownie"
 
 #: view/fedora-connector/index/past-imports.phtml:65
 msgid "collection link"
@@ -93,70 +93,71 @@ msgstr ""
 
 #: view/fedora-connector/index/past-imports.phtml:94
 msgid "Reran: "
-msgstr "Berriro jaurti:"
+msgstr "Rerun:"
 
 #: view/fedora-connector/index/past-imports.phtml:96
 msgid "Undone: "
-msgstr "Deseginda:"
+msgstr "Niedokończone:"
 
 #: config/module.config.php:76
 msgid "Fedora Connector"
-msgstr "Fedora Konektorea"
+msgstr "Konektor Fedora"
 
 #: Module.php:114
 msgid "Fedora Vocabulary"
-msgstr "Fedora Hiztegia"
+msgstr "Słownictwo Fedory"
 
 #: Module.php:115
 msgid "Vocabulary for a Fedora Repository"
-msgstr "Fedora Biltegirako hiztegia"
+msgstr "Słownictwo dla repozytorium Fedora"
 
 #: Module.php:127
 msgid "Linked Data Platform Vocabulary"
-msgstr "Lotutako Datu Plataforma Hiztegia"
+msgstr "Słownik Platformy Związanych Danych"
 
 #: Module.php:128
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
-msgstr "Lotutako Datu Plataformarentzat hiztegia. Fedorak erabilia"
+msgstr "Słownictwo dla platformy Linked Data. Używane przez Fedora"
 
 #: src/Form/ConfigForm.php:21
 msgid "The Fedora Vocabulary is already installed."
-msgstr "Fedora Hiztegia lehendik instalatuta dago."
+msgstr "Słownik Fedora jest już zainstalowany."
 
 #: src/Form/ConfigForm.php:23
 msgid "Import the Fedora Vocabulary."
-msgstr "Inportatu Fedora Hiztegia."
+msgstr "Importuj słownik Fedory."
 
 #: src/Form/ConfigForm.php:30
 msgid "Import Fedora Vocabulary"
-msgstr "Inportatu Fedora Hiztegia"
+msgstr "Importuj słownictwo Fedory"
 
 #: src/Form/ConfigForm.php:47
 msgid "The Linked Data Platform Vocabulary is already installed."
-msgstr "Lotutako Datu Plataforma Hiztegia lehendik instalatuta dago."
+msgstr "Słownik Platformy Związanych Danych jest już zainstalowany."
 
 #: src/Form/ConfigForm.php:49
 msgid "Import the Linked Data Platform Vocabulary."
-msgstr "Inportatu Lotutako Datu Plataforma Hiztegia."
+msgstr "Zaimportuj słownictwo platformy Linked Data."
 
 #: src/Form/ConfigForm.php:56
 msgid "Import Linked Data Platform Vocabulary"
-msgstr "Inportatu Lotutako Datu Plataforma Hiztegia"
+msgstr "Importuj słownictwo platformy Linked Data"
 
 #: src/Form/ImportForm.php:35
 msgid "Fedora container URI"
-msgstr "Fedora edukitaile URIa"
+msgstr "URI kontenera Fedora"
 
 #: src/Form/ImportForm.php:36
 msgid ""
 "The URI of the Fedora container for the repository, collection or resource "
 "to import."
 msgstr ""
-"Inportatzeko Fedora edukitzaileko biltegi, bilduma edo baliabidearen URIa."
+"URI kontenera Fedora dla repozytorium, kolekcji lub zasobu do "
+"zaimportowania."
 
 #: src/Form/ImportForm.php:48
 msgid "Import files into Omeka S"
-msgstr "Inportatu fitxategiak Omeka S barruan"
+msgstr "Importuj pliki do Omeka S"
 
 #: src/Form/ImportForm.php:49
 msgid ""
@@ -164,25 +165,25 @@ msgid ""
 "derivates will be displayed when possible, with links back to the original "
 "file in the Fedora repository."
 msgstr ""
-"Hautatuta badago, fitxategi originalak inportatuko dira Omeka Sra. Bestela, "
-"eratorriak erakutsiko dira ahal denean, Fedora biltegirako fitxategi "
-"originalera itzultzeko estekekin."
+"Jeśli zaznaczone, oryginalne pliki zostaną zaimportowane do Omeka S. W "
+"przeciwnym razie, pochodne będą wyświetlane, gdy to możliwe, z linkami do "
+"oryginalnego pliku w repozytorium Fedora."
 
 #: src/Form/ImportForm.php:60
 msgid "Ignore parent container"
-msgstr "Ez ikusia egin edukitzaile gurasoari"
+msgstr "Ignoruj kontener nadrzędny"
 
 #: src/Form/ImportForm.php:61
 msgid ""
 "If checked, only descendents of the container at URI above will be imported "
 "as items--not the parent container itself."
 msgstr ""
-"Hautatuta badago, hurrengo helbideko edukitzailearen semeak bakarrik "
-"inportatuko dira elementu bezala--ez guraso edukitzailea bera."
+"Jeśli zaznaczone, tylko potomkowie kontenera pod podanym URI zostaną "
+"zaimportowani jako elementy - nie sam kontener nadrzędny."
 
 #: src/Form/ImportForm.php:72
 msgid "Import direct descendents only"
-msgstr "Inportatu zuzeneko ondorengoak bakarrik"
+msgstr "Importuj tylko bezpośrednich potomków"
 
 #: src/Form/ImportForm.php:73
 msgid ""
@@ -190,13 +191,13 @@ msgid ""
 "imported (i.e. no children of children). Otherwise, all resources below "
 "container will be recursively imported"
 msgstr ""
-"Hautatuta badago, hurrengo helbideko edukitzailearen zuzeneko semeak "
-"bakarrik inportatuko dira (adb. ez semearen semeak). Bestela, edukitzaileko "
-"baliabide guztiak errekurtsiboki inportatuko dira."
+"Jeśli zaznaczone, tylko bezpośredni potomkowie kontenera pod podanym URI "
+"zostaną zaimportowani (tj. bez dzieci dzieci). W przeciwnym razie wszystkie "
+"zasoby poniżej kontenera zostaną zaimportowane rekurencyjnie."
 
 #: src/Form/ImportForm.php:85
 msgid "A note about the purpose or source of this import"
-msgstr "Inportazio honen helburu edo jatorriaren inguruko oharra"
+msgstr "Uwaga dotycząca celu lub źródła tego importu"
 
 #: src/Form/ImportForm.php:108
 msgid "Assign a resource template to all imported resources."
@@ -204,28 +205,28 @@ msgstr ""
 
 #: src/Form/ImportForm.php:119
 msgid "Select item set(s)"
-msgstr "Hautatu elementu multzoa(k)"
+msgstr "Wybierz zestaw(y) elementów"
 
 #: src/Form/ImportForm.php:125
 msgid "Optional. Import items into item set(s)."
-msgstr "Hautazkoa. Inportatu elementuak elementu multzoan/multzoetan."
+msgstr "Opcjonalnie. Importuj przedmioty do zestawu(ów) przedmiotów."
 
 #: src/Form/ImportForm.php:149
 msgid "Select site(s)"
-msgstr "Hautatu ataria(k)"
+msgstr "Wybierz witrynę(y)"
 
 #: src/Form/ImportForm.php:155
 msgid "Optional. Import items into site(s)."
-msgstr "Hautazkoa. Inportatu elementuak atarian/atarietan."
+msgstr "Opcjonalnie. Importuj elementy do witryny(-y)."
 
 #: src/Controller/IndexController.php:23
 msgid "There was a problem connecting to the Fedora Container URI"
-msgstr "Errore bat egon da Fedora Edukitzailearen URI helbidera konektatzean"
+msgstr "Wystąpił problem z połączeniem z URI kontenera Fedora."
 
 #: src/Controller/IndexController.php:41
 msgid "There was an error during validation"
-msgstr "Errorea egon da balidazio garaian"
+msgstr "Wystąpił błąd podczas walidacji"
 
 #: src/Controller/IndexController.php:93
 msgid "Error: no jobs selected"
-msgstr "Arazoa: ez da lanik hautatu"
+msgstr "Błąd: nie wybrano żadnych zadań"

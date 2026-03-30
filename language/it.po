@@ -11,26 +11,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-27 16:02-0700\n"
+"POT-Creation-Date: 2026-03-23 12:19-0700\n"
 "PO-Revision-Date: 2017-09-14 20:15+0000\n"
 "Last-Translator: Tommaso Vitale, 2019\n"
-"Language-Team: Italian (https://www.transifex.com/omeka/teams/14184/it/)\n"
+"Language-Team: Italian (https://app.transifex.com/omeka/teams/14184/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
-#: Module.php:142
-msgid "Last Modified"
-msgstr "Ultima Modifica"
+#: src/Controller/IndexController.php:32
+msgid "Importing in: "
+msgstr ""
 
-#: Module.php:143
-msgid "Link"
-msgstr "Collegamento"
+#: src/Controller/IndexController.php:34 src/Controller/IndexController.php:62
+#: src/Controller/IndexController.php:67
+msgid "Job #"
+msgstr ""
+
+#: src/Controller/IndexController.php:73
+msgid "Undo in progress in: "
+msgstr ""
+
+#: src/Controller/IndexController.php:75 src/Controller/IndexController.php:86
+msgid " for the following jobs: "
+msgstr ""
+
+#: src/Controller/IndexController.php:84
+msgid "Rerun in progress in: "
+msgstr ""
 
 #: view/fedora-connector/index/index.phtml:5
-#: view/fedora-connector/index/past-imports.phtml:6
+#: view/fedora-connector/index/past-imports.phtml:7
 msgid "Fedora Import"
 msgstr ""
 
@@ -38,39 +51,51 @@ msgstr ""
 msgid "Import Settings"
 msgstr "Impostazioni di importazione"
 
-#: view/fedora-connector/index/past-imports.phtml:6
+#: view/fedora-connector/index/past-imports.phtml:7
+#: view/fedora-connector/index/past-imports.phtml:21
 msgid "Past Imports"
 msgstr "Importazioni passati"
 
-#: view/fedora-connector/index/past-imports.phtml:19
-msgid "Undo"
-msgstr ""
-
-#: view/fedora-connector/index/past-imports.phtml:20
-msgid "Re-run"
-msgstr ""
-
-#: view/fedora-connector/index/past-imports.phtml:21
+#: view/fedora-connector/index/past-imports.phtml:24
 msgid "Job ID"
 msgstr "Lavoro ID"
 
-#: view/fedora-connector/index/past-imports.phtml:22
+#: view/fedora-connector/index/past-imports.phtml:25
+msgid "Actions"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:26
 msgid "Container"
 msgstr "Contenitore"
 
-#: view/fedora-connector/index/past-imports.phtml:36
-msgid "Undo job"
+#: view/fedora-connector/index/past-imports.phtml:43
+msgid "Action options"
 msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:37
-msgid "Rerun job"
+#: view/fedora-connector/index/past-imports.phtml:45
+#: view/fedora-connector/index/past-imports.phtml:46
+msgid "[No Action]"
 msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:73
+#: view/fedora-connector/index/past-imports.phtml:49
+#: view/fedora-connector/index/past-imports.phtml:50
+msgid "Undo"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:53
+#: view/fedora-connector/index/past-imports.phtml:54
+msgid "Re-run"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:65
+msgid "collection link"
+msgstr ""
+
+#: view/fedora-connector/index/past-imports.phtml:94
 msgid "Reran: "
 msgstr ""
 
-#: view/fedora-connector/index/past-imports.phtml:75
+#: view/fedora-connector/index/past-imports.phtml:96
 msgid "Undone: "
 msgstr "Incompleto:"
 
@@ -78,19 +103,19 @@ msgstr "Incompleto:"
 msgid "Fedora Connector"
 msgstr ""
 
-#: Module.php:108
+#: Module.php:114
 msgid "Fedora Vocabulary"
 msgstr ""
 
-#: Module.php:109
+#: Module.php:115
 msgid "Vocabulary for a Fedora Repository"
 msgstr ""
 
-#: Module.php:121
+#: Module.php:127
 msgid "Linked Data Platform Vocabulary"
 msgstr ""
 
-#: Module.php:122
+#: Module.php:128
 msgid "Vocabulary for a Linked Data Platform. Used by Fedora"
 msgstr ""
 
@@ -118,65 +143,69 @@ msgstr ""
 msgid "Import Linked Data Platform Vocabulary"
 msgstr ""
 
-#: src/Form/ImportForm.php:34
+#: src/Form/ImportForm.php:35
 msgid "Fedora container URI"
 msgstr ""
 
-#: src/Form/ImportForm.php:35
+#: src/Form/ImportForm.php:36
 msgid ""
 "The URI of the Fedora container for the repository, collection or resource "
 "to import."
 msgstr ""
 
-#: src/Form/ImportForm.php:47
+#: src/Form/ImportForm.php:48
 msgid "Import files into Omeka S"
 msgstr "Importa file a Omeka S"
 
-#: src/Form/ImportForm.php:48
+#: src/Form/ImportForm.php:49
 msgid ""
 "If checked, original files will be imported into Omeka S. Otherwise, "
 "derivates will be displayed when possible, with links back to the original "
 "file in the Fedora repository."
 msgstr ""
 
-#: src/Form/ImportForm.php:59
+#: src/Form/ImportForm.php:60
 msgid "Ignore parent container"
 msgstr ""
 
-#: src/Form/ImportForm.php:60
+#: src/Form/ImportForm.php:61
 msgid ""
 "If checked, only descendents of the container at URI above will be imported "
 "as items--not the parent container itself."
 msgstr ""
 
-#: src/Form/ImportForm.php:71
+#: src/Form/ImportForm.php:72
 msgid "Import direct descendents only"
 msgstr ""
 
-#: src/Form/ImportForm.php:72
+#: src/Form/ImportForm.php:73
 msgid ""
 "If checked, only direct descendents of the container at URI above will be "
 "imported (i.e. no children of children). Otherwise, all resources below "
 "container will be recursively imported"
 msgstr ""
 
-#: src/Form/ImportForm.php:84
+#: src/Form/ImportForm.php:85
 msgid "A note about the purpose or source of this import"
 msgstr "Una nota sullo scopo e sul motivo di questa importazione "
 
-#: src/Form/ImportForm.php:96
+#: src/Form/ImportForm.php:108
+msgid "Assign a resource template to all imported resources."
+msgstr ""
+
+#: src/Form/ImportForm.php:119
 msgid "Select item set(s)"
 msgstr ""
 
-#: src/Form/ImportForm.php:102
+#: src/Form/ImportForm.php:125
 msgid "Optional. Import items into item set(s)."
 msgstr ""
 
-#: src/Form/ImportForm.php:126
+#: src/Form/ImportForm.php:149
 msgid "Select site(s)"
 msgstr ""
 
-#: src/Form/ImportForm.php:132
+#: src/Form/ImportForm.php:155
 msgid "Optional. Import items into site(s)."
 msgstr ""
 
@@ -184,25 +213,10 @@ msgstr ""
 msgid "There was a problem connecting to the Fedora Container URI"
 msgstr ""
 
-#: src/Controller/IndexController.php:30
-#, php-format
-msgid "Importing in Job ID %s"
-msgstr "Importazione nel ID lavoro %s"
-
-#: src/Controller/IndexController.php:36
+#: src/Controller/IndexController.php:41
 msgid "There was an error during validation"
 msgstr "Si è verificato l'errore durante la conferma"
 
-#: src/Controller/IndexController.php:53
-#, php-format
-msgid "Undo in progress on the following jobs: %s"
-msgstr ""
-
-#: src/Controller/IndexController.php:63
-#, php-format
-msgid "Rerun in progress on the following jobs: %s"
-msgstr ""
-
-#: src/Controller/IndexController.php:68
+#: src/Controller/IndexController.php:93
 msgid "Error: no jobs selected"
 msgstr ""
