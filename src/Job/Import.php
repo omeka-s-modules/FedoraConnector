@@ -3,7 +3,6 @@ namespace FedoraConnector\Job;
 
 use Omeka\Job\AbstractJob;
 use EasyRdf\Graph;
-use Laminas\Http\Response as Response;
 use EasyRdf\Resource as RdfResource;
 use EasyRdf\RdfNamespace;
 
@@ -37,12 +36,12 @@ class Import extends AbstractJob
         $this->logger = $this->getServiceLocator()->get('Omeka\Logger');
         $comment = $this->getArg('comment');
         $fedoraImportJson = [
-                            'o:job' => ['o:id' => $this->job->getId()],
-                            'comment' => $comment,
-                            'added_count' => 0,
-                            'updated_count' => 0,
-                            'added_files' => 0,
-                          ];
+            'o:job' => ['o:id' => $this->job->getId()],
+            'comment' => $comment,
+            'added_count' => 0,
+            'updated_count' => 0,
+            'added_files' => 0,
+        ];
         $response = $this->api->create('fedora_imports', $fedoraImportJson);
         $importRecordId = $response->getContent()->id();
 
@@ -54,7 +53,7 @@ class Import extends AbstractJob
         $this->client = $this->getServiceLocator()->get('Omeka\HttpClient');
         $this->client->setHeaders([
             'Accept' => 'application/ld+json',
-            'Prefer' => 'return=representation; include="http://www.w3.org/ns/ldp#PreferContainment http://fedora.info/definitions/v4/repository#EmbedResources"'
+            'Prefer' => 'return=representation; include="http://www.w3.org/ns/ldp#PreferContainment http://fedora.info/definitions/v4/repository#EmbedResources"',
         ]);
         $uri = $this->getArg('container_uri');
         $this->resourceTemplateId = (int) $this->getArg('resource_template', 0);
@@ -64,12 +63,12 @@ class Import extends AbstractJob
         $this->importResource($uri);
 
         $fedoraImportJson = [
-                            'o:job' => ['o:id' => $this->job->getId()],
-                            'comment' => $comment,
-                            'added_count' => $this->addedCount,
-                            'updated_count' => $this->updatedCount,
-                            'added_files' => $this->addedFiles,
-                          ];
+            'o:job' => ['o:id' => $this->job->getId()],
+            'comment' => $comment,
+            'added_count' => $this->addedCount,
+            'updated_count' => $this->updatedCount,
+            'added_files' => $this->addedFiles,
+        ];
         $response = $this->api->update('fedora_imports', $importRecordId, $fedoraImportJson);
     }
 
@@ -201,11 +200,11 @@ class Import extends AbstractJob
             $lastModifiedValue = $lastModified ? $lastModified->getValue() : null;
 
             $fedoraItemJson = [
-                                'o:job' => ['o:id' => $this->job->getId()],
-                                'o:item' => ['o:id' => $itemId],
-                                'uri' => $uri,
-                                'last_modified' => $lastModifiedValue,
-                              ];
+                'o:job' => ['o:id' => $this->job->getId()],
+                'o:item' => ['o:id' => $itemId],
+                'uri' => $uri,
+                'last_modified' => $lastModifiedValue,
+            ];
 
             if ($fedoraItem) {
                 $response = $this->api->update('fedora_items', $fedoraItem->id(), $fedoraItemJson);
@@ -215,7 +214,7 @@ class Import extends AbstractJob
                 $response = $this->api->create('fedora_items', $fedoraItemJson);
             }
         }
-        
+
         // if only_direct_children set, only recurse one level down from top
         if ($this->getArg('only_direct_children') && !$isTopLevel) {
             return;
@@ -228,7 +227,7 @@ class Import extends AbstractJob
             if ($this->isBinaryUri($memberUri)) {
                 continue; // handle later in media ingestion
             }
-        
+
             // Don't recurse Fedora admin links
             if (preg_match('#/(pages|orderProxies|files)(/|$)#', $memberUri)) {
                 continue;
@@ -271,11 +270,11 @@ class Import extends AbstractJob
             $literals = $resource->allLiterals($easyRdfProperty);
             foreach ($literals as $literal) {
                 $json[$property][] = [
-                        '@value' => (string) $literal,
-                        '@lang' => $literal->getLang(),
-                        'property_id' => $propertyId,
-                        'type' => 'literal',
-                        ];
+                    '@value' => (string) $literal,
+                    '@lang' => $literal->getLang(),
+                    'property_id' => $propertyId,
+                    'type' => 'literal',
+                ];
                 // for files, add dcterms:title for the ebucore:filename
                 if ($property == 'http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#filename') {
                     $dctermsTitleId = $this->getPropertyId('http://purl.org/dc/terms/title');
@@ -290,10 +289,10 @@ class Import extends AbstractJob
             $objects = $resource->allResources($easyRdfProperty);
             foreach ($objects as $object) {
                 $json[$property][] = [
-                        '@id' => $object->getUri(),
-                        'property_id' => $propertyId,
-                        'type' => 'uri',
-                        ];
+                    '@id' => $object->getUri(),
+                    'property_id' => $propertyId,
+                    'type' => 'uri',
+                ];
             }
         }
 
@@ -313,16 +312,16 @@ class Import extends AbstractJob
         //tack on dcterms:identifier and bibo:uri
         $dctermsId = $this->getPropertyId('http://purl.org/dc/terms/identifier');
         $json['http://purl.org/dc/terms/identifier'][] = [
-                '@value' => $resource->getUri(),
-                'property_id' => $dctermsId,
-                'type' => 'literal',
-                ];
+            '@value' => $resource->getUri(),
+            'property_id' => $dctermsId,
+            'type' => 'literal',
+        ];
         $biboUri = $this->getPropertyId('http://purl.org/ontology/bibo/uri');
         $json['http://purl.org/ontology/bibo/uri'][] = [
-                '@id' => $resource->getUri(),
-                'property_id' => $biboUri,
-                'type' => 'uri',
-                ];
+            '@id' => $resource->getUri(),
+            'property_id' => $biboUri,
+            'type' => 'uri',
+        ];
         return $json;
     }
 
@@ -428,7 +427,7 @@ class Import extends AbstractJob
         }
         return array_values(array_unique($binaries, SORT_REGULAR));
     }
-    
+
     protected function isBinaryUri(string $uri): bool
     {
         return preg_match('/\.(tif|tiff|jpg|jpeg|png|pdf)$/i', $uri);
@@ -454,8 +453,8 @@ class Import extends AbstractJob
             return $this->propertyUriIdMap[$propertyUri];
         }
         $response = $this->api->search('properties', ['vocabulary_namespace_uri' => $vocabUri,
-                                                           'local_name' => $localName,
-                                                     ]);
+            'local_name' => $localName,
+        ]);
         $propertyObjects = $response->getContent();
         if (count($propertyObjects) == 1) {
             $propertyObject = $propertyObjects[0];
@@ -474,8 +473,8 @@ class Import extends AbstractJob
         $localName = $class->localName();
         $vocabUri = str_replace($localName, '', $classUri);
         $response = $this->api->search('resource_classes', ['vocabulary_namespace_uri' => $vocabUri,
-                                                                 'local_name' => $localName,
-                                                           ]);
+            'local_name' => $localName,
+        ]);
         $classObjects = $response->getContent();
         if (count($classObjects) == 1) {
             $classObject = $classObjects[0];

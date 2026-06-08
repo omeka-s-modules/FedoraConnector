@@ -24,18 +24,18 @@ class ConfigForm extends Form
         }
 
         $this->add([
-                        'type' => 'checkbox',
-                        'name' => 'import_fedora',
-                        'options' => [
-                                    'label' => 'Import Fedora Vocabulary', // @translate
-                                    'info' => $info,
-                                ],
-                        'attributes' => [
-                                    'checked' => $hasFedoraVocab ? 'checked' : '',
-                                    'disabled' => $hasFedoraVocab ? 'disabled' : '',
-                                    'id' => 'import-fedora',
-                                ],
-                    ]);
+            'type' => 'checkbox',
+            'name' => 'import_fedora',
+            'options' => [
+                'label' => 'Import Fedora Vocabulary', // @translate
+                'info' => $info,
+            ],
+            'attributes' => [
+                'checked' => $hasFedoraVocab ? 'checked' : '',
+                'disabled' => $hasFedoraVocab ? 'disabled' : '',
+                'id' => 'import-fedora',
+            ],
+        ]);
 
         try {
             $hasLdpVocab = $api->read('vocabularies', ['namespaceUri' => 'http://www.w3.org/ns/ldp#' ]);
@@ -50,18 +50,18 @@ class ConfigForm extends Form
         }
 
         $this->add([
-                        'type' => 'checkbox',
-                        'name' => 'import_ldp',
-                        'options' => [
-                                    'label' => 'Import Linked Data Platform Vocabulary', // @translate
-                                    'info' => $info,
-                                ],
-                        'attributes' => [
-                                    'checked' => $hasLdpVocab ? 'checked' : '',
-                                    'disabled' => $hasLdpVocab ? 'disabled' : '',
-                                    'id' => 'import-ldp',
-                                ],
-                    ]);
+            'type' => 'checkbox',
+            'name' => 'import_ldp',
+            'options' => [
+                'label' => 'Import Linked Data Platform Vocabulary', // @translate
+                'info' => $info,
+            ],
+            'attributes' => [
+                'checked' => $hasLdpVocab ? 'checked' : '',
+                'disabled' => $hasLdpVocab ? 'disabled' : '',
+                'id' => 'import-ldp',
+            ],
+        ]);
     }
 
     public function setApi($api)

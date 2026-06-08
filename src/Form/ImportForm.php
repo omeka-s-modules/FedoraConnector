@@ -123,7 +123,7 @@ class ImportForm extends Form
             'options' => [
                 'label' => 'Item sets', // @translate
                 'info' => 'Optional. Import items into item set(s).', // @translate
-                'empty_option' => ''
+                'empty_option' => '',
             ],
         ]);
 

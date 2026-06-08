@@ -19,7 +19,7 @@ class IndexController extends AbstractActionController
             if ($form->isValid()) {
                 $uri = $data['container_uri'];
                 // do a quick check that the endpoint is available
-                if (! @file_get_contents($uri)) {
+                if (!@file_get_contents($uri)) {
                     $this->messenger()->addError('There was a problem connecting to the Fedora Container URI'); // @translate
                     return $view;
                 }
@@ -28,10 +28,10 @@ class IndexController extends AbstractActionController
                 //the FedoraImport record is created in the job, so it doesn't
                 //happen until the job is done
                 $message = new Message(
-                        '%s <a target="_blank" href="%s">%s</a>',
-                        $this->translate('Importing in: '),
-                        htmlspecialchars($this->url()->fromRoute('admin/id', ['controller' => 'job', 'id' => $job->getId()])),
-                        $this->translate('Job #') . $job->getId(),
+                    '%s <a target="_blank" href="%s">%s</a>',
+                    $this->translate('Importing in: '),
+                    htmlspecialchars($this->url()->fromRoute('admin/id', ['controller' => 'job', 'id' => $job->getId()])),
+                    $this->translate('Job #') . $job->getId(),
                 );
                 $message->setEscapeHtml(false);
                 $this->messenger()->addSuccess($message);
@@ -69,22 +69,22 @@ class IndexController extends AbstractActionController
                 }
                 if (!empty($undoJobIds)) {
                     $message = new Message(
-                            '%s %s %s %s',
-                            $this->translate('Undo in progress in: '),
-                            implode(', ', $currentUndoJobLinks),
-                            $this->translate(' for the following jobs: '),
-                            implode(', ', $undoJobIds),
+                        '%s %s %s %s',
+                        $this->translate('Undo in progress in: '),
+                        implode(', ', $currentUndoJobLinks),
+                        $this->translate(' for the following jobs: '),
+                        implode(', ', $undoJobIds),
                     );
                     $message->setEscapeHtml(false);
                     $this->messenger()->addSuccess($message);
                 }
                 if (!empty($rerunJobIds)) {
                     $message = new Message(
-                            '%s %s %s %s',
-                            $this->translate('Rerun in progress in: '),
-                            implode(', ', $currentRerunJobLinks),
-                            $this->translate(' for the following jobs: '),
-                            implode(', ', $rerunJobIds),
+                        '%s %s %s %s',
+                        $this->translate('Rerun in progress in: '),
+                        implode(', ', $currentRerunJobLinks),
+                        $this->translate(' for the following jobs: '),
+                        implode(', ', $rerunJobIds),
                     );
                     $message->setEscapeHtml(false);
                     $this->messenger()->addSuccess($message);
@@ -116,11 +116,11 @@ class IndexController extends AbstractActionController
         $deleteData['previous_job'] = $jobId;
         $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Undo', $deleteData);
         $response = $this->api()->update('fedora_imports',
-                    $fedoraImport->id(),
-                    [
-                        'o:undo_job' => ['o:id' => $job->getId() ],
-                    ]
-                );
+            $fedoraImport->id(),
+            [
+                'o:undo_job' => ['o:id' => $job->getId() ],
+            ]
+        );
         return $job;
     }
 
@@ -132,11 +132,11 @@ class IndexController extends AbstractActionController
         $rerunData = $fedoraImport->job()->args();
         $job = $this->jobDispatcher()->dispatch('FedoraConnector\Job\Import', $rerunData);
         $response = $this->api()->update('fedora_imports',
-                $fedoraImport->id(),
-                [
-                    'o:rerun_job' => ['o:id' => $job->getId() ],
-                ]
-            );
+            $fedoraImport->id(),
+            [
+                'o:rerun_job' => ['o:id' => $job->getId() ],
+            ]
+        );
         return $job;
     }
 }

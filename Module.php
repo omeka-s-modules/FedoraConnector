@@ -25,7 +25,7 @@ class Module extends AbstractModule
             null,
             ['FedoraConnector\Api\Adapter\FedoraItemAdapter'],
             ['search', 'read']
-            );
+        );
     }
 
     public function install(ServiceLocatorInterface $serviceLocator)
@@ -109,12 +109,12 @@ class Module extends AbstractModule
         $data = $controller->params()->fromPost();
         if ($data['import_fedora'] == 1) {
             $fedoraImportData = [
-                    'o:prefix' => 'fedora',
-                    'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
-                    'o:label' => 'Fedora Vocabulary', // @translate
-                    'o:comment' => 'Vocabulary for a Fedora Repository', // @translate
-                    'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
-                    ];
+                'o:prefix' => 'fedora',
+                'o:namespace_uri' => 'http://fedora.info/definitions/v4/repository#',
+                'o:label' => 'Fedora Vocabulary', // @translate
+                'o:comment' => 'Vocabulary for a Fedora Repository', // @translate
+                'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
+            ];
             $response = $importer->import(
                 'file', $fedoraImportData, ['file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf']
             );
@@ -122,12 +122,12 @@ class Module extends AbstractModule
 
         if ($data['import_ldp'] == 1) {
             $ldpImportData = [
-                    'o:prefix' => 'ldp',
-                    'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
-                    'o:label' => 'Linked Data Platform Vocabulary', // @translate
-                    'o:comment' => 'Vocabulary for a Linked Data Platform. Used by Fedora', // @translate
-                    'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
-                    ];
+                'o:prefix' => 'ldp',
+                'o:namespace_uri' => 'http://www.w3.org/ns/ldp#',
+                'o:label' => 'Linked Data Platform Vocabulary', // @translate
+                'o:comment' => 'Vocabulary for a Linked Data Platform. Used by Fedora', // @translate
+                'file' => OMEKA_PATH . '/modules/FedoraConnector/data/repository.rdf',
+            ];
             $response = $importer->import(
                 'file', $ldpImportData, ['file' => OMEKA_PATH . '/modules/FedoraConnector/data/ldp.rdf']
             );
